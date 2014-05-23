@@ -25,13 +25,16 @@ describe "Pages" do
     context "a User submits valid search terms" do
       it "should render the search results page" do
         visit root_path
-        fill_in "Band", with: "the Strokes"
+        fill_in "Band", with: "LCD Soundsystem"
         click_on "Submit"
-        expect(page).to have_content("Concerts for the Strokes")
+        expect(page).to have_content("Concerts for LCD Soundsystem")
       end
 
       it "should render the most recent concerts from the setlist api by that artist" do
-
+        visit root_path
+        fill_in "Band", with: "LCD Soundsystem"
+        click_on "Submit"
+        expect(page).to have_content("April 2 2011, NYC Farewell Shows, Madison Square Garden, New York, New York")
       end
     end
 
