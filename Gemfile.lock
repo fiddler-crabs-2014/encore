@@ -46,6 +46,12 @@ GEM
     extlib (0.9.16)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+<<<<<<< HEAD
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
+=======
+>>>>>>> master
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
       autoparse (>= 0.3.3)
@@ -150,10 +156,18 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+<<<<<<< HEAD
+  figaro
+  google-api-client
+  jbuilder (~> 2.0)
+  jquery-rails
+  musicbrainz (= 0.7.6)
+=======
   google-api-client
   jbuilder (~> 2.0)
   jquery-rails
   musicbrainz (~> 0.7.6)
+>>>>>>> master
   pg
   rails (= 4.1.1)
   sass-rails (~> 4.0.3)
