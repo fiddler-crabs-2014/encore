@@ -29,6 +29,24 @@ gem 'spring',        group: :development
 gem 'google-api-client'
 gem 'musicbrainz', '0.7.6'
 gem 'figaro'
+
+group :development, :test do 
+	gem 'pry-rails'
+	gem 'pry-remote'
+	gem 'pry-stack_explorer'
+	gem 'pry-debugger'
+	gem 'rspec-rails'
+end
+
+
+group :test do 
+	gem 'simplecov', '~> 0.7.1',  :require => false
+	gem 'capybara'
+	gem 'shoulda'
+	gem 'selenium-webdriver'
+	gem 'factory_girl_rails'
+	gem 'database_cleaner'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
