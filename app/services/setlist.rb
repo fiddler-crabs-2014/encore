@@ -1,3 +1,4 @@
+require 'net/http'
 class Setlist
 
   def self.search(band_name, mbid)

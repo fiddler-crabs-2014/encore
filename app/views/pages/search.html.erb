@@ -1,0 +1,13 @@
+<h1>Concerts for <%= @results[0] %></h1>
+<% @results[1].each do |result| %>
+  <div class="concert-form">
+    <%= form_for :search, url: search_youtube_path, method: :post do |f| %>
+      <%= f.hidden_field :band, value: @results[0] %>
+      <%= f.label :concert %><br>
+      <%= f.text_field :concert, value: result %><br>
+
+      <%= f.submit %>
+    <% end %>
+  </div><br>
+<% end %>
+
