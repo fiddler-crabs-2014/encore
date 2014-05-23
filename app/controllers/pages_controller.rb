@@ -20,6 +20,8 @@ class PagesController < ApplicationController
 
     search_params = params[:concert].split(', ')
 
+    @songs = params[:songs]
+
     date, tour, venue, city, state = search_params
     puts "#{date}, #{tour}, #{venue}, #{city}, #{state}"
     search1 = "#{band}, #{venue}, #{state}, #{date}"
@@ -55,5 +57,9 @@ class PagesController < ApplicationController
     end
 
     render :search_youtube
+  end
+
+  def make_concert
+
   end
 end
