@@ -6,13 +6,14 @@ class PagesController < ApplicationController
     band_name = params[:band]
     mbid = Musicbrainz.search(band_name)
     @results = Setlist.search(band_name, mbid)
-    p @results
   end
 
   def search_youtube
     band = params[:band]
 
     search_params = params[:concert].split(', ')
+
+    @songs = params[:songs]
 
     date, tour, venue, city, state = search_params
     puts "#{date}, #{tour}, #{venue}, #{city}, #{state}"
@@ -49,5 +50,9 @@ class PagesController < ApplicationController
     end
 
     render :search_youtube
+  end
+
+  def make_concert
+
   end
 end
