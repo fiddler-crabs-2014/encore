@@ -10,9 +10,9 @@ class PagesController < ApplicationController
   end
 
   def search_youtube
-    band = params[:search][:band]
+    band = params[:band]
 
-    search_params = params[:search][:concert].split(', ')
+    search_params = params[:concert].split(', ')
 
     date, tour, venue, city, state = search_params
     puts "#{date}, #{tour}, #{venue}, #{city}, #{state}"
