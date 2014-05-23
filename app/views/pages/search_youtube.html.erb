@@ -1,7 +1,7 @@
-<div class="row">
-  <div class="col-lg-6">
+<div style="float:left; width: 45%;"
     <% @titles_ids.each do |title, id| %>
     <form class="add-song" action="/concerts/add_song" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
       <input class="concert-id" type="hidden" name="concert_id" value="<%#= @concert.id %>">
       <input class="band_id" type="hidden" name="band_id" value="<%#= @band.id %>">
       <input class="song_id" type="hidden" name="song_id" value="<%= id %>">
@@ -21,14 +21,13 @@
         </div>
       </form>
     <% end %>
-  </div>
-
-  <div class="col-lg-6">
-    <a class="btn btn-lg btn-success" href="/concerts/<%#= @concert.id %>">Go To Concert</a>
-    <div id="added_songs" data-spy="affix" data-offset-top="60" data-offset-bottom="200">
-      <h3>Songs that will be added to your concert page:</h3>
-      <ul>
-      </ul>
-    </div>
-  </div>
 </div>
+
+<div style="float:right; width: 45%;">
+  <% @songs.each do |song| %>
+    <ul>
+      <li><%= song %></li>
+    </ul>
+  <% end %>
+</div>
+
