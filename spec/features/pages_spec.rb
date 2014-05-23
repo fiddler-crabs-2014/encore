@@ -30,7 +30,7 @@ describe "Pages" do
         expect(page).to have_content("Concerts for LCD Soundsystem")
       end
 
-      it "should render the most recent concerts from the setlist api by that artist" do
+      it "should render the most recent concert from the setlist api by that artist" do
         visit root_path
         fill_in "Band", with: "LCD Soundsystem"
         click_on "Submit"
