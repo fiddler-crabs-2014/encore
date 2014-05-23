@@ -4,9 +4,15 @@ class PagesController < ApplicationController
 
   def search
     band_name = params[:band]
-    mbid = Musicbrainz.search(band_name)
-    @results = Setlist.search(band_name, mbid)
-    p @results
+    if band_name != ""
+      mbid = Musicbrainz.search(band_name)
+      @results = Setlist.search(band_name, mbid)
+
+      p @results
+    else
+      flash.now[:error] = "Please actually type something in the search field. We can't raise this baby alone."
+      render :index
+    end
   end
 
   def search_youtube
