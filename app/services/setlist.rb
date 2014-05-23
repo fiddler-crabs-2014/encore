@@ -2,7 +2,6 @@ class Setlist
 
   def self.search(band_name, mbid)
     # setlists = []
-
     p band_name
 
     band = band_name
