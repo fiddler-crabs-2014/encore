@@ -30,7 +30,7 @@ gem 'google-api-client'
 gem 'musicbrainz', '0.7.6'
 gem 'figaro'
 
-group :development, :test do 
+group :development, :test do
 	gem 'pry-rails'
 	gem 'pry-remote'
 	gem 'pry-stack_explorer'
@@ -39,7 +39,7 @@ group :development, :test do
 end
 
 
-group :test do 
+group :test do
 	gem 'simplecov', '~> 0.7.1',  :require => false
 	gem 'capybara'
 	gem 'shoulda'
@@ -58,4 +58,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
