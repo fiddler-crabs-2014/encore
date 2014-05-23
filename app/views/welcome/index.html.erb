@@ -1,0 +1,9 @@
+<h1>Hello World</h1>
+
+
+<h4>Enter an artist:</h4>
+<%= form_tag("/search", method: "post") do %>
+<%= label_tag(:band) %>
+<%= text_field_tag(:band) %>
+<%= submit_tag("Submit") %>
+<% end %>

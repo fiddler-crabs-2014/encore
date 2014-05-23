@@ -1,0 +1,11 @@
+<h1>Concerts for <%= @results[0] %></h1>
+<% @results[1].each do |result| %>
+<ul>
+  <li>
+    <form action="/search_youtube" method="post">
+      <input type="hidden" name="band" value="<%= @results[0] %>">
+      <input name="concert" type="text" value="<%= result %>">
+      <button type="submit">Submit</button>
+    </form>
+</ul>
+<% end %>
