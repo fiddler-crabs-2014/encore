@@ -12,12 +12,27 @@ class Setlist
     setlists["setlists"]["setlist"].each do |set|
       if set["sets"].empty?
         set_songs << [nil]
+      elsif set["sets"]["set"].is_a? Array
+        set_songs << Array.new(
+          set["sets"]["set"].map do |set|
+            if set["song"].is_a? Array
+              set["song"].map do |song|
+                song["@name"]
+              end
+            elsif set["song"].is_a? Hash
+              set["song"]["@name"]
+            end
+          end
+        )
+      elsif set["sets"]["set"]["song"].is_a? Hash
+        set_songs << set["song"]["@name"]
       else
         set_songs << set["sets"]["set"]["song"].map { |song| song["@name"] }
       end
     end
+
     concerts = []
-    setlists["setlists"]["setlist"].each { |concert| concerts << "#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, #{concert["@tour"]}, #{concert["venue"]["@name"]}, #{concert["venue"]["city"]["@name"]}, #{concert["venue"]["city"]["@state"]}" }
+    setlists["setlists"]["setlist"].each { |concert| concerts << ["#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, #{concert["@tour"]}, #{concert["venue"]["@name"]}, #{concert["venue"]["city"]["@name"]}, #{concert["venue"]["city"]["@state"]}"] }
 
     concerts_with_sets = concerts.zip(set_songs)
 
@@ -25,3 +40,24 @@ class Setlist
   end
 
 end
+
+
+# setlists["setlists"]["setlist"].each do |set|
+#   if set["sets"].empty?
+#     set_songs << [nil]
+#   elsif set["sets"]["set"].is_a? Array
+#     set["sets"]["set"].each do |set|
+#       if set["song"].is_a? Array
+#         set["song"].each do |song|
+#           set_songs << song["@name"]
+#         end
+#       elsif set["song"].is_a? Hash
+#         set_songs << set["song"]["@name"]
+#       end
+#     end
+#   elsif set["sets"]["set"]["song"].is_a? Hash
+#     set_songs << set["song"]["@name"]
+#   else
+#     set_songs << set["sets"]["set"]["song"].map { |song| song["@name"] }
+#   end
+# end

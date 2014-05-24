@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     band_name = params[:band]
     mbid = Musicbrainz.search(band_name)
     @results = Setlist.search(band_name, mbid)
+    @results[1].each { |result| result[1].flatten! }
   end
 
   def search_youtube
