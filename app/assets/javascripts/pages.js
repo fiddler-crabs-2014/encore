@@ -4,7 +4,6 @@ $(document).ready(function() {
     event.preventDefault();
 
     var $this = $(this);
-    console.log($this)
 
     var songId = $this.find('.song_id').val();
     var songTitle = $this.find('.song').val();
