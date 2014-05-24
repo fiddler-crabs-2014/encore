@@ -1,14 +1,24 @@
 songsAndIds = {}
 $(document).ready(function() {
-  $('.add-song').submit(function(e) {
-    e.preventDefault();
+  $('.add-song-btn').on("click",function(event) {
+    event.preventDefault();
 
     var $this = $(this);
+    console.log($this)
 
     var songId = $this.find('.song_id').val();
     var songTitle = $this.find('.song').val();
 
-    songsAndIds[songId] = songTitle
-    console.log(songsAndIds);
+    console.log(songId);
+
+    // songsAndIds[songId] = songTitle
+    // console.log(songsAndIds);
   })
 })
+
+
+
+
+
+
+

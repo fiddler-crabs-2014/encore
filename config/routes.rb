@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   post 'search', to: 'pages#search', as: 'search'
   get 'search_youtube', to: 'pages#search_youtube', as: 'search_youtube'
   get 'concert_page', to: 'pages#make_concert', as: 'concert_page'
+
+  resources :concerts, only: [:new, :create]
+  resources :venues, only: [:new, :create]
+  resources :artists, only: [:new, :create]
+  resources :songs, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
