@@ -21,7 +21,7 @@ class PagesController < ApplicationController
     search_params = params[:concert].split(', ')
 
     @songs = params[:songs]
-
+    @band = band
     @date = search_params[0]
     @tour = search_params[1]
     @venue = search_params[2]
