@@ -149,8 +149,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
-    rdoc (4.1.1)
-      json (~> 1.4)
     retriable (1.4.1)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
@@ -171,9 +169,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sdoc (0.4.0)
-      json (~> 1.8)
-      rdoc (~> 4.0, < 5.0)
     selenium-webdriver (2.42.0)
       childprocess (>= 0.5.0)
       multi_json (~> 1.0)
@@ -244,7 +239,6 @@ DEPENDENCIES
   rails (= 4.1.1)
   rspec-rails
   sass-rails (~> 4.0.3)
-  sdoc (~> 0.4.0)
   selenium-webdriver
   shoulda
   simplecov (~> 0.7.1)

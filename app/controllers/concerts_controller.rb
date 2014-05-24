@@ -1,4 +1,7 @@
 class ConcertsController < ActionController::Base
+  def new
+  end
+
   def create
     songs = params[:songs]
     artist = Artist.where(name: params[:band]).first_or_create

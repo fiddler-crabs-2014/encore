@@ -11,13 +11,10 @@
       <input class="band_id" type="hidden" name="band_id" value="<%#= @band.id %>">
       <input class="song_id" type="hidden" name="song_id" value="<%= id %>">
 
-      <div class="video_container">
-        <iframe width="560" height="315" src="//www.youtube.com/embed/<%= id %>" frameborder="0" allowfullscreen></iframe>
-
-        <br>
-      </div>
+      <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
 
         <div class="form-group">
+          <p><i>Youtube Title:</i> <b><%= title %></b></p>
           <label for="song">Song</label>
 
           <!-- Check to see if the song array with the songs in the setlist
@@ -25,6 +22,7 @@
           <% if @songs[0].empty? %>
               <input class="form-control song" id="song" type="text" name="song_name" value='<%= title %>'>
               <button type="submit">Add Song</button>
+              <hr>
           <!-- Otherwise, you can select the song based on the setlist. -->
           <% else %>
               <select>
@@ -34,12 +32,12 @@
               </select>
 
               <button type="submit" class="add-song-btn">Add Song</button>
-
-          <% end %>
+              <hr>
+          <% end %><!--End for the @songs selection loop -->
 
         </div>
       </form>
-    <% end %>
+    <% end %><!--End for the @titles_id.each loop -->
 </div>
 
 <div style="float:right; width: 45%;">
@@ -69,3 +67,4 @@
   </ul>
 </div>
 
+<script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
