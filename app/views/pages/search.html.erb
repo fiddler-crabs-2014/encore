@@ -2,6 +2,6 @@
 <% @results[1].each do |result| %>
   <div class="concert-form">
     <ul>
-      <li><%= link_to result[0], search_youtube_path(band: @results[0], concert: result[0], songs: result[1]) %></li>
+      <li><%= link_to result[0].join, search_youtube_path(band: @results[0], concert: result[0].join, songs: result[1]) %></li>
     </ul>
 <% end %>
