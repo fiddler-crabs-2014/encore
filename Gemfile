@@ -30,6 +30,8 @@ gem 'google-api-client'
 gem 'musicbrainz', '0.7.6'
 gem 'figaro'
 
+gem 'omniauth-facebook'
+
 group :development, :test do
 	gem 'pry-rails'
 	gem 'pry-remote'
