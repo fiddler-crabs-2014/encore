@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: encore_development
+
+test:
+  <<: *default
+  database: encore_test
+
+production:
+  <<: *default
+  database: encore_production
+  username: encore
+  password: <%= ENV['ENCORE_DATABASE_PASSWORD'] %>
