@@ -6,11 +6,7 @@
       <input class="band_id" type="hidden" name="band_id" value="<%#= @band.id %>">
       <input class="song_id" type="hidden" name="song_id" value="<%= id %>">
 
-      <div class="video_container">
-        <iframe width="560" height="315" src="//www.youtube.com/embed/<%= id %>" frameborder="0" allowfullscreen></iframe>
-
-        <br>
-      </div>
+      <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
 
         <div class="form-group">
           <label for="song">Song</label>
@@ -42,8 +38,4 @@
   </div>
 </div>
 
-
-
-
-
-
+<script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
