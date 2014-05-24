@@ -22,6 +22,12 @@ class PagesController < ApplicationController
 
     @songs = params[:songs]
 
+    @date = search_params[0]
+    @tour = search_params[1]
+    @venue = search_params[2]
+    @city = search_params[3]
+    @state = search_params[4]
+
     date, tour, venue, city, state = search_params
     puts "#{date}, #{tour}, #{venue}, #{city}, #{state}"
     search1 = "#{band}, #{venue}, #{state}, #{date}"
