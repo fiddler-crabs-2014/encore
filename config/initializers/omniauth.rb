@@ -1,11 +1,12 @@
-# OmniAuth.config.logger = Rails.logger
-
-# Rails.application.config.middleware.use OmniAuth::Builder do
-#   provider :facebook, ENV['705031782872346'], ENV['4e4cc978e291cc2eaa55b86a736bac96']
-# end
-
 OmniAuth.config.logger = Rails.logger
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, '705031782872346', '4e4cc978e291cc2eaa55b86a736bac96', {:client_options => {:ssl => {:ca_file => Rails.root.join("cacert.pem").to_s}}}
+  provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET']
 end
+
+#WORKED LAST COMMIT
+# OmniAuth.config.logger = Rails.logger
+
+# Rails.application.config.middleware.use OmniAuth::Builder do
+#   provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET'], {:client_options => {:ssl => {:ca_file => Rails.root.join("cacert.pem").to_s}}}
+# end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resource :home, only: [:show]
 
-  root to: "home#show"
+  root to: "pages#index"
 
   post 'search', to: 'pages#search', as: 'search'
   get 'search_youtube', to: 'pages#search_youtube', as: 'search_youtube'
