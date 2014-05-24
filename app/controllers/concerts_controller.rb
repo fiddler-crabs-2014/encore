@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-class ConcertsController < ApplicationController
-
-  def new
-  end
-
-  def create
-  end
-
-=======
 class ConcertsController < ActionController::Base
   def create
     songs = params[:songs]
@@ -22,5 +12,4 @@ class ConcertsController < ActionController::Base
       song.concert_songs.create(concert_id: concert.id, song_id: song.id, video_identifier: s[0])
     end
   end
->>>>>>> a61013c0bab0fde01dc3dd8dc73d2eda31a78674
 end
