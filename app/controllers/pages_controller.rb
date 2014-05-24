@@ -6,15 +6,7 @@ class PagesController < ApplicationController
       band_name = params[:band]
       mbid = Musicbrainz.search(band_name)
       @results = Setlist.search(band_name, mbid)
-<<<<<<< HEAD
-
-    else
-      flash.now[:error] = "Please actually type something in the search field. We can't raise this baby alone."
-      render :index
-    end
-=======
-      @results[1].each { |result| result[1].flatten! }
->>>>>>> a61013c0bab0fde01dc3dd8dc73d2eda31a78674
+      @results[1].each { |result| result[1].flatten! unless result[1].is_a? String }
   end
 
   def search_youtube
@@ -29,17 +21,6 @@ class PagesController < ApplicationController
     @venue = search_params[2]
     @city = search_params[3]
     @state = search_params[4]
-
-    p "================"
-    @date = search_params[0]
-    # p @tour = Tour.find_by_venue("search_params[2]") || Tour.create(
-    @venue = search_params[2]
-    @city = search_params[3]
-    @state = search_params[4]
-
-    p @songs
-    p "================"
-
 
     date, tour, venue, city, state = search_params
     puts "#{date}, #{tour}, #{venue}, #{city}, #{state}"
@@ -71,9 +52,7 @@ class PagesController < ApplicationController
       end
     end
 
-
-
-    p @titles_ids
+    p @title_id
     render :search_youtube
   end
 
