@@ -6,7 +6,7 @@ $(document).ready(function() {
     var $this = $(this);
     var songId = $this.find('.song_id').val();
     var songTitle = $this.find('.song').val();
-  })
+  });
 
   $("#save_concert").on("click", function(e){
     e.preventDefault();
@@ -17,6 +17,5 @@ $(document).ready(function() {
       method: "post",
       data: (concertInfo + '&' + songList)
     });
-  })
-})
-
+  });
+});
