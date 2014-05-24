@@ -1,6 +1,7 @@
 songsAndIds = {}
 $(document).ready(function() {
-  $('.add-song').submit(function(e) {
+
+  $('.add-song').on("click", function(e) {
     e.preventDefault();
 
     var $this = $(this);
@@ -11,4 +12,9 @@ $(document).ready(function() {
     songsAndIds[songId] = songTitle
     console.log(songsAndIds);
   })
+
+
+
+
+
 })
