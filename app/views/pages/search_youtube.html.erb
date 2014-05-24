@@ -3,7 +3,7 @@
 <h2><%= @city %></h2>
 <h2><%= @state %></h2>
 
-<div style="float:left; width: 45%;"
+<div style="float:left; width: 45%;">
     <% @titles_ids.each do |title, id| %>
     <form class="add-song" action="/concerts/add_song" method="post">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>

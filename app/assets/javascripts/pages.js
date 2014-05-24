@@ -1,11 +1,14 @@
 var songsAndIds = {};
 $(document).ready(function() {
-  $('.add-song').on("click", function(e) {
-    e.preventDefault();
 
-    var $this = $(this);
-    var songId = $this.find('.song_id').val();
-    var songTitle = $this.find('.song').val();
+  $('.add-song-btn').on("click", function(e) {
+    e.preventDefault();
+    var form = $(this).closest("form");
+    var songId = form.find('.song_id').val();
+    var songTitle = form.find('select').val();
+    console.log(songTitle);
+    songsAndIds[songId] = songTitle;
+    console.log(songsAndIds);
   });
 
   $("#save_concert").on("click", function(e){
