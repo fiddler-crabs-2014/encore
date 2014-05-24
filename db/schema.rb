@@ -61,7 +61,8 @@ ActiveRecord::Schema.define(version: 20140522194740) do
 
   create_table "venues", force: true do |t|
     t.string   "name",       null: false
-    t.string   "location",   null: false
+    t.string   "city",       null: false
+    t.string   "state",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

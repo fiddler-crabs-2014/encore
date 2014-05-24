@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-class ConcertsController < ApplicationController
-
+class ConcertsController < ActionController::Base
   def new
   end
 
-  def create
-  end
-
-=======
-class ConcertsController < ActionController::Base
   def create
     p "GOT YOU"
     p params
@@ -26,5 +19,4 @@ class ConcertsController < ActionController::Base
     end
 
   end
->>>>>>> a61013c0bab0fde01dc3dd8dc73d2eda31a78674
 end
