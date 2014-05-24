@@ -59,7 +59,7 @@ class Setlist
     concerts_with_sets = {}
 
     concerts_songs.each do |concert, songs|
-      concerts_with_sets[concert] = songs.flatten
+      concerts_with_sets[concert] = songs.flatten unless songs.is_a? String
     end
 
     return concerts_with_sets
