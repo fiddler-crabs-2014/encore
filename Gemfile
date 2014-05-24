@@ -30,7 +30,8 @@ gem 'google-api-client'
 gem 'musicbrainz', '0.7.6'
 gem 'figaro'
 
-gem 'omniauth-facebook'
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 1.4.1'
 
 group :development, :test do
 	gem 'pry-rails'

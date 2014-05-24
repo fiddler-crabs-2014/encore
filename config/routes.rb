@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'home/show'
 
-  root "pages#index"
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resource :home, only: [:show]
+
+  root to: "pages#index"
 
   post 'search', to: 'pages#search', as: 'search'
   get 'search_youtube', to: 'pages#search_youtube', as: 'search_youtube'
