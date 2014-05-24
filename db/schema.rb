@@ -68,12 +68,14 @@ ActiveRecord::Schema.define(version: 20140522194740) do
   end
 
   create_table "videos", force: true do |t|
-    t.string   "video_identifier", null: false
     t.integer  "song_id"
+    t.integer  "concert_id"
+    t.string   "video_identifier", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "videos", ["concert_id"], name: "index_videos_on_concert_id", using: :btree
   add_index "videos", ["song_id"], name: "index_videos_on_song_id", using: :btree
 
 end
