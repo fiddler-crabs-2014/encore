@@ -13,6 +13,7 @@
 
 <div id="user_nav">
   <% if current_user %>
+    <img src= "http://graph.facebook.com/<%= current_user.image %>/picture?type=square" alt="facebook_pic">
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
