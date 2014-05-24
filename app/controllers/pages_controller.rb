@@ -3,10 +3,10 @@ class PagesController < ApplicationController
   end
 
   def search
-    band_name = params[:band]
-    mbid = Musicbrainz.search(band_name)
-    @results = Setlist.search(band_name, mbid)
-    @results[1].each { |result| result[1].flatten! }
+      band_name = params[:band]
+      mbid = Musicbrainz.search(band_name)
+      @results = Setlist.search(band_name, mbid)
+      @results[1].each { |result| result[1].flatten! }
   end
 
   def search_youtube
@@ -15,6 +15,12 @@ class PagesController < ApplicationController
     search_params = params[:concert].split(', ')
 
     @songs = params[:songs]
+    @band = band
+    @date = search_params[0]
+    @tour = search_params[1]
+    @venue = search_params[2]
+    @city = search_params[3]
+    @state = search_params[4]
 
     date, tour, venue, city, state = search_params
     puts "#{date}, #{tour}, #{venue}, #{city}, #{state}"
