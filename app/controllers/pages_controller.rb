@@ -3,10 +3,9 @@ class PagesController < ApplicationController
   end
 
   def search
-      band_name = params[:band]
-      mbid = Musicbrainz.search(band_name)
-      @results = Setlist.search(band_name, mbid)
-      @results[1].each { |result| result[1].flatten! }
+    @band = params[:band]
+    mbid = Musicbrainz.search(@band)
+    @results = Setlist.search(mbid)
   end
 
   def search_youtube
@@ -28,16 +27,10 @@ class PagesController < ApplicationController
     search2 = "#{band}, #{venue}, #{date}"
     search3 = "#{band}, #{state}, #{date}"
 
-    # @band = Band.create(params[:band])
-    # venue = Venue.create(params[:venue])
-
-    # @concert = @user.concerts.build(params[:concert].merge(band_id: @band.id, venue_id: venue.id))
-
     @titles_ids = {}
 
     results = []
 
-    # if @concert.save
     results << Youtube.search(search1)
     results << Youtube.search(search2)
     results << Youtube.search(search3)

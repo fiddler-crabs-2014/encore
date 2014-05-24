@@ -1,4 +1,6 @@
-class ConcertsController < ApplicationController
+class ConcertsController < ActionController::Base
+  def new
+  end
 
   def create
     p "GOT YOU"

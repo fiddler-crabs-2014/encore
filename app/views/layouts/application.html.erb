@@ -7,21 +7,48 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if flash[:error] %>
-  <%= flash[:error] %>
-<% end %>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Encore</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <% if current_user %>
+          <li>
+            <%= link_to signout_path, id: "sign_out" do %>
+              <strong>Signed in as <strong><%= current_user.name %></strong>!
+            <% end %>
+          </li>
+          <% else %>
+            <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+          <% end %>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
 
-<div id="user_nav">
-  <% if current_user %>
-    <img src= "http://graph.facebook.com/<%= current_user.image %>/picture?type=square" alt="facebook_pic">
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
+  <div id='flash'>
+    <% flash.each do |type, msg| %>
+    <div class="alert alert-<%= type %>">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= msg %>
+    </div>
+    <% end %>
+  </div>
 
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
