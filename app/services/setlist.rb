@@ -1,8 +1,7 @@
 require 'net/http'
 class Setlist
 
-  def self.search(band_name, mbid)
-    band = band_name
+  def self.search(mbid)
     setlists = JSON.parse(Net::HTTP.get_response(URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mbid}/setlists.json")).body)
     # total_pages = pages / 20
     # (1..total_pages).each do |x|
@@ -43,13 +42,27 @@ class Setlist
       end
     end
 
-    concerts = []
+    concerts = setlists["setlists"]["setlist"].map do |concert|
+      if concert["@tour"].nil? || concert["@tour"].empty?
+        "#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, " +
+        "#{concert["venue"]["@name"]}, #{concert["venue"]["city"]["@name"]}, " +
+        "#{concert["venue"]["city"]["@state"]}"
+      else
+        "#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, " +
+        "#{concert["@tour"]}, #{concert["venue"]["@name"]}, " +
+        "#{concert["venue"]["city"]["@name"]}, #{concert["venue"]["city"]["@state"]}"
+      end
+    end
 
-    setlists["setlists"]["setlist"].each { |concert| concerts << ["#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, #{concert["@tour"]}, #{concert["venue"]["@name"]}, #{concert["venue"]["city"]["@name"]}, #{concert["venue"]["city"]["@state"]}"] }
+    concerts_songs = concerts.zip(set_songs)
 
-    concerts_with_sets = concerts.zip(set_songs)
+    concerts_with_sets = {}
 
-    return band, concerts_with_sets
+    concerts_songs.each do |concert, songs|
+      concerts_with_sets[concert] = songs.flatten
+    end
+
+    return concerts_with_sets
   end
 
 end
