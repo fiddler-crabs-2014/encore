@@ -14,6 +14,9 @@ gem 'musicbrainz', '0.7.6'
 gem 'figaro'
 gem 'bootstrap-sass', '~> 3.1.1'
 
+gem 'omniauth'
+gem 'omniauth-facebook', '~> 1.4.1'
+
 group :development, :test do
 	gem 'pry-rails'
 	gem 'pry-remote'
