@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
     mbid = Musicbrainz.search(@band)
     if mbid
-      p @results = Setlist.search(mbid)
+      @results = Setlist.search(mbid)
       Artist.where(name: @band).first_or_create
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
@@ -18,17 +18,18 @@ class PagesController < ApplicationController
   def search_youtube
     band = params[:band]
     search_params = params[:concert].split(', ')
+    venue = Venue.where(name: search_params[2], city: search_params[3], state: search_params[4]).first_or_create
+    concert = Concert.where(date: search_params[0], venue_id: venue.id).first_or_create
 
     @songs = params[:songs]
     @band = band
-    @date = search_params[0]
+    @date = concert.date
     @tour = search_params[1]
-    @venue = search_params[2]
-    @city = search_params[3]
-    @state = search_params[4]
+    @venue = venue.name
+    @city = venue.city
+    @state = venue.state
 
     date, tour, venue, city, state = search_params
-    puts "#{date}, #{tour}, #{venue}, #{city}, #{state}"
     search1 = "#{band}, #{venue}, #{state}, #{date}"
     search2 = "#{band}, #{venue}, #{date}"
     search3 = "#{band}, #{state}, #{date}"
