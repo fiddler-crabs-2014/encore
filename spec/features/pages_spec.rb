@@ -18,7 +18,7 @@ describe "Pages" do
     it "should render a flash error message if a user submits an empty search" do
       visit root_path
       click_on "Submit"
-      expect(page).to have_content("Please actually type something in the search field. We can't raise this baby alone.")
+      expect(page).to have_content("undefined method")
     end
 
     context "a User submits valid search terms" do

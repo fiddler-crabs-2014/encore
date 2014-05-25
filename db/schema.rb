@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522194740) do
+ActiveRecord::Schema.define(version: 20140524190644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 20140522194740) do
 
   add_index "concert_artists", ["artist_id"], name: "index_concert_artists_on_artist_id", using: :btree
   add_index "concert_artists", ["concert_id"], name: "index_concert_artists_on_concert_id", using: :btree
+
+  create_table "concert_songs", force: true do |t|
+    t.string   "video_identifier", null: false
+    t.integer  "concert_id"
+    t.integer  "song_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "concert_songs", ["concert_id"], name: "index_concert_songs_on_concert_id", using: :btree
+  add_index "concert_songs", ["song_id"], name: "index_concert_songs_on_song_id", using: :btree
 
   create_table "concerts", force: true do |t|
     t.date     "date",       null: false

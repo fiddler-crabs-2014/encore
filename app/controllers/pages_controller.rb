@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def search
+      redirect_to root_url if params[:band].empty?
       band_name = params[:band]
       mbid = Musicbrainz.search(band_name)
       @results = Setlist.search(band_name, mbid)
