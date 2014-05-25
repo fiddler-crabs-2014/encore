@@ -16,7 +16,7 @@ module OmniAuthTestHelper
         }
       })
     end
-    OmniAuth.config.mock_auth[:facebook]
+
   end
 
   def facebook_login_failure
