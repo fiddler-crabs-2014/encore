@@ -23,9 +23,27 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
-
+  config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL
+  config.include OmniAuthTestHelper, type: :feature
+  config.include OmniAuthTestHelper, type: :controller
+  OmniAuth.config.test_mode = true
+  omniauth_hash = {
+        provider: 'facebook',
+        uid: '123545',
+        info: {
+          first_name: "Jared",
+          last_name:  "Rader",
+          email:      "test@example.com"
+        },
+        credentials: {
+          token: "123456",
+          expires_at: Time.now + 1.week
+        }
+      }
+  OmniAuth.config.add_mock(:facebook, omniauth_hash)
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
