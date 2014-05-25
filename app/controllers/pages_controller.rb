@@ -4,9 +4,11 @@ class PagesController < ApplicationController
 
   def search
     @band = params[:band]
+
     mbid = Musicbrainz.search(@band)
     if mbid
-      @results = Setlist.search(mbid)
+      p @results = Setlist.search(mbid)
+      Artist.where(name: @band).first_or_create
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
@@ -15,7 +17,6 @@ class PagesController < ApplicationController
 
   def search_youtube
     band = params[:band]
-
     search_params = params[:concert].split(', ')
 
     @songs = params[:songs]
@@ -49,8 +50,6 @@ class PagesController < ApplicationController
         # @ids << result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
       end
     end
-
-    p @title_id
     render :search_youtube
   end
 
