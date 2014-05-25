@@ -16,14 +16,11 @@ class PagesController < ApplicationController
   end
 
   def search_youtube
-    @band = Artist.find_by(name: params[:band])
-
+    @band = Artist.where(name: params[:band]).first_or_create
     search_params = params[:concert].split(', ')
-
     @venue = Venue.where(name: search_params[2], city: search_params[3], state: search_params[4]).first_or_create
     @concert = Concert.where(date: search_params[0], venue_id: @venue.id).first_or_create
     @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
-
     @songs = params[:songs]
     @date = @concert.date.strftime('%B %e %Y')
     @tour = search_params[1]
