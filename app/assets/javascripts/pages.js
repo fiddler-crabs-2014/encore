@@ -1,7 +1,6 @@
 var songsAndIds = {};
 $(document).ready(function() {
-
-  $('.add-song-btn').on("click", function(e) {
+  $('.add-song').on("submit", function(e) {
     e.preventDefault();
     var form = $(this).closest("form");
     var youtubeTitle = form.find('#yt-title').text();
@@ -16,6 +15,13 @@ $(document).ready(function() {
     songEl += "</p>"
     console.log(songEl);
     $('#added_songs').append(songEl);
+
+    $.post('/songs', { song: songTitle })
+      // .done(function(data) {
+      //   $.each('.set-song', function(index, value) {
+      //     $('.set-song:contains(' + data.song + ')')
+      //   })
+      // })
   });
 
   $("#save_concert").on("click", function(e){
@@ -28,4 +34,12 @@ $(document).ready(function() {
       data: (concertInfo + '&' + songList)
     });
   });
+
+  $('.remove-video').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+
+    console.log($this.closest('.add-song'));
+    $this.closest('.add-song').remove();
+  })
 });

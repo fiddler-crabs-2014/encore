@@ -8,7 +8,7 @@
   <div class="col-lg-10">
     <% @titles_ids.each do |title, id| %>
     <div class="col-lg-6">
-      <form class="add-song" action="/concerts/add_song" method="post">
+      <form class="add-song" action="/songs" method="post">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
         <input class="concert-id" type="hidden" name="concert_id" value="<%#= @concert.id %>">
         <input class="band_id" type="hidden" name="band_id" value="<%#= @band.id %>">
@@ -35,7 +35,7 @@
               </select>
 
                 <button type="submit" class="add-song-btn">Add Song</button>
-                <hr>
+                <a href="#" class="remove-video">Not Relevant?</a>
             <% end %><!--End for the @songs selection loop -->
 
           </div>
@@ -44,12 +44,14 @@
     <% end %><!--End for the @titles_id.each loop -->
   </div>
   <div class="col-lg-2">
-    <h2>Setlist</h2>
-    <ol>
-    <% @songs.each do |song| %>
-      <li><%= song %></li>
-    <% end %>
-    </ol>
+    <div class="setlist">
+      <h2>Setlist</h2>
+      <ol class="set-songs">
+      <% @songs.each do |song| %>
+        <li class="set-song"><%= song %></li>
+      <% end %>
+      </ol>
+    </div>
   </div>
 </div>
 
@@ -76,3 +78,8 @@
 </div>
 
 <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
+
+<script type="text/javascript">
+  var concertData = { band: <%= @band %>,
+                      }
+</script>
