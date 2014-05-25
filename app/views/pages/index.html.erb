@@ -5,12 +5,12 @@
     <div class="form-group">
       <h2><%= label_tag :band, "Search a band's concerts now" %></h2><br>
       <%= text_field_tag :band, nil, placeholder: "Band name", class: 'form-control' %>
+      <input type="text" id="myinput"/>
     </div>
 
     <%= submit_tag "Search", class: "btn btn-lg btn-success" %>
   <% end %>
 
-  <input type="text" id="myinput"/>
   </center>
 
 </div>
