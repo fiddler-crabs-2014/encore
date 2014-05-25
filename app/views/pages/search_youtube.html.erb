@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-6">
-    <h2><%= @band %> at <%= @venue %>, in <%= @city %>, <%= @state %></h2>
+    <h2><%= @band.name %> at <%= @venue.name %>, in <%= @venue.city %>, <%= @venue.state %></h2>
     <h2><%= @date %></h2>
   </div>
 </div>
@@ -8,48 +8,43 @@
   <div class="col-lg-10">
     <% @titles_ids.each do |title, id| %>
     <div class="col-lg-6">
-      <form class="add-song" action="/concerts/add_song" method="post">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-        <input class="concert-id" type="hidden" name="concert_id" value="<%#= @concert.id %>">
-        <input class="band_id" type="hidden" name="band_id" value="<%#= @band.id %>">
-        <input class="song_id" type="hidden" name="song_id" value="<%= id %>">
+
+      <%= form_for :song, url: songs_path, method: :post, html: { class: 'add-song' } do |f| %>
+        <%= f.hidden_field :id, value: id %>
 
         <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
 
-          <div class="form-group">
-            <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
-            <label for="song">Song</label>
+        <div class="form-group">
+          <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
+          <label for="song">Song</label>
+          <!-- Check to see if the song array with the songs in the setlist
+                is empty. The songs array will be [""] if there is no setlist for this show. -->
+        <% if @songs[0].empty? %>
 
-            <!-- Check to see if the song array with the songs in the setlist
-                  is empty. The songs array will be [""] if there is no setlist for this show. -->
-            <% if @songs[0].empty? %>
-              <input class="form-control song" id="song" type="text" name="song_name" value='<%= title %>'>
-              <button type="submit">Add Song</button>
-              <hr>
-            <!-- Otherwise, you can select the song based on the setlist. -->
-            <% else %>
-              <select>
-                <% @songs.each do |song| %>
-                  <option value="<%= song %>"><%= song %></option>
-                <% end %>
-              </select>
+          <%= f.text_field :song, value: title %>
 
-                <button type="submit" class="add-song-btn">Add Song</button>
-                <hr>
-            <% end %><!--End for the @songs selection loop -->
-
-          </div>
-        </form>
+          <%= f.submit "Add Song" %>
+          <hr>
+          <!-- Otherwise, you can select the song based on the setlist. -->
+        <% else %>
+          <%= f.select :songs, @songs.collect { |song| song } %>
+          <%= f.submit "Add Song" %>
+          <a href="#" class="remove-video">Not Relevant?</a>
+        <% end %><!--End for the @songs selection loop -->
+      <% end %>
+        </div>
     </div>
     <% end %><!--End for the @titles_id.each loop -->
   </div>
   <div class="col-lg-2">
-    <h2>Setlist</h2>
-    <ol>
-    <% @songs.each do |song| %>
-      <li><%= song %></li>
-    <% end %>
-    </ol>
+    <div class="setlist">
+      <h2>Setlist</h2>
+      <ol class="set-songs">
+      <% @songs.each do |song| %>
+        <li class="set-song"><%= song %></li>
+      <% end %>
+      </ol>
+    </div>
   </div>
 </div>
 
@@ -57,12 +52,12 @@
 
   <div>
     <%= form_tag('create_concert', id: "create_concert") do %>
-      <%= hidden_field_tag "band", @band %>
-      <%= hidden_field_tag "date", @date %>
+      <%= hidden_field_tag "band", @band.id %>
+      <%= hidden_field_tag "date", @concert.date %>
       <%= hidden_field_tag "tour", @tour %>
-      <%= hidden_field_tag "venue", @venue %>
-      <%= hidden_field_tag "city", @city %>
-      <%= hidden_field_tag "state", @state %>
+      <%= hidden_field_tag "venue", @venue.name %>
+      <%= hidden_field_tag "city", @venue.city %>
+      <%= hidden_field_tag "state", @venue.state %>
       <div><%= submit_tag 'Save Concert', id: "save_concert" %></div>
     <% end %>
   </div>
@@ -76,3 +71,8 @@
 </div>
 
 <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
+
+<script type="text/javascript">
+  var concertId = <%= @concert_artist.concert_id %>;
+  var artistId = <%= @concert_artist.artist_id %>;
+</script>
