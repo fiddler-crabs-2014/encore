@@ -13,6 +13,7 @@ gem 'google-api-client'
 gem 'musicbrainz', '0.7.6'
 gem 'figaro'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem 'will_paginate'
 
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 1.4.1'

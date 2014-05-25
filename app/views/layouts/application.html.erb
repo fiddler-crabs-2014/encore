@@ -32,15 +32,23 @@
         <ul class="nav navbar-nav pull-right">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
+
           <% if current_user %>
-          <li>
-            <%= link_to signout_path, id: "sign_out" do %>
-              <strong>Signed in as <strong><%= current_user.name %></strong>!
-            <% end %>
-          </li>
-          <% else %>
-            <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+            <li>
+              <%= link_to user_path(session[:user_id]) do %>
+                <strong><%= current_user.name %></strong>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to signout_path, id: "sign_out" do %>
+                <strong>Sign Out</strong>
+              <% end %>
+            </li>
+            <% else %>
+              <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
           <% end %>
+
           </li>
         </ul>
       </div><!--/.nav-collapse -->
