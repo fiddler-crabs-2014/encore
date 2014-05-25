@@ -19,5 +19,8 @@ class ConcertsController < ActionController::Base
   end
 
   def show
+    @concert = Concert.find(params[:id])
+    @venue = Venue.find(@concert.venue_id)
   end
+
 end
