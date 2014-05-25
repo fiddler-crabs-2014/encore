@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  resource :home, only: [:show]
-
   root to: "pages#index"
 
   get 'search', to: 'pages#search', as: 'search'
