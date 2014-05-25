@@ -1,1 +1,29 @@
-HI!
+<h1><%= @concert.artists.first.name %> live at <%= @venue.name %></h1>
+<h1><%= @concert.date.strftime('%B %e, %Y') %></h1>
+
+<button type="button" class="btn btn-default">I WAS HERE <br>(add to my concert page)</button>
+
+<div class="row">
+  <div class="col-lg-10">
+    <% @concert.concert_songs.each do |concert_song| %>
+    <div class="col-lg-6">
+
+        <div class="youtube" id="<%= concert_song.video_identifier %>" style="width: 320px; height: 180px;"></div>
+
+    </div>
+    <% end %>
+
+  </div>
+
+  <div class="col-lg-2">
+    <h2>Setlist</h2>
+    <ol>
+    <% @concert.songs.each do |song| %>
+      <li><%= song.title %></li>
+    <% end %>
+    </ol>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>

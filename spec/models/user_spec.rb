@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  # describe "associations" do
+  #   it { should have_many(:attended_concerts) }
+  #   it { should have_many(:concerts).through(:attended_concerts) }
+  # end
+
 end
