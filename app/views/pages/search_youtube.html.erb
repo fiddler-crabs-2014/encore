@@ -1,51 +1,59 @@
-<h2><%= @date %></h2>
-<h2><%= @venue %></h2>
-<h2><%= @city %></h2>
-<h2><%= @state %></h2>
-
-<div style="float:left; width: 45%;">
+<div class="row">
+  <div class="col-lg-6">
+    <h2><%= @band %> at <%= @venue %>, in <%= @city %>, <%= @state %></h2>
+    <h2><%= @date %></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-10">
     <% @titles_ids.each do |title, id| %>
-    <form class="add-song" action="/concerts/add_song" method="post">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-      <input class="concert-id" type="hidden" name="concert_id" value="<%#= @concert.id %>">
-      <input class="band_id" type="hidden" name="band_id" value="<%#= @band.id %>">
-      <input class="song_id" type="hidden" name="song_id" value="<%= id %>">
+    <div class="col-lg-6">
+      <form class="add-song" action="/concerts/add_song" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <input class="concert-id" type="hidden" name="concert_id" value="<%#= @concert.id %>">
+        <input class="band_id" type="hidden" name="band_id" value="<%#= @band.id %>">
+        <input class="song_id" type="hidden" name="song_id" value="<%= id %>">
 
-      <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
+        <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
 
-        <div class="form-group">
-          <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
-          <label for="song">Song</label>
+          <div class="form-group">
+            <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
+            <label for="song">Song</label>
 
-          <!-- Check to see if the song array with the songs in the setlist
-                is empty. The songs array will be [""] if there is no setlist for this show. -->
-          <% if @songs[0].empty? %>
+            <!-- Check to see if the song array with the songs in the setlist
+                  is empty. The songs array will be [""] if there is no setlist for this show. -->
+            <% if @songs[0].empty? %>
               <input class="form-control song" id="song" type="text" name="song_name" value='<%= title %>'>
               <button type="submit">Add Song</button>
               <hr>
-          <!-- Otherwise, you can select the song based on the setlist. -->
-          <% else %>
+            <!-- Otherwise, you can select the song based on the setlist. -->
+            <% else %>
               <select>
                 <% @songs.each do |song| %>
                   <option value="<%= song %>"><%= song %></option>
                 <% end %>
               </select>
 
-              <button type="submit" class="add-song-btn">Add Song</button>
-              <hr>
-          <% end %><!--End for the @songs selection loop -->
+                <button type="submit" class="add-song-btn">Add Song</button>
+                <hr>
+            <% end %><!--End for the @songs selection loop -->
 
-        </div>
-      </form>
+          </div>
+        </form>
+    </div>
     <% end %><!--End for the @titles_id.each loop -->
+  </div>
+  <div class="col-lg-2">
+    <h2>Setlist</h2>
+    <ol>
+    <% @songs.each do |song| %>
+      <li><%= song %></li>
+    <% end %>
+    </ol>
+  </div>
 </div>
 
-<div style="float:right; width: 45%;">
-  <% @songs.each do |song| %>
-    <ul>
-      <li><%= song %></li>
-    </ul>
-  <% end %>
+
 
   <div>
     <%= form_tag('create_concert', id: "create_concert") do %>
