@@ -24,14 +24,17 @@ group :development, :test do
 	gem 'pry-stack_explorer'
 	gem 'pry-debugger'
 	gem 'rspec-rails'
+	gem 'factory_girl_rails'
 end
 
 group :test do
 	gem 'simplecov', '~> 0.8.0',  :require => false
+	gem 'faker'
 	gem 'capybara'
+	gem 'guard-rspec'
+	gem 'launchy'
 	gem 'shoulda'
 	gem 'selenium-webdriver'
-	gem 'factory_girl_rails'
 	gem 'database_cleaner'
 end
 
