@@ -14,5 +14,10 @@ class ConcertsController < ActionController::Base
       song = Song.where(title: s[1], artist_id: artist.id).first_or_create
       song.concert_songs.create(concert_id: concert.id, song_id: song.id, video_identifier: s[0])
     end
+
+    render :show
+  end
+
+  def show
   end
 end

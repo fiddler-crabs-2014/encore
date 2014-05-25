@@ -1,6 +1,5 @@
 require "spec_helper"
 
-
 describe "Pages" do
   context "Landing page should render with correct content" do
     it "should render the correct landing page" do

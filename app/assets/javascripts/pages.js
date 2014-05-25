@@ -4,11 +4,18 @@ $(document).ready(function() {
   $('.add-song-btn').on("click", function(e) {
     e.preventDefault();
     var form = $(this).closest("form");
+    var youtubeTitle = form.find('#yt-title').text();
     var songId = form.find('.song_id').val();
     var songTitle = form.find('select').val();
-    console.log(songTitle);
     songsAndIds[songId] = songTitle;
-    console.log(songsAndIds);
+    // console.log(songsAndIds);
+    var songEl = ""
+    songEl += "<p>"
+    songEl += songTitle + " - "
+    songEl += youtubeTitle
+    songEl += "</p>"
+    console.log(songEl);
+    $('#added_songs').append(songEl);
   });
 
   $("#save_concert").on("click", function(e){

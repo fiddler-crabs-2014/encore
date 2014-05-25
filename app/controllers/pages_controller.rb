@@ -51,9 +51,6 @@ class PagesController < ApplicationController
         # @ids << result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
       end
     end
-
-    p @title_id
-    render :search_youtube
   end
 
   def make_concert
