@@ -14,7 +14,7 @@
       <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
 
         <div class="form-group">
-          <p><i>Youtube Title:</i> <b><%= title %></b></p>
+          <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
           <label for="song">Song</label>
 
           <!-- Check to see if the song array with the songs in the setlist
@@ -48,14 +48,14 @@
   <% end %>
 
   <div>
-    <%= form_tag('create_concert') do %>
+    <%= form_tag('create_concert', id: "create_concert") do %>
       <%= hidden_field_tag "band", @band %>
       <%= hidden_field_tag "date", @date %>
       <%= hidden_field_tag "tour", @tour %>
       <%= hidden_field_tag "venue", @venue %>
       <%= hidden_field_tag "city", @city %>
       <%= hidden_field_tag "state", @state %>
-      <div><%= submit_tag 'Save Concert' %></div>
+      <div><%= submit_tag 'Save Concert', id: "save_concert" %></div>
     <% end %>
   </div>
 </div>
