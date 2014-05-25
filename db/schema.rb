@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524190644) do
+ActiveRecord::Schema.define(version: 20140524210032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,17 +41,6 @@ ActiveRecord::Schema.define(version: 20140524190644) do
   add_index "concert_artists", ["artist_id"], name: "index_concert_artists_on_artist_id", using: :btree
   add_index "concert_artists", ["concert_id"], name: "index_concert_artists_on_concert_id", using: :btree
 
-  create_table "concert_songs", force: true do |t|
-    t.string   "video_identifier", null: false
-    t.integer  "concert_id"
-    t.integer  "song_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "concert_songs", ["concert_id"], name: "index_concert_songs_on_concert_id", using: :btree
-  add_index "concert_songs", ["song_id"], name: "index_concert_songs_on_song_id", using: :btree
-
   create_table "concerts", force: true do |t|
     t.date     "date",       null: false
     t.integer  "venue_id",   null: false
@@ -70,6 +59,16 @@ ActiveRecord::Schema.define(version: 20140524190644) do
 
   add_index "songs", ["artist_id"], name: "index_songs_on_artist_id", using: :btree
 
+  create_table "users", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "venues", force: true do |t|
     t.string   "name",       null: false
     t.string   "city",       null: false
@@ -79,12 +78,14 @@ ActiveRecord::Schema.define(version: 20140524190644) do
   end
 
   create_table "videos", force: true do |t|
-    t.string   "video_identifier", null: false
     t.integer  "song_id"
+    t.integer  "concert_id"
+    t.string   "video_identifier", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "videos", ["concert_id"], name: "index_videos_on_concert_id", using: :btree
   add_index "videos", ["song_id"], name: "index_videos_on_song_id", using: :btree
 
 end

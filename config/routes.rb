@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'home/show'
 
-  root "pages#index"
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  post 'search', to: 'pages#search', as: 'search'
+  resource :home, only: [:show]
+
+  root to: "pages#index"
+
+  get 'search', to: 'pages#search', as: 'search'
   get 'search_youtube', to: 'pages#search_youtube', as: 'search_youtube'
   get 'concert_page', to: 'pages#make_concert', as: 'concert_page'
 
@@ -12,6 +19,8 @@ Rails.application.routes.draw do
   resources :songs, only: [:new, :create]
 
   post 'create_concert', to: 'concerts#create', as: 'create_concert'
+
+  resources :users, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
