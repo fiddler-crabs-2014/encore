@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'capybara/rspec'
 SimpleCov.start
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
@@ -23,6 +24,7 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+  config.include WaitForAjax, type: :feature
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL
   config.include OmniAuthTestHelper, type: :feature

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'songs/create'
+
   get 'home/show'
 
   get 'auth/:provider/callback', to: 'sessions#create'

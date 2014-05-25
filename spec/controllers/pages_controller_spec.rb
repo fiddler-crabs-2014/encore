@@ -71,7 +71,7 @@ describe PagesController do
 
       it "assigns requested date to @date" do
         get :search_youtube, query
-        assigns(:date).should eq("April 19 2014")
+        assigns(:date).to_s.should eq("2014-04-19")
       end
 
       it "assigns requested tour to @tour" do
@@ -98,6 +98,40 @@ describe PagesController do
         get :search_youtube, query
         youtube_response = {"Muse - Coachella 2014 (Weekend 2)"=>"zP9_5JYcnno", "Calvin Harris - Coachella 2014 (Weekend 2)"=>"QAZzqibvPPU", "Pet Shop Boys [West End Girls] - Coachella 2014 (Weekend 2)"=>"DEqJpZsKPQg", "Skrillex - Coachella 2014 (Weekend 2)"=>"aMl9EthIZJQ", "Pet Shop Boys - Coachella 2014 (Weekend 2)"=>"GseQKBMaqjo", "Nas - Coachella 2014 (Weekend 2)"=>"SXcmuNP5Ays", "Mogwai - Coachella (Weekend 2)"=>"79mBusjbLUA", "Galantis - Coachella 2014 (Weekend 2)"=>"0_cki1tVT1o", "Martin Garrix with Dillon Francis - Coachella 2014 (Weekend 2)"=>"om3qms3VuJY", "AFI - Coachella 2014 (Weekend 2)"=>"km8WX5lSQ1Q", "Ellie Goulding - Coachella 2014 (Weekend 2)"=>"7yhafcdJfuI", "City And Colour - Coachella 2014 (Weekend 2)"=>"BEkjtfu3Psc", "Carnage - Coachella 2014 (Weekend 2)"=>"uR7lXAj48bM", "The Glitch Mob - Coachella 2014 (Weekend 2)"=>"72zL_VhSaTQ", "Jhene Aiko \"Higher\" Live at Coachella 2014 W1 (Ending)"=>"QPqVMhVaYcI", "Coachella Valley Music and Arts Festival 2014"=>"6AbyCyjgk3U", "Dillon Francis LIVE @ Coachella Weekend 1 2014"=>"vS96hI1AV28", "Vampire Weekend (Live) Coachella 2013"=>"fA8AQpH7cq0", "Muse performing \"Starlight\" at Coachella on April 19, 2014"=>"PZtd_ksJdMw", "Muse performing \"Madness\" at Coachella on April 19, 2014 at"=>"N7Q7xMxgt4E", "Muse performing \"Animals\" at Coachella - April 19, 2014 - C"=>"38IdK4UyHCI", "Muse performing \"Knights of Cydonia\" at Coachella on April"=>"XYrkakeSM8s", "Muse performing \"Time Is Running Out\" at Coachella on April"=>"fVZEuivg9oU", "Muse performing \"The 2nd Law: Isolated System\" and \"Uprisin"=>"9WBKm3PP9YQ", "Muse-Time is running out live Coachella 2014"=>"3_82GKVoilo", "S0 News March 6, 2014: MUSE, Solar Eruption Watch"=>"SzbZBW3oRjQ", "Muse At Izod Center 4/19/13 - Entire Show (Improved Audio)"=>"zV8IWd2Xrf8", "Fat Boy Slim performing \"Right Here, Right Now\" at Coachell"=>"opWi05jj_vA", "Jake Bugg - Country Song - live Coachella, April 19, 2013"=>"Cf8UWhFtDRk", "(HD) Muse - Man With A Harmonica + Knights of Cydonia - IZOD Center, April 19, 2013"=>"tDvgW8cEeKs", "Coachella 2014: Muse Tells Us What They Love About Performing Live"=>"9WqpxDvjKAQ", "Muse (Live) - Survival - Oracle Arena - 1/28/13 - Oakland CA"=>"CxxdokwJEu8", "Muse - Uprising Coachella 2014"=>"MQyw_piB9xk", "M.U.S.E. On Location: Universal Studios Hollywood Despicable Me: Minion Mayhem"=>"hZnMgv9ouzc", "Animals (Live) Muse - Oakland,California - Oracle Arena - 2nd Law Tour - 1/28/2013"=>"P_k9gsWuBps"}
         assigns(:titles_ids).should eq(youtube_response)
+      end
+
+      it "creates a new venue" do
+        expect {
+          get :search_youtube, query
+          }.to change { Venue.count }.by(1)
+      end
+
+      it "creates a new concert" do
+        expect {
+          get :search_youtube, query
+          }.to change { Concert.count }.by(1)
+      end
+
+    end
+
+    context "when a venue already exists" do
+      before { Venue.create(name: "Empire Polo Club", city: "Indio", state: "California") }
+
+      it "doesn't create a new venue record" do
+        expect {
+          get :search_youtube, query
+        }.to_not change { Venue.count }.by(1)
+      end
+    end
+
+    context "when a concert already exists" do
+      let(:venue) { Venue.create(name: "Empire Polo Club", city: "Indio", state: "California") }
+      let!(:concert) { Concert.create(date: "April 19 2014", venue_id: venue.id) }
+
+      it "doesn't create a new concert record" do
+        expect {
+          get :search_youtube, query
+        }.to_not change { Concert.count }.by(1)
       end
     end
   end

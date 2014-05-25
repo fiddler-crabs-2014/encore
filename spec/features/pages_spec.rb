@@ -8,21 +8,21 @@ feature "Search for concerts" do
   end
 
   scenario "with a correct band name" do
-    fill_in "Search a band's concerts now", with: "Killswitch Engage"
+    fill_in "band", with: "Killswitch Engage"
     click_button "Search"
 
     expect(page).to have_content("Concerts for Killswitch Engage")
   end
 
   scenario "with an incorrect band name" do
-    fill_in "Search a band's concerts now", with: "dsafhds"
+    fill_in "band", with: "dsafhds"
     click_button "Search"
 
     expect(page).to have_content("Sorry - we couldn't find an artist with that name.")
   end
 
   scenario "with a band that has complex sets" do
-    fill_in "Search a band's concerts now", with: "Phish"
+    fill_in "band", with: "Phish"
     click_button "Search"
 
     expect(page).to have_content("Concerts for Phish")
