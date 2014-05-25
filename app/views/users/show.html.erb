@@ -1,0 +1,9 @@
+<h3><%= @user.name %></h3>
+
+<!-- Add functionality in so when the year changes
+      a new header is made with that year -->
+<% @concerts.each do |concert| %>
+  <div class="well-lg">
+    <%= concert  %>
+  </div>
+<% end %>

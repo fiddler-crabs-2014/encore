@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   post 'create_concert', to: 'concerts#create', as: 'create_concert'
 
+  resources :users, only: [:index, :show]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
