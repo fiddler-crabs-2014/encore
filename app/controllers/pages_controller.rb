@@ -5,7 +5,12 @@ class PagesController < ApplicationController
   def search
     @band = params[:band]
     mbid = Musicbrainz.search(@band)
-    @results = Setlist.search(mbid)
+    if mbid
+      @results = Setlist.search(mbid)
+    else
+      flash[:warning] = "Sorry - we couldn't find an artist with that name."
+      render :index
+    end
   end
 
   def search_youtube
