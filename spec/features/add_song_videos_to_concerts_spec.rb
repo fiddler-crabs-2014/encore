@@ -6,10 +6,10 @@ feature "Add video of song to concert", js: true do
 
     expect(page).to have_content("Relive your favorite concerts")
 
-    fill_in "band", with: "Killswitch Engage"
+    fill_in "band", with: "Muse"
     click_button "Search"
 
-    expect(page).to have_content("Concerts for Killswitch Engage")
+    expect(page).to have_content("Concerts for Muse")
 
     first('#concert-title').click
   end

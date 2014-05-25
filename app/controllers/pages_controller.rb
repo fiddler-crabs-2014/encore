@@ -16,23 +16,24 @@ class PagesController < ApplicationController
   end
 
   def search_youtube
-    band = params[:band]
+    @band = Artist.find_by(name: params[:band])
+
     search_params = params[:concert].split(', ')
-    venue = Venue.where(name: search_params[2], city: search_params[3], state: search_params[4]).first_or_create
-    concert = Concert.where(date: search_params[0], venue_id: venue.id).first_or_create
+
+    @venue = Venue.where(name: search_params[2], city: search_params[3], state: search_params[4]).first_or_create
+    @concert = Concert.where(date: search_params[0], venue_id: @venue.id).first_or_create
+    @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
 
     @songs = params[:songs]
-    @band = band
-    @date = concert.date
+    @date = @concert.date.strftime('%B %e %Y')
     @tour = search_params[1]
-    @venue = venue.name
-    @city = venue.city
-    @state = venue.state
+    #@venue = venue.name
+    #@city = venue.city.strftime
+    #@state = venue.state
 
-    date, tour, venue, city, state = search_params
-    search1 = "#{band}, #{venue}, #{state}, #{date}"
-    search2 = "#{band}, #{venue}, #{date}"
-    search3 = "#{band}, #{state}, #{date}"
+    search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
+    search2 = "#{@band.name}, #{@venue.name}, #{@date}"
+    search3 = "#{@band.name}, #{@venue.state}, #{@date}"
 
     @titles_ids = {}
 
@@ -51,7 +52,6 @@ class PagesController < ApplicationController
         # @ids << result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
       end
     end
-    render :search_youtube
   end
 
   def make_concert

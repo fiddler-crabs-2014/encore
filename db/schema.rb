@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20140525155704) do
   add_index "attended_concerts", ["concert_id"], name: "index_attended_concerts_on_concert_id", using: :btree
 
   create_table "concert_artists", force: true do |t|
-    t.string   "concert_position", null: false
     t.integer  "concert_id"
     t.integer  "artist_id"
     t.datetime "created_at"
@@ -90,16 +89,5 @@ ActiveRecord::Schema.define(version: 20140525155704) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "videos", force: true do |t|
-    t.integer  "song_id"
-    t.integer  "concert_id"
-    t.string   "video_identifier", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "videos", ["concert_id"], name: "index_videos_on_concert_id", using: :btree
-  add_index "videos", ["song_id"], name: "index_videos_on_song_id", using: :btree
 
 end
