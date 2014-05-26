@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe ConcertSong do
 
+  it { should validate_presence_of(:video_identifier) }
+
   describe "associations" do
     it { should belong_to(:concert) }
     it { should belong_to(:song) }
@@ -23,5 +25,4 @@ describe ConcertSong do
   it "is invalid without a video_identifier" do
     FactoryGirl.build(:concert_song, video_identifier: nil).should_not be_valid
   end
-
 end
