@@ -4,12 +4,14 @@
       a new header is made with that year -->
 <% @concerts.each do |concert| %>
   <div class="well-lg">
-    <!-- <img src="..." alt="..." class="img-rounded"> -->
-    <% concert.artists.each do |artist| %>
-      <%= artist.name %>
+    <%= link_to(concert) do %>
+      <!-- <img src="..." alt="..." class="img-rounded"> -->
+      <% concert.artists.each do |artist| %>
+        <%= artist.name %>
+      <% end %>
+      <br />
+      <%= concert.date.strftime('%B %e, %Y')  %><br />
+      <%= concert.venue.name  %>
     <% end %>
-    <br />
-    <%= concert.date.strftime('%B %e, %Y')  %><br />
-    <%= concert.venue.name  %>
   </div>
 <% end %>
