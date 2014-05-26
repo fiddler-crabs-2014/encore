@@ -5,12 +5,12 @@ class SearchesController < ApplicationController
 
   def search
     band_query = params[:band]
+    @band = Artist.where(name: band_query).first_or_initialize
+    @mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
-    mb_result = Musicbrainz.search(band_query)
-
-    if mb_result
-      @results = Setlist.search(mb_result)
-      @band = Artist.where(name: band_query).first_or_create
+    if @mb_result
+      save_band if @band.id.nil?
+      @results = Setlist.search(@mb_result)
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
@@ -53,5 +53,11 @@ class SearchesController < ApplicationController
         @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
       end
     end
+  end
+
+  private
+  def save_band
+    @band.mbid = @mb_result
+    @band.save!
   end
 end
