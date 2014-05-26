@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
     if @mb_result
       save_band if @band.id.nil?
       puts "\n\n\n\nHERE IS THE SETLIT"
-      p @results = Setlist.search(@mb_result)
+      p @results = Setlistfm.search(@mb_result)
       puts "AFTER\n\n\n\n"
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
