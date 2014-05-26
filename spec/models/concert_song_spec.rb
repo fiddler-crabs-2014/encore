@@ -9,7 +9,7 @@ describe ConcertSong do
   end
 
   it "has a valid factory" do
-    FactoryGirl.create(:concert_song).should be_valid
+    FactoryGirl.build(:concert_song).should be_valid
   end
 
   it "is invalid without a concert_id" do
@@ -19,7 +19,6 @@ describe ConcertSong do
   it "is invalid without a song_id" do
     FactoryGirl.build(:concert_song, song_id: nil).should_not be_valid
   end
-
 
   it "is invalid without a video_identifier" do
     FactoryGirl.build(:concert_song, video_identifier: nil).should_not be_valid
