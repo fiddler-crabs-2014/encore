@@ -24,15 +24,18 @@ ActiveRecord::Schema.define(version: 20140525155704) do
 
   create_table "attended_concerts", force: true do |t|
     t.integer  "concert_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "attended_concerts", ["concert_id"], name: "index_attended_concerts_on_concert_id", using: :btree
+  add_index "attended_concerts", ["user_id"], name: "index_attended_concerts_on_user_id", using: :btree
 
   create_table "concert_artists", force: true do |t|
     t.integer  "concert_id"
     t.integer  "artist_id"
+    t.string   "concert_position", default: "Headliner"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
