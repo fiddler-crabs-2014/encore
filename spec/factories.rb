@@ -11,7 +11,7 @@ FactoryGirl.define do
   end
 
   factory :artist do
-    name { Faker::Name.first_name }
+    name "Muse"
   end
 
   factory :concert do
@@ -39,11 +39,5 @@ FactoryGirl.define do
   factory :song do
     artist
     title { Faker::Lorem.word(1) }
-  end
-end
-
-FactoryGirl.define do
-  factory :artist do
-    name "Muse"
   end
 end
