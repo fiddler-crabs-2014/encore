@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
     mb_result = Musicbrainz.search(band_query)
 
-    if mb_result.is_a? String
+    if mb_result
       @results = Setlist.search(mb_result)
       @band = Artist.where(name: band_query).first_or_create
     else
