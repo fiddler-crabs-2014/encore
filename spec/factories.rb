@@ -9,28 +9,36 @@ FactoryGirl.define do
     oauth_expires_at (Time.now + 1.week)
     sequence(:email) { |n| "user-#{n}@gmail.com" }
   end
-end
 
-FactoryGirl.define do
-  factory :concert do |f|
-    f.date Date.new(2014, 5, 24)
-    f.venue_id { Faker::Number.digit }
+  factory :artist do
+    name { Faker::Name.first_name }
   end
-end
 
-FactoryGirl.define do
-  factory :venue do |f|
-    f.name { Faker::Company.name }
-    f.city { Faker::Address.city }
-    f.state { Faker::Address.state }
+  factory :concert do
+    date Date.new(2014, 5, 24)
+    venue
   end
-end
 
-FactoryGirl.define do
-  factory :concert_song do |f|
-    f.concert_id { Faker::Number.digit }
-    f.song_id { Faker::Number.digit }
-    f.video_identifier { Faker::Code.isbn }
+  factory :invalid_concert, parent: :concert do
+    date nil
+    venue_id nil
+  end
+
+  factory :venue do
+    name { Faker::Company.name }
+    city { Faker::Address.city }
+    state { Faker::Address.state }
+  end
+
+  factory :concert_song do
+    concert
+    song
+    video_identifier { Faker::Code.isbn }
+  end
+
+  factory :song do
+    artist
+    title { Faker::Lorem.word(1) }
   end
 end
 
