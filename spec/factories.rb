@@ -33,3 +33,9 @@ FactoryGirl.define do
     f.video_identifier { Faker::Code.isbn }
   end
 end
+
+FactoryGirl.define do
+  factory :artist do
+    name "Muse"
+  end
+end

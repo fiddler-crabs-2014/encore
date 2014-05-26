@@ -14,11 +14,11 @@ feature "Add video of song to concert", js: true do
     first('#concert-title').click
   end
 
-  scenario "via ajax" do
+  scenario 'via ajax' do
     click_button 'Add Song', match: :first
 
     wait_for_ajax
 
-    expect(page).to have_content("Song added!")
+    expect(page).to have_content('Song added!')
   end
 end
