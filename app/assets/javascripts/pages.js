@@ -1,6 +1,6 @@
 var songsAndIds = {};
 $(document).ready(function() {
-  $('.add-song').on("click", function(e) {
+  $('.add-song').on("submit", function(e) {
     e.preventDefault();
     var form = $(this).closest("form");
     var youtubeTitle = form.find('#yt-title').text();
@@ -24,6 +24,7 @@ $(document).ready(function() {
                        authenticity_token: authenticity})
       .done(function(data) {
         console.log(data);
+        $('#flash').empty();
         $('#flash').append('<div class="alert alert-success">' + data + '</div>');
       });
       // .done(function(data) {
