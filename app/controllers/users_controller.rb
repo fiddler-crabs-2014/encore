@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
     def show
       @user = User.find(params[:id])
-      @concerts = ["June 9, 2014", "January 30, 2012", "October 13, 2010", "November 29, 2014"]
+      @concerts = @user.concerts.order('date DESC')
     end
 
 end

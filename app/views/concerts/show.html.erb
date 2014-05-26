@@ -1,7 +1,15 @@
 <h1><%= @concert.artists.first.name %> live at <%= @venue.name %></h1>
 <h1><%= @concert.date.strftime('%B %e, %Y') %></h1>
 
-<button type="button" class="btn btn-default">I WAS HERE <br>(add to my concert page)</button>
+<div>
+  <%= form_tag('/attended_concerts', id: "create_attended_concert") do %>
+    <%= hidden_field_tag "user", session[:user_id] %>
+    <%= hidden_field_tag "concert", @concert.id %>
+    <div><%= submit_tag 'I Was Here Add To My Concerts', id: "add_attendee_btn" %></div>
+  <% end %>
+</div>
+
+<!-- <button type="button" class="btn btn-default" id="add_user_attended_btn">I WAS HERE <br>(add to my concert page)</button> -->
 
 <div class="row">
   <div class="col-lg-10">

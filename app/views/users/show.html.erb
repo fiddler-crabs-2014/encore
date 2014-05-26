@@ -1,9 +1,15 @@
-<h3><%= @user.name %></h3>
+<h2><%= @user.name %></h2>
 
 <!-- Add functionality in so when the year changes
       a new header is made with that year -->
 <% @concerts.each do |concert| %>
   <div class="well-lg">
-    <%= concert  %>
+    <!-- <img src="..." alt="..." class="img-rounded"> -->
+    <% concert.artists.each do |artist| %>
+      <%= artist.name %>
+    <% end %>
+    <br />
+    <%= concert.date.strftime('%B %e, %Y')  %><br />
+    <%= concert.venue.name  %>
   </div>
 <% end %>

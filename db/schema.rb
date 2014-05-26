@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140525155704) do
   create_table "concert_artists", force: true do |t|
     t.integer  "concert_id"
     t.integer  "artist_id"
+    t.string   "concert_position", default: "Headliner"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
