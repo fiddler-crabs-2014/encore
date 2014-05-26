@@ -18,7 +18,7 @@ https://trello.com/b/dnoGtQbs/encore
 
 git workflow
 ============
-1. fork the repo (https://github.com/fiddler-crabs-2014/thedelta)
+1. fork the repo (https://github.com/fiddler-crabs-2014/encore)
 2. git clone your fork
 3. git checkout -b branch_name (prepended by chore/, feature/, bug/)
 4. when finished with changes in branch
