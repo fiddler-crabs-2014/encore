@@ -5,5 +5,5 @@ class AttendedConcert < ActiveRecord::Base
   belongs_to :concert
   belongs_to :user
 
-  validates_uniqueness_of :concert_id, :scope => :user_id
+  validates_uniqueness_of :concert_id, scope: :user_id
 end

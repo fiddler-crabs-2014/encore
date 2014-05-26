@@ -17,8 +17,6 @@ class Youtube
       )
 
       videos = []
-      # channels = []
-      # playlists = []
 
       # Add each result to the appropriate list, and then display the lists of
       # matching videos, channels, and playlists.
@@ -26,17 +24,11 @@ class Youtube
         case search_result.id.kind
           when 'youtube#video'
             videos << "#{search_result.snippet.title} (#{search_result.id.videoId})"
-          # when 'youtube#channel'
-          #   channels << "#{search_result.snippet.title} (#{search_result.id.channelId})"
-          # when 'youtube#playlist'
-          #   playlists << "#{search_result.snippet.title} (#{search_result.id.playlistId})"
         end
       end
 
       return videos
 
-      # puts "Channels:\n", channels, "\n"
-      # puts "Playlists:\n", playlists, "\n"
     rescue Google::APIClient::TransmissionError => e
       puts e.result.body
     end

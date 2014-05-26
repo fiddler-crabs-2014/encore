@@ -10,9 +10,6 @@ class Concert < ActiveRecord::Base
   has_many :concert_songs
   has_many :songs, through: :concert_songs
 
-  # has_many :attended_concerts
-  # has_many :users, through: :attended_concerts
-
   has_many :attended_concerts
   has_many :users, through: :attended_concerts
 
