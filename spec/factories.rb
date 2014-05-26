@@ -40,10 +40,5 @@ FactoryGirl.define do
     artist
     title { Faker::Lorem.word(1) }
   end
-end
 
-FactoryGirl.define do
-  factory :artist do
-    name "Muse"
-  end
 end
