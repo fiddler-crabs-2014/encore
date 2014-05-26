@@ -1,38 +1,38 @@
 require 'spec_helper'
 
 describe PagesController do
-  let(:params) { "Killswitch Engage" }
+  let(:artist) { create(:artist, name: "Killswitch Engage") }
 
   describe "GET #search" do
     context "with valid search input" do
       it "assigns the search input to @band" do
-        get :search, band: params
-        assigns(:band).should eq(params)
+        get :search, band: artist.name
+        assigns(:band).should eq(artist)
       end
 
       it "assigns search results to @results" do
-        get :search, band: params
-        assigns(:results).should_not  eq(nil)
+        get :search, band: artist.name
+        assigns(:results).should_not eq(nil)
       end
 
       it "creates a new artist " do
         expect {
-          get :search, band: params
+          get :search, band: artist.name
           }.to change { Artist.count }.by(1)
       end
 
       it "renders the #search view" do
-        get :search, band: params
+        get :search, band: artist.name
         response.should render_template(:search)
       end
     end
 
     context "when an artist already exists" do
-      before { Artist.create(name: params) }
+      before { Artist.create(name: artist.name) }
 
       it "doesn't create a new artist record" do
         expect {
-          get :search, band: params
+          get :search, band: artist.name
         }.to_not change{ Artist.count }.by(1)
       end
     end
