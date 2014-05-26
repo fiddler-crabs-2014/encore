@@ -31,8 +31,8 @@ FactoryGirl.define do
   end
 
   factory :concert_song do
-    concert
-    song
+    concert_id 1
+    song_id 1
     video_identifier { Faker::Code.isbn }
   end
 
