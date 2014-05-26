@@ -3,7 +3,6 @@
 
 <div>
   <% if signed_in? %>
-  <% binding.pry %>
     <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
 
       <h4>I attended this concert</h4>
