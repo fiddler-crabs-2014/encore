@@ -1,4 +1,5 @@
-class PagesController < ApplicationController
+class SearchesController < ApplicationController
+
   def index
   end
 
@@ -50,7 +51,6 @@ class PagesController < ApplicationController
       if result =~ /\(\w*\)\z/
         title = result.gsub(/ \(\w*\)\z/, '')
         @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
-        # @ids << result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
       end
     end
   end

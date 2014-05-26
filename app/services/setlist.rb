@@ -3,10 +3,7 @@ class Setlist
 
   def self.search(mbid)
     setlists = JSON.parse(Net::HTTP.get_response(URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mbid}/setlists.json")).body)
-    # total_pages = pages / 20
-    # (1..total_pages).each do |x|
-    #   setlists << JSON.parse(Net::HTTP.get_response(URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mbid}/setlists.json?p=#{x}")).body)
-    # end
+
     set_songs = []
     setlists["setlists"]["setlist"].each do |set|
       # If no songs are in the setlist, just add an array of nil
