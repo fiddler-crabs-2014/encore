@@ -1,12 +1,19 @@
-# Encore
+Encore
+==================
 
 Created by:
-Jared Rader
+-------------------
+- Jared Rader (Team Lead)
+- Timmy Haung
+- Howard "Buck" O'Leary
+- Brendan Scarano (Product Manager)
 
-Timmy Haung
+Heroku: 
+http://encore-staging.herokuapp.com/
 
-Howard 'Buck' O'Leary
-
-Brendan Scarano
+Trello: 
+https://trello.com/b/dnoGtQbs/encore
 
 [![Build Status](https://travis-ci.org/fiddler-crabs-2014/encore.svg?branch=master)](https://travis-ci.org/fiddler-crabs-2014/encore)
+
+
