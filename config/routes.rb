@@ -22,4 +22,6 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
+  resources :concert_photos, only: [:create, :destroy]
+
 end

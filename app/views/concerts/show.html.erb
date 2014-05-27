@@ -17,13 +17,19 @@
 
     <% end %>
 
+    <%= form_for @concert_photo do |f| %>
+      <%= hidden_field_tag :concert_id, @concert.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.submit "Add Photo" %>
+    <% end %>
+      
+
   <% end %>
 </div>
 
-<div class="row">
-  <div class="col-lg-10">
     <% @concert_songs.each do |concert_song| %>
-      <div class="col-lg-6">
 
       <h3><%= concert_song.song.title %></h3>
       <% concert_song.videos.each do |video| %>
@@ -31,11 +37,8 @@
       <% end %>
       <hr>
 
-      </div>
     <% end %>
-  </div>
 
-  <div class="col-lg-2">
     <h2>Setlist</h2>
     <ol>
     <% @concert.songs.each do |song| %>
@@ -43,6 +46,14 @@
     <% end %>
     </ol>
   </div>
-</div>
+
+  <div class="concert-photos">
+    <% unless @concert.concert_photos.empty? %>
+      <% @concert.concert_photos.each do |photo| %>
+        <%= image_tag photo.image  %>
+      <% end %>
+    <% end %>
+
+  </div>
 
 <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
