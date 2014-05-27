@@ -16,8 +16,9 @@
 
 <center>
   <div class="concert-listings">
-    <ol>
-    </ol>
+    <% @results.each do |concert, songs| %>
+      <%= render partial: "concert_listing", locals: { band: @band, concert: concert, songs: songs } %>
+    <% end %>
   </div>
 </center>
 
@@ -37,5 +38,7 @@
 
 <script type="text/javascript">
   var band = "<%= @band.name %>";
-  var concerts = <%= @results.to_json.html_safe %>;
+  <% if @results %>
+    var concerts = <%= @results.to_json.html_safe %>;
+  <% end %>
 </script>
