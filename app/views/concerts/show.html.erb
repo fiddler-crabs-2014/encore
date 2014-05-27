@@ -22,11 +22,13 @@
 
 <div class="row">
   <div class="col-lg-10">
-    <% @concert.concert_songs.each do |concert_song| %>
+    <% @concert_songs.each do |concert_song| %>
       <div class="col-lg-6">
 
-      <h3><%= Song.find(concert_song.song_id).title %></h3>
-          <div class="youtube" id="<%= concert_song.video_identifier %>" style="width: 320px; height: 180px;"></div>
+      <h3><%= song_title(concert_song.song_id) %></h3>
+      <% song_videos(concert_song.song_id).each do |video| %>
+          <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+      <% end %>
       <hr>
 
       </div>
