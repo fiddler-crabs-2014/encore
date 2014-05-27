@@ -47,6 +47,7 @@ nav {
  margin-top: 5em;
  height: 30em;
  background-image: asset-url('phanto-concert1.jpg');
+ border-bottom: 4px solid $light-green;
  @include span-columns(12);
 
 	center {
@@ -69,9 +70,8 @@ nav {
 	  }
 	 }
  input#myinput.form-control{
- 	@include span-columns(6);
- 	@include shift(3);
-
+ 	@include span-columns(7);
+ 	@include shift(2.5);
  	color: $dark-green;
  	font-size: 1.5em;
  	border-radius: 8px;
@@ -79,13 +79,17 @@ nav {
  }
  input.search-button {
  	@include span-columns(2);
- 	@include shift(5);
- 	margin-top: 3em;
+ 	@include shift(4.75);
+ 	margin-top: 2.5em;
  	background-color: $dark-red;
  	padding: 5px;
  	border-radius: 8px;
  	border: 2px solid white;
  	font-family: 'Lato';
+ 	&:hover{
+ 		color: $light-green;
+ 		border: 2px solid $light-green;
+ 	}
  }
 
  #howitworks {
@@ -152,4 +156,7 @@ nav {
 	position: relative;
 	margin-top: -8px;
 	border: 2px outset $light-green;
+	&:hover, &:active{
+		color: $base-red;
+	}
 }
