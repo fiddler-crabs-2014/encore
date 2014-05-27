@@ -10,7 +10,7 @@ class SongsController < ApplicationController
 
   private
   def add_video(identifier, concert_song)
-    video = Video.where(identifier: identifier).first_or_initialize
+    video = Video.find_or_initialize_by(identifier: identifier)
     video.concert_song_id = concert_song.id
     video.save!
   end
