@@ -53,17 +53,14 @@ class SearchesController < ApplicationController
       @band.save!
     end
 
-<<<<<<< HEAD
-  def save_concert(params)
-      @songs = params[:songs]
-      @concert_info = params[:concert].split(', ')
-      @venue = Venue.where(name: @concert_info[2], city: @concert_info[3], state: @concert_info[4]).first_or_create
-=======
     def save_concert(params)
-      @songs = params[:songs]
-      @concert_info = concert.split(', ')
+      puts "PARAMS"
+      p params
+      puts "\n\nSONGS?"
+      p @songs = params[:songs].split(', ')
+      puts "AfTER\n\n"
+      @concert_info = params[:concert].split(', ')
       @venue = Venue.where(name: @concert_info[2] || "n/a", city: @concert_info[3] || "n/a", state: @concert_info[4] || "n/a").first_or_create
->>>>>>> 9ac3dcd77a50094a48650b0150255cd0db7ee9c6
       @concert = Concert.where(date: @concert_info[0], venue_id: @venue.id).first_or_create
       @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
       @date = @concert.date.strftime('%B %e %Y')
