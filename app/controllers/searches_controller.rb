@@ -19,6 +19,7 @@ class SearchesController < ApplicationController
 
   def search_youtube
     @band = Artist.find_by(name: params[:band])
+
     search_params = params[:concert].split(', ')
     save_concert(params)
 
