@@ -4,20 +4,19 @@
     <div class="link_class">
 
       <h4><%= link_to user.name, user_path(user.id) %></h4>
-<!--       <%#= link_to "Follow", relationships_path(id: user.id), method: :post, :remote => 'true' %> -->
 
           <!-- If user is already following, show unfollow button -->
           <% if @following.include?(user.id) %>
 
-              <%= link_to relationship_path(id: user.id), method: :post, :remote => 'true' do %>
-                <button>Unfollow</button>
-              <% end %>
+              <div class="unfollow">
+              <%= render partial: "unfollow", locals: { user_id: user.id } %>
+              </div>
 
           <% else %>
 
-              <%= link_to relationships_path(id: user.id), method: :post, :remote => 'true' do %>
-                <button>Follow</button>
-              <% end %>
+            <div class="follow">
+            <%= render partial: "follow", locals: { user_id: user.id } %>
+            </div>
 
           <% end %>
 
