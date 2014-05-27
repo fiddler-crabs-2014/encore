@@ -6,7 +6,6 @@ class Relationship < ActiveRecord::Base
   validates :follower_id, presence: true
   validates :followed_id, presence: true
 
-  # validate :not_following_himself
   validates_uniqueness_of :follower, scope: :followed
 
 end
