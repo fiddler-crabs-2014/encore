@@ -22,6 +22,7 @@ nav {
 	height: 5em;
 	@include span-columns(12);
 	background-color: black;
+	opacity: 0.8;
 	a {	
 		color: white;
 	}
@@ -31,10 +32,10 @@ nav {
 		position: static;
 		font-family: 'Lato';
 		text-shadow:
-	    -1px -1px 0 $base-red,
-	    1px -1px 0 $base-red,
-	    -1px 1px 0 $base-red,
-	    1px 1px 0  $base-red;
+	    -0.75px -0.75px 0 $base-red,
+	    0.75px -0.75px 0 $base-red,
+	    -.075px .75px 0 $base-red,
+	    0.75px 0.75px 0  $base-red;
 	}
 	h1 {
 		margin-bottom: 0;
@@ -58,6 +59,10 @@ nav {
 .jumbotron{
  height: 30em;
  background-image: asset-url('phanto-concert1.jpg');
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
  border-bottom: 4px solid $light-red;
  @include span-columns(12);
 	center {
