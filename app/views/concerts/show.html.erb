@@ -7,7 +7,7 @@
     <%= hidden_field_tag "concert_id", @concert.id %>
    <p>
      Song Name: <br />
-     <%= select_tag("song_name", options_for_select(@concert.songs.map { |s| s.title })) %>
+     <%= select_tag("song_name", options_for_select(@song_names)) %>
    </p>
    <p>
      YouTube Video Link:<br />
@@ -59,8 +59,8 @@
 
     <h2>Setlist</h2>
     <ol>
-    <% @concert.songs.each do |song| %>
-      <li><%= song.title %></li>
+    <% @song_names.each do |song_name| %>
+      <li><%= song_name %></li>
     <% end %>
     </ol>
   </div>
