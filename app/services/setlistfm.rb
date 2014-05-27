@@ -1,11 +1,17 @@
 require 'net/http'
 class Setlistfm
 
-  def initialize(mbid)
+  def initialize(mbid, page = nil)
     @mbid = mbid
-    @setlists = JSON.parse(Net::HTTP.get_response(
+    if page.nil?
+      @setlists = JSON.parse(Net::HTTP.get_response(
                 URI.parse("http://api.setlist.fm/rest/0.1/artist/#{@mbid}/setlists.json")
                ).body)
+    else
+      @setlists = JSON.parse(Net::HTTP.get_response(
+                URI.parse("http://api.setlist.fm/rest/0.1/artist/#{@mbid}/setlists.json?p=#{page}")
+               ).body)
+    end
   end
 
   def search

@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: encore_rader_development
+  database: encore_development
 
 test:
   <<: *default
-  database: encore_rader_test
+  database: encore_test
 
 production:
   <<: *default
-  database: encore_rader_production
+  database: encore_production
   username: encore
   password: <%= ENV['ENCORE_DATABASE_PASSWORD'] %>
