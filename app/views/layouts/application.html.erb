@@ -2,6 +2,9 @@
 <html>
 <head>
   <title>Encore</title>
+  <link href="//fonts.googleapis.com/css?family=Source+Sans Pro:200italic,200,300italic,300,400italic,400,600italic,600,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -23,7 +26,7 @@
 <body>
     <nav> 
       <ul>
-        <h1 class="active"><a href="/">Encore</a></h1>
+        <h1><a href="/" class="headline">Encore</a></h1>
         <% if current_user %>
           <li>
             <%= link_to user_path(session[:user_id]) do %>

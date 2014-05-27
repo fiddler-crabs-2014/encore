@@ -1,33 +1,7 @@
 @font-face {
-	font-family: 'Duke-Fill';
-	src: url('Duke-Fill.eot?') format('eot'), 
-	     url('Duke-Fill.otf')  format('opentype'),
-	     url('Duke-Fill.woff') format('woff'), 
-	     url('Duke-Fill.ttf')  format('truetype'),
-	     url('Duke-Fill.svg#Duke-Fill') format('svg');
-}
-
-@font-face {
-	font-family: 'Duke-Regular';
-	src: url('Duke-Regular.eot?') format('eot'), 
-	     url('Duke-Regular.otf')  format('opentype'),
-	     url('Duke-Regular.woff') format('woff'), 
-	     url('Duke-Regular.ttf')  format('truetype'),
-	     url('Duke-Regular.svg#Duke-Regular') format('svg');
-}
-
-@font-face {
-	font-family: 'CafeRojo';
-	src: url('CafeRojo.eot?') format('eot'), 
-	     url('CafeRojo.woff') format('woff'), 
-	     url('CafeRojo.ttf')  format('truetype'),
-	     url('CafeRojo.svg#CafeRojo') format('svg');
-}
-
-@font-face {
 	font-family: 'Chunk';
-	src: url('Chunkfive-webfont.eot?') format('eot'), 
-	     url('Chunkfive-webfont.woff') format('woff'), 
-	     url('Chunkfive-webfont.ttf')  format('truetype'),
-	     url('Chunkfive-webfont#Chunkfive-webfont') format('svg');
+	src: asset-url('chunk/Chunkfive-webfont.eot') format('eot'), 
+	     asset-url('chunk/Chunkfive-webfont.woff') format('woff'), 
+	     asset-url('chunk/Chunkfive-webfont.ttf')  format('truetype'),
+	     asset-url('chunk/Chunkfive-webfont.svg#Chunkfive-webfont') format('svg');
 }

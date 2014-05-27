@@ -2,15 +2,29 @@ body {
 	margin: 0 0 0 0;
 }
 
+ul, a {
+	text-decoration: none;
+}
+
 nav {
 	top: 0;
 	position: fixed;
+
+	height: 5em;
 	@include span-columns(12);
 	background-color: black;
-	font-family: 'Duke';
-	a, a:active, a:hover {
-		color: #FF0C00;
-		text-decoration: none;
+	a {	
+		color: white;
+	}
+	a.headline {
+		font-size: 1em;
+		color: white;
+		font-family: 'Lato';
+		text-shadow:
+	    -1px -1px 0 $base-red,
+	    1px -1px 0 $base-red,
+	    -1px 1px 0 $base-red,
+	    1px 1px 0  $base-red;
 	}
 	h1 {
 		margin-bottom: 0;
@@ -21,9 +35,11 @@ nav {
 }
 
 .jumbotron{
- margin-top: 64px;
- @include span-columns(6);
- @include shift(3);
+ margin-top: 5em;
+ height: 30em;
+ background-image: asset-url('phanto-concert1.jpg');
+ @include span-columns(12);
+ margin-bottom: 30em;
 }
 
 #sign_in {
