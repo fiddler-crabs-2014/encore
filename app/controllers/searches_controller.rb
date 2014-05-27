@@ -27,7 +27,6 @@ class SearchesController < ApplicationController
     @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
 
     @songs = params[:songs]
-    binding.pry
     @date = @concert.date.strftime('%B %e %Y')
     @tour = search_params[1]
 
