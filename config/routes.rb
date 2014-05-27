@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
   resources :attended_concerts, only: [:create]
 
+  resources :relationships, only: [:create, :destroy]
+
 end
