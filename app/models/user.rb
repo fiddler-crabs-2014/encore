@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
   def followers(user_id)
     relationships = Relationship.where(followed_id: user_id)
     followers = relationships.map { |relationship| User.find(relationship.follower_id) }
-    binding.pry
     return followers
   end
 

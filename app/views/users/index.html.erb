@@ -6,10 +6,20 @@
       <h4><%= link_to user.name, user_path(user.id) %></h4>
 <!--       <%#= link_to "Follow", relationships_path(id: user.id), method: :post, :remote => 'true' %> -->
 
-      <%= link_to relationships_path(id: user.id), method: :post, :remote => 'true' do %>
-        <button>Follow</button>
-      <% end %>
+          <!-- If user is already following, show unfollow button -->
+          <% if @following.include?(user.id) %>
 
+              <%= link_to relationship_path(id: user.id), method: :post, :remote => 'true' do %>
+                <button>Unfollow</button>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to relationships_path(id: user.id), method: :post, :remote => 'true' do %>
+                <button>Follow</button>
+              <% end %>
+
+          <% end %>
 
       <br />
     </div>
