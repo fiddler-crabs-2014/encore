@@ -1,8 +1,14 @@
 require 'net/http'
 class Setlist
 
-  def self.search(mbid)
-    setlists = JSON.parse(Net::HTTP.get_response(URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mbid}/setlists.json")).body)
+  def self.search(mbid, band, page = nil)
+    if page.nil?
+      setlists = JSON.parse(Net::HTTP.get_response(URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mbid}/setlists.json")).body)
+    else
+      setlists = JSON.parse(Net::HTTP.get_response(URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mbid}/setlists.json?p=#{page}")).body)
+    end
+
+    # total_pages = (setlists["total"].to_i / 20)
 
     set_songs = []
     setlists["setlists"]["setlist"].each do |set|
@@ -39,15 +45,35 @@ class Setlist
       end
     end
 
-    concerts = setlists["setlists"]["setlist"].map do |concert|
+    concerts = []
+
+    setlists["setlists"]["setlist"].each do |concert|
+
       if concert["@tour"].nil? || concert["@tour"].empty?
-        "#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, " +
+        # new_venue = Venue.create!(name: concert["venue"]["@name"],
+        #              state: concert["venue"]["city"]["@name"] || "n/a",
+        #              city: concert["venue"]["city"]["@state"] || "n/a")
+        # new_concert = Concert.create!(date: concert["@eventDate"], venue: new_venue)
+        # artist = Artist.find_by(name: band)
+        # new_concert.concert_artists.create!(artist_id: artist.id)
+
+        concerts << "#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, " +
         "#{concert["venue"]["@name"]}, #{concert["venue"]["city"]["@name"]}, " +
         "#{concert["venue"]["city"]["@state"]}"
       else
+
+        # new_venue = Venue.create!(name: concert["venue"]["@name"],
+        #              state: concert["venue"]["city"]["@name"] || "n/a",
+        #              city: concert["venue"]["city"]["@state"] || "n/a")
+        # new_concert = Concert.create!(date: concert["@eventDate"], venue: new_venue)
+        # artist = Artist.find_by(name: band)
+        # new_concert.concert_artists.create!(artist_id: artist.id)
+
+        concerts <<
         "#{Date.parse(concert["@eventDate"]).strftime('%B %e %Y')}, " +
         "#{concert["@tour"]}, #{concert["venue"]["@name"]}, " +
         "#{concert["venue"]["city"]["@name"]}, #{concert["venue"]["city"]["@state"]}"
+
       end
     end
 

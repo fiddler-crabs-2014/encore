@@ -19,7 +19,7 @@
           <label for="song">Song</label>
           <!-- Check to see if the song array with the songs in the setlist
                 is empty. The songs array will be [""] if there is no setlist for this show. -->
-        <% if @songs[0].empty? %>
+        <% if @songs.empty? %>
 
           <%= f.text_field :song, value: title %>
 

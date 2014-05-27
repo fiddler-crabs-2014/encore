@@ -1,23 +1,31 @@
 class SearchesController < ApplicationController
+  respond_to :html, :js
 
   def index
   end
 
   def search
     band_query = params[:band]
+
     @band = Artist.where(name: band_query).first_or_initialize
     @mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
     if @mb_result
       save_band if @band.id.nil?
-      @results = Setlist.search(@mb_result)
+      @results = Setlist.search(@mb_result, @band.name, params[:page])
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
     end
+
+    # respond_with(@results, @band) do |f|
+    #   f.html { render :search }
+    # end
+    render :search
   end
 
   def search_youtube
+
     @band = Artist.where(name: params[:band]).first_or_create
 
     search_params = params[:concert].split(', ')
@@ -26,7 +34,11 @@ class SearchesController < ApplicationController
     @concert = Concert.where(date: search_params[0], venue_id: @venue.id).first_or_create
     @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
 
-    @songs = params[:songs]
+    if params[:songs].nil?
+      @songs = []
+    else
+      @songs = params[:songs].split(",")
+    end
     @date = @concert.date.strftime('%B %e %Y')
     @tour = search_params[1]
 
@@ -53,6 +65,13 @@ class SearchesController < ApplicationController
         @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
       end
     end
+  end
+
+  def search_setlist
+    mbid = params[:band_id]
+    page = params[:page_num]
+    @results = Setlist.search(mbid, page)
+    render json: @results
   end
 
   private
