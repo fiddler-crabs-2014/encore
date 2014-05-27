@@ -1,5 +1,9 @@
-@import 'bootstrap';
-
 body {
-  padding-top: 60px;
+	margin: 0 0 0 0;
 }
+
+nav {
+	@include span-columns(12);
+	background-color: black;
+}
+

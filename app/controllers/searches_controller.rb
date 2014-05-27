@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
     if mb_result
-      @results = Setlistfm.new(mb_result).search
+      @results = Setlistfm.new(mb_result, params[:page]).search
       save_band(mb_result) if @band.id.nil?
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
@@ -48,15 +48,22 @@ class SearchesController < ApplicationController
   end
 
   private
-  def save_band(result)
-    @band.mbid = result
-    @band.save!
-  end
+    def save_band(result)
+      @band.mbid = result
+      @band.save!
+    end
 
+<<<<<<< HEAD
   def save_concert(params)
       @songs = params[:songs]
       @concert_info = params[:concert].split(', ')
       @venue = Venue.where(name: @concert_info[2], city: @concert_info[3], state: @concert_info[4]).first_or_create
+=======
+    def save_concert(params)
+      @songs = params[:songs]
+      @concert_info = concert.split(', ')
+      @venue = Venue.where(name: @concert_info[2] || "n/a", city: @concert_info[3] || "n/a", state: @concert_info[4] || "n/a").first_or_create
+>>>>>>> 9ac3dcd77a50094a48650b0150255cd0db7ee9c6
       @concert = Concert.where(date: @concert_info[0], venue_id: @venue.id).first_or_create
       @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
       @date = @concert.date.strftime('%B %e %Y')
@@ -66,5 +73,5 @@ class SearchesController < ApplicationController
         song = Song.where(title: song_name, artist_id: @band.id).first_or_create
         ConcertSong.where(concert_id: @concert.id, song_id: song.id, order: i).first_or_create
       end
-  end
+    end
 end

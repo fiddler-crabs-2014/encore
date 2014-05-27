@@ -12,7 +12,9 @@ gem 'spring',        group: :development
 gem 'google-api-client'
 gem 'musicbrainz', '0.7.6'
 gem 'figaro'
-gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'bourbon'
+gem 'neat'
 gem 'will_paginate'
 
 gem 'omniauth'
