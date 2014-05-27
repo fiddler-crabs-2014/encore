@@ -9,14 +9,14 @@
           <!-- If user is already following, show unfollow button -->
           <% if @following.include?(user.id) %>
 
-              <%= link_to relationship_path(id: user.id), method: :post, :remote => 'true' do %>
-                <button>Unfollow</button>
+              <%= link_to relationship_path(id: user.id), method: :delete, :remote => 'true' do %>
+                <button class="unfollow">Unfollow</button>
               <% end %>
 
           <% else %>
 
               <%= link_to relationships_path(id: user.id), method: :post, :remote => 'true' do %>
-                <button>Follow</button>
+                <button class="follow">Follow</button>
               <% end %>
 
           <% end %>
