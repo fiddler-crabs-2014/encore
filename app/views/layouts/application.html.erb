@@ -59,6 +59,29 @@
       </div><!--/.nav-collapse -->
     </div>
   </div>
+
+  <% if current_user %>
+    <p><%= link_to "Invite Facebook Friends", "#", id: "invite_fb_friends" %></p>
+      <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+      <script>
+      $(function() {
+        $("#invite_fb_friends").click(function() {
+          console.log('clicked');
+          FB.init({
+            appID: '705147516194106',
+            cookie:false,
+            status:true,
+          });
+          FB.ui({method: 'apprequests', message:'Brendan would like to invite you to try Encore!'})
+        });
+      });
+
+      </script>
+
+    </div>
+  <% end %>
+
   <div class="container">
 
     <div id='flash'>
@@ -73,6 +96,9 @@
     <%= yield %>
 
   </div>
+
+
+
 
 </body>
 </html>
