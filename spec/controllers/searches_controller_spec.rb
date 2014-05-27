@@ -52,10 +52,10 @@ describe SearchesController do
 
   describe "GET #search_youtube" do
     query = { "band"=>"Muse", "concert"=>"April 19 2014, The 2nd Law, Empire Polo Club, Indio, California",
-                              "songs"=>["Knights of Cydonia", "Interlude", "Hysteria", "Bliss", "Animals",
-                              "Stockholm Syndrome", "The 2nd Law: Unsustainable", "Madness", "Starlight",
-                              "Time Is Running Out", "The 2nd Law: Isolated System", "Uprising", "Survival"] }
-    let(:artist) { Artist.create(name: "Muse") }
+                              "songs"=>"Knights of Cydonia,Interlude,Hysteria,Bliss,Animals,Stockholm Syndrome,
+                              The 2nd Law: Unsustainable,Madness,Starlight,Time Is Running Out,The 2nd Law: Isolated System,
+                              Uprising,Survival" }
+    let!(:artist) { Artist.create(name: "Muse") }
 
     context "with valid query" do
       it "renders the #search_youtube view" do
@@ -65,10 +65,13 @@ describe SearchesController do
 
       it "assigns requested songs to @songs" do
         get :search_youtube, query
-        songs = ["Knights of Cydonia", "Interlude", "Hysteria", "Bliss", "Animals", "Stockholm Syndrome",
-                "The 2nd Law: Unsustainable", "Madness", "Starlight", "Time Is Running Out",
-                "The 2nd Law: Isolated System", "Uprising", "Survival"]
+        songs = ["Knights of Cydonia,Interlude,Hysteria,Bliss,Animals,Stockholm Syndrome,\n                              The 2nd Law: Unsustainable,Madness,Starlight,Time Is Running Out,The 2nd Law: Isolated System,\n                              Uprising,Survival"]
         assigns(:songs).should eq(songs)
+      end
+
+      it "assigns requested concert to @concert" do
+        get :search_youtube, query
+        assigns(:concert).date.to_s.should eq("2014-04-19")
       end
 
       it "assigns requested band to @band" do
@@ -78,7 +81,7 @@ describe SearchesController do
 
       it "assigns requested date to @date" do
         get :search_youtube, query
-        assigns(:date).to_s.should eq("April 19 2014")
+        assigns(:date).should eq("April 19 2014")
       end
 
       it "assigns requested tour to @tour" do
