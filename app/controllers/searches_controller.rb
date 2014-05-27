@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
     if mb_result
-      @results = Setlistfm.search(mb_result)
+      @results = Setlistfm.new(mb_result).search
       save_band(mb_result) if @band.id.nil?
       save_concert(@results)
     else
