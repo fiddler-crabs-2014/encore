@@ -21,13 +21,9 @@
 
 </head>
 <body>
-  <div class="container">
     <nav> 
-
-
       <ul>
-        <li class="active"><a href="#">Home</a></li>
-
+        <h1 class="active"><a href="/">Encore</a></h1>
         <% if current_user %>
           <li>
             <%= link_to user_path(session[:user_id]) do %>
@@ -58,7 +54,7 @@
 
     <%= yield %>
 
-  </div>
+
 
 </body>
 </html>

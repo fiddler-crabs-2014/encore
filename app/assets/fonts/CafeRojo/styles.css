@@ -1,0 +1,8 @@
+
+@font-face {
+	font-family: 'CafeRojo';
+	src: url('CafeRojo.eot?') format('eot'), 
+	     url('CafeRojo.woff') format('woff'), 
+	     url('CafeRojo.ttf')  format('truetype'),
+	     url('CafeRojo.svg#CafeRojo') format('svg');
+}
