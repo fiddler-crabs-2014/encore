@@ -82,7 +82,7 @@ nav {
  input#myinput.form-control{
  	@include span-columns(7);
  	@include shift(2.5);
- 	color: $dark-green;
+ 	color: $true-blue;
  	font-size: 1.5em;
  	border-radius: 8px;
  	border: 2px outset white;
@@ -162,7 +162,7 @@ nav {
 }
 
 #flash {
-	background-color: $dark-green;
+	background-color: $true-blue;
 	color: white;
 	text-align: center;
 	button.close{
