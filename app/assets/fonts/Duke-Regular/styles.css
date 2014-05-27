@@ -1,0 +1,9 @@
+
+@font-face {
+	font-family: 'Duke-Regular';
+	src: url('Duke-Regular.eot?') format('eot'), 
+	     url('Duke-Regular.otf')  format('opentype'),
+	     url('Duke-Regular.woff') format('woff'), 
+	     url('Duke-Regular.ttf')  format('truetype'),
+	     url('Duke-Regular.svg#Duke-Regular') format('svg');
+}
