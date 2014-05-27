@@ -1,5 +1,25 @@
 var songsAndIds = {};
 $(document).ready(function() {
+
+  var concert_info = _.pairs(concerts);
+
+  var band_name = band;
+
+  _.each(concert_info, function(value, key, list) {
+
+    var concert_details = value[0].split(", ");
+    var date = concert_details[0];
+    var tour = concert_details[1];
+    var venue = concert_details[2];
+    var city_state = concert_details[3] + ", " + concert_details[4];
+    $('.concert-listings ol').append("<li class='concert-listing'><a href='#'>" + date + ", " + tour + ", " + venue +
+                                     "<br>" + city_state + "</a><hr></li>");
+  })
+
+  _.each(concert_info, function(value, key, list) {
+      $('ol li:nth-child('+ (key + 1) + ') > a').attr("href", "/search_youtube?band=" + band + "&concert=" + value[0] + "&songs=" + value[1]);
+  })
+
   $('.add-song').on("submit", function(e) {
     e.preventDefault();
     var form = $(this).closest("form");
