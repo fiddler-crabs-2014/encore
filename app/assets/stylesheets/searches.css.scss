@@ -1,0 +1,6 @@
+ .video-list{
+  @include span-columns(10);
+  .add-song {
+    display: inline-block;
+  }
+}

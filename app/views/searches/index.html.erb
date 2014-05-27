@@ -2,7 +2,7 @@
   <center><h1>Re-live your favorite concerts</h1>
 
   <%= form_tag '/search', method: "get", html: { class: "form-horizontal" } do %>
-
+    <%= hidden_field_tag :page, 1 %>
     <div class="form-group">
       <h2><%= label_tag :band, "Search for concerts now" %></h2><br>
       <%= text_field_tag :band, nil, placeholder: "Artist name", id: "myinput", class: 'form-control' %>

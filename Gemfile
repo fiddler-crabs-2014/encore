@@ -20,6 +20,7 @@ gem 'will_paginate'
 
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 1.4.1'
+gem 'fb_graph'
 
 group :development, :test do
 	gem 'pry-rails'

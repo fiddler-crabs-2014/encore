@@ -1,17 +1,19 @@
 var songsAndIds = {};
 $(document).ready(function() {
+
   $('.add-song').on("submit", function(e) {
     e.preventDefault();
-    var form = $(this).closest("form");
+    var $this = $(this);
+    console.log($this);
 
-    var youtubeTitle = form.find('#yt-title').text();
-    var songId = form.find('#song_id').val();
-    var songTitle = form.find('select').val();
+    var youtubeTitle = $this.find('#yt-title').text();
+    var songId = $this.find('#song_id').val();
+    var songTitle = $this.find('select').val();
 
     songsAndIds[songId] = songTitle;
 
     var songEl = ""
-    var authenticity = form.find('input[name=authenticity_token]').val();
+    var authenticity = $this.find('input[name=authenticity_token]').val();
 
     songEl += "<p>"
     songEl += songTitle + " - "
@@ -25,8 +27,9 @@ $(document).ready(function() {
                        concert_id: concertId,
                        artist_id: artistId,
                        authenticity_token: authenticity})
+
       .done(function(data) {
-        console.log(data);
+        $this.find('input[name=commit]').attr('disabled', 'disabled');
         $('#flash').empty();
         $('#flash').append('<div class="alert alert-success">' + data + '</div>');
       });

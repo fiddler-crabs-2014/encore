@@ -1,8 +1,44 @@
-<h1>Concerts for <%= @band.name %></h1>
-<% @results.each do |concert, songs| %>
-  <div class="concert-listing">
-    <%= link_to(search_youtube_path(band: @band.name, concert: concert, songs: songs), id: 'concert-title') do  %>
-      <h3><%= concert %></h3>
+<center><h1>Concerts for <%= @band.name %></h1></center>
+<hr>
+<div class="page-nav">
+
+  <span class="pull-left">
+    <% unless params[:page].to_i == 1 %>
+    <%= link_to 'Previous', search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
+    <% end %>
+  </span>
+  <span class="pull-right">
+    <%= link_to 'Next', search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+  </span>
+
+</div>
+<br>
+
+<center>
+  <div class="concert-listings">
+    <% @results.each do |concert, songs| %>
+      <%= render partial: "concert_listing", locals: { band: @band, concert: concert, songs: songs } %>
     <% end %>
   </div>
-<% end %>
+</center>
+
+<div class="page-nav">
+
+  <span class="pull-left">
+    <% unless params[:page].to_i == 1 %>
+      <%= link_to 'Previous', search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
+    <% end %>
+  </span>
+  <span class="pull-right">
+    <%= link_to 'Next', search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+  </span>
+
+</div>
+
+
+<script type="text/javascript">
+  var band = "<%= @band.name %>";
+  <% if @results %>
+    var concerts = <%= @results.to_json.html_safe %>;
+  <% end %>
+</script>
