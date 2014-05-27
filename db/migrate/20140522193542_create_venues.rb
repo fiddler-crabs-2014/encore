@@ -3,7 +3,7 @@ class CreateVenues < ActiveRecord::Migration
     create_table :venues do |t|
       t.string :name, null: false
       t.string :city, null: false
-      t.string :state, null: false
+      t.string :state
 
       t.timestamps
     end
