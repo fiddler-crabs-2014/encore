@@ -2,12 +2,13 @@
   <div class="col-lg-6">
     <h2><%= @band.name %> at <%= @venue.name %>, in <%= @venue.city %>, <%= @venue.state %></h2>
     <h2><%= @date %></h2>
+    <button><%= link_to "Go To Concert", concert_path(@concert) %></a></button>
+    <br>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-10">
+  <div class="video-list">
     <% @titles_ids.each do |title, id| %>
-    <div class="col-lg-6">
 
       <%= form_for :song, url: songs_path, method: :post, html: { class: 'add-song' } do |f| %>
         <%= f.hidden_field :id, value: id %>
@@ -28,12 +29,11 @@
           <!-- Otherwise, you can select the song based on the setlist. -->
         <% else %>
           <%= f.select :songs, @songs.collect { |song| song } %>
-          <%= f.submit "Add Song" %>
+          <%= f.submit "Add Song", id: "add-btn" %>
           <a href="#" class="remove-video">Not Relevant?</a>
         <% end %><!--End for the @songs selection loop -->
       <% end %>
         </div>
-    </div>
     <% end %><!--End for the @titles_id.each loop -->
   </div>
   <div class="col-lg-2">
@@ -45,21 +45,6 @@
       <% end %>
       </ol>
     </div>
-  </div>
-</div>
-
-
-
-  <div>
-    <%= form_tag('create_concert', id: "create_concert") do %>
-      <%= hidden_field_tag "band", @band.id %>
-      <%= hidden_field_tag "date", @concert.date %>
-      <%= hidden_field_tag "tour", @tour %>
-      <%= hidden_field_tag "venue", @venue.name %>
-      <%= hidden_field_tag "city", @venue.city %>
-      <%= hidden_field_tag "state", @venue.state %>
-      <div><%= submit_tag 'Save Concert', id: "save_concert" %></div>
-    <% end %>
   </div>
 </div>
 
