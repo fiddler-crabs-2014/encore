@@ -1,5 +1,3 @@
-require 'json'
-
 class SearchesController < ApplicationController
 
   def index
