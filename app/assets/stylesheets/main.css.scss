@@ -1,12 +1,20 @@
+html {
+	max-width: $max-width;
+	margin: 0 auto;
+	position: relative;
+}
+
 body {
 	margin: 0 0 0 0;
 	padding-top: 80px;
+	max-width: inherit;
 }
 
 ul, a {
 	text-decoration: none;
 }
 
+/* styles for application layout*/
 nav {
 	top: 0;
 	position: fixed;
@@ -14,18 +22,20 @@ nav {
 	height: 5em;
 	@include span-columns(12);
 	background-color: black;
+	opacity: 0.8;
 	a {	
 		color: white;
 	}
 	a.headline {
 		font-size: 1em;
 		color: white;
+		position: static;
 		font-family: 'Lato';
 		text-shadow:
-	    -1px -1px 0 $base-red,
-	    1px -1px 0 $base-red,
-	    -1px 1px 0 $base-red,
-	    1px 1px 0  $base-red;
+	    -0.75px -0.75px 0 $base-red,
+	    0.75px -0.75px 0 $base-red,
+	    -.075px .75px 0 $base-red,
+	    0.75px 0.75px 0  $base-red;
 	}
 	h1 {
 		margin-bottom: 0;
@@ -33,23 +43,28 @@ nav {
 	ul {
 		margin-bottom: 0;
 		li {
-			position: relative;
-			display: inline-block;
-			left: 40em;
-			top: -1.5em;
+			position: fixed;
+			margin-top: -1.5em;
+			left: 62%;
 		}
 		li.sign-out-button {
-			margin-left: 2em;
+			position: relative;
+			margin-left: 8em;
 		}
 	}
 }
 
+/* styles for app landing page */
+
 .jumbotron{
- margin-top: 5em;
  height: 30em;
  background-image: asset-url('phanto-concert1.jpg');
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ border-bottom: 4px solid $light-red;
  @include span-columns(12);
-
 	center {
 	 	margin-top: 4em;
 		color: white;
@@ -70,23 +85,26 @@ nav {
 	  }
 	 }
  input#myinput.form-control{
- 	@include span-columns(6);
- 	@include shift(3);
-
- 	color: $dark-green;
+ 	@include span-columns(7);
+ 	@include shift(2.5);
+ 	color: $true-blue;
  	font-size: 1.5em;
  	border-radius: 8px;
  	border: 2px outset white;
  }
  input.search-button {
  	@include span-columns(2);
- 	@include shift(5);
- 	margin-top: 3em;
+ 	@include shift(4.75);
+ 	margin-top: 2.5em;
  	background-color: $dark-red;
  	padding: 5px;
  	border-radius: 8px;
  	border: 2px solid white;
  	font-family: 'Lato';
+ 	&:hover{
+ 		color: $light-red;
+ 		border: 2px solid $light-red;
+ 	}
  }
 
  #howitworks {
@@ -97,31 +115,33 @@ nav {
  	background-color: white;
  	i {
  		font-size: 3em;
- 		color: $dark-green;
+ 		color: $base-red;
  	}
  	
  	h1 {
  		margin-top: 2em;
- 		color: $dark-green;
+ 		color: black;
  		margin-bottom: 1em;
 	  @include span-columns(6);
 	  @include shift(3.75);
 	  font-weight: 1000;
+	  font-family: 'Lato';
 	  font-size: 3em;
  		}
  	h3 {
  		color: $base-red;
  		@include shift(2);
+ 		font-family: 'Lato';
  	}
  	p {
  		width: 90%; 
+ 		font-family: 'Lato';
  	}
  	.home-left{
  		position: relative;
  		@include span-columns(3.5);
  		@include shift(1);
  		height: 20em;
- 		border-right: 1em dotted $base-red;
  			i {
  				@include shift(3.5)
  			}
@@ -130,7 +150,7 @@ nav {
  		position: relative;
  		@include span-columns(3.5);
  		height: 20em;
- 		border-right: 1em dotted $base-red;
+
  			i {
  				@include shift(3.5);
  			}
@@ -146,11 +166,28 @@ nav {
 	}
 }
 
+#flash {
+	background-color: $true-blue;
+	color: white;
+	text-align: center;
+	button.close{
+		border-radius: 10px;
+		background-color: $base-red;
+	}
+}
+
+/* styles for sign in button */
+
 #sign_in {
 	padding: 5px;
 	@include shift(1);
-	@include span-columns(12);
-	position: relative;
-	margin-top: -8px;
-	border: 2px outset $light-green;
+	width: 11em; 
+	position: fixed;
+	margin-top: -0.5em;
+	left: 62%;
+	border: 2px outset $base-red;
+	margin-bottom: 4.5%;
+	&:hover, &:active{
+		color: $base-red;
+	}
 }

@@ -2,17 +2,21 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  template: template0
 
 development:
   <<: *default
   database: encore_rader_development
+  template: template0
 
 test:
   <<: *default
   database: encore_rader_test
+  template: template0
 
 production:
   <<: *default
   database: encore_rader_production
   username: encore
   password: <%= ENV['ENCORE_DATABASE_PASSWORD'] %>
+  template: template0
