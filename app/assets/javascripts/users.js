@@ -1,12 +1,15 @@
 $(document).ready(function() {
-  $(".follow_btn").on("click", function(event) {
+
+  $('form').submit(function(event) {
     event.preventDefault();
 
-    console.log("Follow button pressed");
+    var params = $(this).serialize();
+    console.log(params);
+  $.ajax({
+    type: "POST",
+    url: relationships_path
+    data: params
 
-    var user = $(this).closest('div')
-    console.log(user)
   })
-
-
-})
+  });
+});

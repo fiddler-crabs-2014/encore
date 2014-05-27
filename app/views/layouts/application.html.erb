@@ -68,11 +68,11 @@
         $("#invite_fb_friends").click(function() {
           console.log('clicked');
           FB.init({
-            appID: '705147516194106',
+            appId: '705147516194106',
             cookie:false,
             status:true,
           });
-          FB.ui({method: 'apprequests', message:'Brendan would like to invite you to try Encore!'})
+          FB.ui({method: 'apprequests', message:'<%= current_user.name %> would like you to try Encore and relive of the concerts you have been to!'})
         });
       });
 

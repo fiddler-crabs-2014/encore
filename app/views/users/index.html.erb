@@ -5,20 +5,19 @@
 
       <h4><%= link_to user.name, user_path(user.id) %></h4>
 
-          <!-- If user is already following, show unfollow button -->
-          <% if @following.include?(user.id) %>
+        <% if @following.include?(user.id) %>
 
-              <div class="unfollow">
-              <%= render partial: "unfollow", locals: { user_id: user.id } %>
-              </div>
+          <div class="unfollow">
+            <%= render partial: "unfollow", locals: { user_id: user.id } %>
+          </div>
 
-          <% else %>
+        <% else %>
 
-            <div class="follow">
+          <div class="follow">
             <%= render partial: "follow", locals: { user_id: user.id } %>
-            </div>
+          </div>
 
-          <% end %>
+        <% end %>
 
       <br />
     </div>
