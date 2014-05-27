@@ -1,9 +1,9 @@
 class CreateVenues < ActiveRecord::Migration
   def change
     create_table :venues do |t|
-      t.string :name, null: false
-      t.string :city, null: false
-      t.string :state
+      t.string :name, default: "n/a"
+      t.string :city, default: "n/a"
+      t.string :state, default: "n/a"
 
       t.timestamps
     end

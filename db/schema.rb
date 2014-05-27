@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20140526232416) do
 
   # These are extensions that must be enabled in order to support this database
@@ -65,12 +66,19 @@ ActiveRecord::Schema.define(version: 20140526232416) do
 
   add_index "concerts", ["venue_id"], name: "index_concerts_on_venue_id", using: :btree
 
+
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+  end
+
   create_table "setlists", force: true do |t|
     t.text     "data"
     t.integer  "concert_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
 
   add_index "setlists", ["concert_id"], name: "index_setlists_on_concert_id", using: :btree
 

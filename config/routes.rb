@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'search', to: 'searches#search', as: 'search'
   get 'search_youtube', to: 'searches#search_youtube', as: 'search_youtube'
-
+  get 'search_setlist', to: 'searches#search_setlist', as: 'search_setlist'
   resources :concerts, only: [:new, :create, :show]
   resources :venues, only: [:new, :create]
   resources :artists, only: [:new, :create]
@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :attended_concerts, only: [:create]
+
+  resources :relationships, only: [:create, :destroy]
 
 end
