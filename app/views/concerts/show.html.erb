@@ -1,6 +1,24 @@
 <h1><%= @concert.artists.first.name %> live at <%= @venue.name %></h1>
 <h1><%= @concert.date.strftime('%B %e, %Y') %></h1>
 
+<div id="submit_video">
+  <%= form_tag("/concert_songs") do %>
+    <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
+    <%= hidden_field_tag "concert_id", @concert.id %>
+   <p>
+     Song Name: <br />
+     <%= select_tag("song_name", options_for_select(@concert.songs.map { |s| s.title })) %>
+   </p>
+   <p>
+     YouTube Video Link:<br />
+     <%= text_field_tag "video_link" %>
+   </p>
+   <p>
+     <%= submit_tag 'Submit' %>
+   </p>
+  <% end %>
+</div>
+
 <div>
   <% if signed_in? %>
     <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
@@ -24,7 +42,6 @@
   <div class="col-lg-10">
     <% @concert_songs.each do |concert_song| %>
       <div class="col-lg-6">
-
       <h3><%= concert_song.song.title %></h3>
       <% concert_song.videos.each do |video| %>
           <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
