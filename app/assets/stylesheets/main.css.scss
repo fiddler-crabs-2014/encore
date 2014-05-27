@@ -100,12 +100,13 @@ center {
  	}
  	
  	h1 {
- 		margin-top: 3em;
+ 		margin-top: 2em;
  		color: $dark-green;
  		margin-bottom: 1em;
-	  @include span-columns(4);
-	  @include shift(4.5);
+	  @include span-columns(6);
+	  @include shift(3.5);
 	  font-weight: 1000;
+	  font-size: 3em;
  		}
  	h3 {
  		color: $base-red;
@@ -117,7 +118,7 @@ center {
  	.home-left{
  		position: relative;
  		@include span-columns(3.5);
- 		@include shift(1.2);
+ 		@include shift(1);
  		height: 20em;
  		border-right: 1em dotted $base-red;
  			i {
