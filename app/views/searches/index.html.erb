@@ -1,17 +1,22 @@
 <div class="jumbotron">
-  <center><h1>Relive your favorite concerts</h1>
+  <center><h1>Re-live your favorite concerts</h1>
 
   <%= form_tag '/search', method: "get", html: { class: "form-horizontal" } do %>
 
     <div class="form-group">
-      <h2><%= label_tag :band, "Search a band's concerts now" %></h2><br>
-      <%= text_field_tag :band, nil, placeholder: "Band name", id: "myinput", class: 'form-control' %>
+      <h2><%= label_tag :band, "Search for concerts now" %></h2><br>
+      <%= text_field_tag :band, nil, placeholder: "Artist name", id: "myinput", class: 'form-control' %>
     </div>
-
-    <%= submit_tag "Search", class: "btn btn-lg btn-success" %>
+    <br>
+    <%= submit_tag "Search", class: "search-button" %>
 
   <% end %>
 
   </center>
+
+  <div id="howitworks">
+  	<h1>How It Works</h1>
+
+  </div>
 
 </div>
