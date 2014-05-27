@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
 
   def search
     band_query = params[:band]
-    @band = Artist.where(name: band_query).first_or_initialize
+    @band = Artist.find_or_initialize_by(name: band_query)
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
     if mb_result
@@ -56,15 +56,15 @@ class SearchesController < ApplicationController
     def save_concert(params)
       @songs = params[:songs]
       @concert_info = params[:concert].split(', ')
-      @venue = Venue.where(name: @concert_info[2] || "n/a", city: @concert_info[3] || "n/a", state: @concert_info[4] || "n/a").first_or_create
-      @concert = Concert.where(date: @concert_info[0], venue_id: @venue.id).first_or_create
-      @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
+      @venue = Venue.find_or_create_by(name: @concert_info[2] || "n/a", city: @concert_info[3] || "n/a", state: @concert_info[4] || "n/a")
+      @concert = Concert.find_or_create_by(date: @concert_info[0], venue_id: @venue.id)
+      @concert_artist = ConcertArtist.find_or_create_by(concert_id: @concert.id, artist_id: @band.id)
       @date = @concert.date.strftime('%B %e %Y')
       @tour = @concert_info[1]
       @songs.each_with_index do |song_name, i|
         next if song_name.nil?
-        song = Song.where(title: song_name, artist_id: @band.id).first_or_create
-        ConcertSong.where(concert_id: @concert.id, song_id: song.id, order: i).first_or_create
+        song = Song.find_or_create_by(title: song_name, artist_id: @band.id)
+        ConcertSong.find_or_create_by(concert_id: @concert.id, song_id: song.id, order: i)
       end
     end
 end
