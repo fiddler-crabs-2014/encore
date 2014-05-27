@@ -42,13 +42,13 @@ nav {
 	ul {
 		margin-bottom: 0;
 		li {
-			position: relative;
-			display: inline-block;
-			left: 40em;
-			top: -1.5em;
+			position: fixed;
+			margin-top: -1.5em;
+			left: 62%;
 		}
 		li.sign-out-button {
-			margin-left: 2em;
+			position: relative;
+			margin-left: 8em;
 		}
 	}
 }
