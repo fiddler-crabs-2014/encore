@@ -29,13 +29,12 @@
       <ul>
         <h1><a href="/" class="headline">Encore</a></h1>
         <% if current_user %>
-          <li>
+          <li class="current_user">
             <%= link_to user_path(session[:user_id]) do %>
               <strong><%= current_user.name %></strong>
             <% end %>
           </li>
-
-          <li>
+          <li class="sign-out-button">
             <%= link_to signout_path, id: "sign_out" do %>
               <strong>Sign Out</strong>
             <% end %>
