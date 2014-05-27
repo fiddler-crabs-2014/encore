@@ -11,22 +11,9 @@ class SearchesController < ApplicationController
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
     if mb_result
-      save_band(mb_result) if @band.id.nil?
       @results = Setlistfm.search(mb_result)
-
-      @results.each do |concert, songs|
-        concert_info = concert.split(', ')
-        venue = Venue.where(name: concert_info[2], city: concert_info[3], state: concert_info[4]).first_or_create
-        concert = Concert.where(date: concert_info[0], venue_id: venue.id).first_or_create
-        concert_artist = ConcertArtist.where(concert_id: concert.id, artist_id: @band.id).first_or_create
-        date = concert.date.strftime('%B %e %Y')
-        tour = concert_info[1]
-
-        songs.each_with_index do |song_name, i|
-          song = Song.where(title: song_name, artist_id: @band.id).first_or_create
-          ConcertSong.where(concert_id: concert.id, song_id: song.id, order: i).first_or_create
-        end
-      end
+      save_band(mb_result) if @band.id.nil?
+      save_concert(@results)
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
@@ -34,18 +21,14 @@ class SearchesController < ApplicationController
   end
 
   def search_youtube
-    @band = Artist.where(name: params[:band]).first_or_create
+    @band = Artist.find_by(name: params[:band])
 
     search_params = params[:concert].split(', ')
 
-    @venue = Venue.where(name: search_params[2], city: search_params[3], state: search_params[4]).first_or_create
-    @concert = Concert.where(date: search_params[0], venue_id: @venue.id).first_or_create
-    @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
-    # puts "\n\n\nHERE ARE THE SONGS"
+    @venue = Venue.find_by(name: search_params[2], city: search_params[3], state: search_params[4])
+    @concert = Concert.find_by(date: search_params[0], venue_id: @venue.id)
+    @concert_artist = ConcertArtist.find_by(concert_id: @concert.id, artist_id: @band.id)
     @songs = params[:songs]
-    # Setlist.where(data: params[:songs].to_json, concert_id: @concert.id).first_or_create.
-    # puts "AFTER\n\n\n"
-
     @date = @concert.date.strftime('%B %e %Y')
     @tour = search_params[1]
 
@@ -78,5 +61,21 @@ class SearchesController < ApplicationController
   def save_band(result)
     @band.mbid = result
     @band.save!
+  end
+
+  def save_concert(results)
+    results.each do |concert, songs|
+      concert_info = concert.split(', ')
+      venue = Venue.where(name: concert_info[2], city: concert_info[3], state: concert_info[4]).first_or_create
+      concert = Concert.where(date: concert_info[0], venue_id: venue.id).first_or_create
+      concert_artist = ConcertArtist.where(concert_id: concert.id, artist_id: @band.id).first_or_create
+      date = concert.date.strftime('%B %e %Y')
+      tour = concert_info[1]
+
+      songs.each_with_index do |song_name, i|
+        song = Song.where(title: song_name, artist_id: @band.id).first_or_create
+        ConcertSong.where(concert_id: concert.id, song_id: song.id, order: i).first_or_create
+      end
+    end
   end
 end
