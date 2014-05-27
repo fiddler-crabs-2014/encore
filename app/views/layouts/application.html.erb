@@ -9,6 +9,7 @@
   <!-- Code for Google Freebase Search -->
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.css" />
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/freebase/suggest/4_2/suggest.min.js"></script>
 
   <script type="text/javascript">
@@ -58,6 +59,29 @@
       </div><!--/.nav-collapse -->
     </div>
   </div>
+
+  <% if current_user %>
+    <p><%= link_to "Invite Facebook Friends", "#", id: "invite_fb_friends" %></p>
+      <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+      <script>
+      $(function() {
+        $("#invite_fb_friends").click(function() {
+          console.log('clicked');
+          FB.init({
+            appID: '705147516194106',
+            cookie:false,
+            status:true,
+          });
+          FB.ui({method: 'apprequests', message:'Brendan would like to invite you to try Encore!'})
+        });
+      });
+
+      </script>
+
+    </div>
+  <% end %>
+
   <div class="container">
 
     <div id='flash'>
@@ -72,6 +96,9 @@
     <%= yield %>
 
   </div>
+
+
+
 
 </body>
 </html>
