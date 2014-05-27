@@ -13,6 +13,6 @@ class Concert < ActiveRecord::Base
   has_many :attended_concerts
   has_many :users, through: :attended_concerts
 
-  has_many :setlists
+  # has_many :setlists
 
 end
