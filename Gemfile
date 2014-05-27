@@ -15,6 +15,7 @@ gem 'figaro'
 
 gem 'bourbon'
 gem 'neat'
+gem 'font-awesome-sass'
 gem 'will_paginate'
 
 gem 'omniauth'

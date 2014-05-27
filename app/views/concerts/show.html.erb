@@ -25,8 +25,8 @@
     <% @concert_songs.each do |concert_song| %>
       <div class="col-lg-6">
 
-      <h3><%= song_title(concert_song.song_id) %></h3>
-      <% song_videos(concert_song.song_id).each do |video| %>
+      <h3><%= concert_song.song.title %></h3>
+      <% concert_song.videos.each do |video| %>
           <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
       <% end %>
       <hr>
