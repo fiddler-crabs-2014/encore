@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
 
     if @mb_result
       save_band if @band.id.nil?
-      @results = Setlist.search(@mb_result)
+      @results = Setlistfm.new(@mb_result).search
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
