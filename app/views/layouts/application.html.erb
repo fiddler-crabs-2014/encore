@@ -43,6 +43,10 @@
                 <strong><%= current_user.name %></strong>
               <% end %>
             </li>
+<!--
+            </li>
+            <button class="btn btn-primary"<%#= link_to "Invite Facebook Friends", "#", id: "invite_fb_friends" %>></button>
+            <li> -->
 
             <li>
               <%= link_to signout_path, id: "sign_out" do %>
@@ -73,5 +77,21 @@
 
   </div>
 
+<!-- <script src="http://connect.facebook.net/en_US/all.jsrai"></script>
+
+<script>
+$(function() {
+  $("a#invite_facebook_friends").click(function() {
+    FB.init({
+      appID: '705147516194106',
+      cookie:false,
+      status:true,
+    });
+    FB.ui({method: 'apprequests',message:'<%#= current_user.name %> would like to invite you to try Encore!'})
+  });
+});
+
+</script>
+ -->
 </body>
 </html>
