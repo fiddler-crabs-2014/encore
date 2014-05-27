@@ -43,8 +43,10 @@ nav {
 }
 
 #sign_in {
-	@include shift(9);
-	@include span-columns(3);
+	padding: 5px;
+	@include shift(8);
+	@include span-columns(2.3);
 	position: relative;
-	margin-top: -25px;
+	margin-top: -30px;
+	border: 1px solid $light-green;
 }
