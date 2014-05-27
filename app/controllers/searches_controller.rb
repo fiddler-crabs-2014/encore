@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
     mb_result = Musicbrainz.search(band_query)
 
     if mb_result
-      @results = Setlist.search(mb_result)
+      @results = Setlist.new(mb_result).search
       @band = Artist.where(name: band_query).first_or_create
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
@@ -27,6 +27,7 @@ class SearchesController < ApplicationController
     @concert_artist = ConcertArtist.where(concert_id: @concert.id, artist_id: @band.id).first_or_create
 
     @songs = params[:songs]
+    binding.pry
     @date = @concert.date.strftime('%B %e %Y')
     @tour = search_params[1]
 
