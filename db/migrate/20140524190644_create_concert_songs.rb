@@ -1,7 +1,7 @@
 class CreateConcertSongs < ActiveRecord::Migration
   def change
     create_table :concert_songs do |t|
-      t.string :video_identifier, null: false
+      t.integer :order, null: false
       t.belongs_to :concert, index: true
       t.belongs_to :song, index: true
 
