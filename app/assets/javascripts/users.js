@@ -1,12 +1,12 @@
 $(document).ready(function() {
-  $(".follow_btn").on("click", function(event) {
+  $(".follow").on("click", function(event) {
     event.preventDefault();
 
-    console.log("Follow button pressed");
+    var div = $(this).closest('div')
+    console.log(div);
+    div.empty();//.append("<div><%= link_to relationship_path(id: user.id), method: :delete, :remote => 'true' do %><button class="unfollow">Unfollow</button></div>");
 
-    var user = $(this).closest('div')
-    console.log(user)
-  })
+  });
 
 
-})
+});
