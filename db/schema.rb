@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526202117) do
+
+ActiveRecord::Schema.define(version: 20140526232416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "artists", force: true do |t|
     t.string   "name",       null: false
@@ -45,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140526202117) do
   add_index "concert_artists", ["concert_id"], name: "index_concert_artists_on_concert_id", using: :btree
 
   create_table "concert_songs", force: true do |t|
-    t.string   "video_identifier", null: false
+    t.integer  "order",      null: false
     t.integer  "concert_id"
     t.integer  "song_id"
     t.datetime "created_at"
@@ -64,12 +66,21 @@ ActiveRecord::Schema.define(version: 20140526202117) do
 
   add_index "concerts", ["venue_id"], name: "index_concerts_on_venue_id", using: :btree
 
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
+  end
+
+  create_table "setlists", force: true do |t|
+    t.text     "data"
+    t.integer  "concert_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+
+  add_index "setlists", ["concert_id"], name: "index_setlists_on_concert_id", using: :btree
 
   create_table "songs", force: true do |t|
     t.string   "title",      null: false
@@ -100,5 +111,14 @@ ActiveRecord::Schema.define(version: 20140526202117) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "videos", force: true do |t|
+    t.string   "identifier"
+    t.integer  "concert_song_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videos", ["concert_song_id"], name: "index_videos_on_concert_song_id", using: :btree
 
 end
