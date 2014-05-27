@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
     if mb_result
-      @results = Setlistfm.new(mb_result, @band.name, params[:page]).search
+      @results = Setlistfm.new(mb_result, params[:page]).search
       save_band(mb_result) if @band.id.nil?
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
