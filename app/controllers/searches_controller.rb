@@ -20,31 +20,66 @@ class SearchesController < ApplicationController
   def search_youtube
     @band = Artist.find_by_name(params[:band])
     search_params = params[:concert].split(', ')
-    save_concert(params)
 
-    search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
-    search2 = "#{@band.name}, #{@venue.name}, #{@date}"
-    search3 = "#{@band.name}, #{@venue.state}, #{@date}"
-    # A couple more search options
-    # search4 = "#{@band.name}, #{@tour}, #{@date}"
-    # search5 = "#{@band.name}, #{@tour}, #{@venue.name}"
+    #===============================================
+    #search if the concert already exists
+    search_date = search_params[0]
 
-    @titles_ids = {}
+    #If the venue doesn't exist, there has never been a show there
+    #therefore go right to making the concert
+    venue = Venue.find_by(name: search_params[2])
 
-    results = []
+    unless venue.nil?
 
-    results << Youtube.search(search1)
-    results << Youtube.search(search2)
-    results << Youtube.search(search3)
+      #if the venue does exist, search for a concert that took place at that venue
+      #on this specific date
+      @concerts = Concert.where(venue_id: venue.id, date: search_date)
 
-    results.flatten!.uniq!
+      matched_concert_ids = @concerts.map{ |concert| concert.id }
 
-    results.each do |result|
-      if result =~ /\(\w*\)\z/
-        title = result.gsub(/ \(\w*\)\z/, '')
-        @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
+      #to account for festivals go through every possible artist that played
+      #that venue on that specific day
+      matched_concert_ids.each do |concertID|
+        unless ConcertArtist.where(concert_id: concertID, artist_id: @band.id).empty?
+          @concert = Concert.find(concertID)
+        end
+      end
+
+      if @concert
+
+        redirect_to @concert
+
+      end
+
+    else
+
+      save_concert(params)
+
+      search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
+      search2 = "#{@band.name}, #{@venue.name}, #{@date}"
+      search3 = "#{@band.name}, #{@venue.state}, #{@date}"
+      # A couple more search options
+      # search4 = "#{@band.name}, #{@tour}, #{@date}"
+      # search5 = "#{@band.name}, #{@tour}, #{@venue.name}"
+
+      @titles_ids = {}
+
+      results = []
+
+      results << Youtube.search(search1)
+      results << Youtube.search(search2)
+      results << Youtube.search(search3)
+
+      results.flatten!.uniq!
+
+      results.each do |result|
+        if result =~ /\(\w*\)\z/
+          title = result.gsub(/ \(\w*\)\z/, '')
+          @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
+        end
       end
     end
+
   end
 
   private

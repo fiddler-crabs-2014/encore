@@ -18,6 +18,7 @@
 //   $('.edit_relationship').submit(function(event) {
 //     event.preventDefault();
 
+
 //     var userId = $(this).find('#relationship_followed_id').val();
 //     var token = $(this).find('input[name=authenticity_token]').val();
 //     $.ajax({
@@ -29,3 +30,4 @@
 //     })
 //   });
 // });
+
