@@ -3,8 +3,6 @@
 #search-page {
 	@include outer-container;
 	margin-top: -2em;
-	opacity: 0.8;
-	background-color: white;
 	padding-bottom: 4em;
 	h1 {
 		color: $base-red;
@@ -18,7 +16,7 @@
 			list-style-type: none;
 
 			a {
-				background-color: $true-blue;
+				background-color: $dark-gray;
 				color: white;
 				height: 7em;
 				@include shift(3);
@@ -64,4 +62,33 @@
 .flagged {
   background: black;
   opacity: 0.5;
+}
+
+/* styles for concert show page */
+
+.concert-show-container{
+	opacity: 0.8;
+	margin-top: -2em;
+	h1 {
+		padding-top: 2em;
+		text-align: center;
+	}
+	#submit-video{
+		position: relative;
+		color: $base-red;
+		select#song_name{
+			background-color: $dark-gray;
+			color: white;
+		}
+	input#video_link{
+		border-radius: 8px;
+		background-color: $dark-gray;
+		color: white;
+		}
+	input[type=submit]{
+		background-color: $base-red;
+		color: white; 
+		border: 1px solid white;
+		}
+	}
 }

@@ -16,7 +16,7 @@
 	margin-top: -14em;
 	select#song_songs{
 		margin-bottom: 1em;
-		background-color: $true-blue;
+		background-color: $base-gray;
 		color: white;
 	}
 	#add-song{
@@ -29,7 +29,7 @@
 }
 
 .alert alert-success {
-	background-color: $dark-green;
+	background-color: $light-red;
 }
 
 .youtube {
@@ -46,8 +46,7 @@
 		position: relative;
 		text-align: center;
 		padding-top: 2em;
-		color: $true-blue;
-		font-family: 'Lato';
+		color: $base-gray;
 		font-size: 1.2em;
 		button {
 			background-color: $base-red;
