@@ -115,9 +115,9 @@ ActiveRecord::Schema.define(version: 20140528000500) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   create_table "venues", force: true do |t|
-    t.string   "name",       default: "n/a"
-    t.string   "city",       default: "n/a"
-    t.string   "state",      default: "n/a"
+    t.string   "name",       null: false
+    t.string   "city",       null: false
+    t.string   "state",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

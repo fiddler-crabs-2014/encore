@@ -8,6 +8,12 @@ class SearchesController < ApplicationController
     @band = Artist.find_or_initialize_by(name: band_query)
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
+    returned_setlists = JSON.parse(Net::HTTP.get_response(
+                URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mb_result}/setlists.json")
+               ).body)
+    setlists_returned = returned_setlists["setlists"]["@total"]
+    @max_pages = (setlists_returned.to_i / 20) + 1
+
     if mb_result
       @results = Setlistfm.new(mb_result, params[:page]).search
       save_band(@band, mb_result) if @band.id.nil?
