@@ -10,10 +10,9 @@ class ConcertsController < ApplicationController
   end
 
   def flag_video
-    puts "\n\n\ntest again"
-    p @video = Video.find(params[:video_id])
+    @video = Video.find(params[:video_id])
 
-    p @video.update(correct: false)
+    @video.update(correct: false)
 
     render json: { response: "Video flagged" }
   end
