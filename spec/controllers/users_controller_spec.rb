@@ -10,12 +10,14 @@ describe UsersController do
 
   describe "GET #index" do
     it "assigns all users to @users" do
+      controller.stub(current_user: u1)
       get :index
       assigns(:users).length.should eq(2)
     end
   end
 
   describe "GET #show" do
+    before { controller.stub(current_user: u2)}
     it "assigns user to @user" do
       get :show, id: u1.id
       assigns(:user).id.should eq(u1.id)
