@@ -19,8 +19,7 @@ gem 'font-awesome-sass'
 gem 'fog'
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 1.4.1'
-gem 'fb_graph'
-
+gem 'youtube_it'
 
 group :development, :test do
 	gem 'pry-rails'
@@ -43,6 +42,7 @@ group :test do
 end
 
 gem 'rails_12factor', group: :production
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
