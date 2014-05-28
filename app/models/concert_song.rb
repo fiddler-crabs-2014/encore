@@ -6,4 +6,5 @@ class ConcertSong < ActiveRecord::Base
   belongs_to :song
 
   has_many :videos
+
 end
