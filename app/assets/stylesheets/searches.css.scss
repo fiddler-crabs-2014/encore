@@ -1,6 +1,83 @@
  .video-list{
-  @include span-columns(10);
+  @include span-columns(8);
+  @include shift(1);
   .add-song {
     display: inline-block;
   }
+}
+
+.video-form {
+	@include span-columns(4);
+	position: relative;
+	margin-left: 24em;
+	margin-top: -14em;
+	select#song_songs{
+		margin-bottom: 1em;
+		background-color: $true-blue;
+		color: white;
+	}
+	#add-song{
+		background-color: $base-red;
+		color: white;
+		padding: 5px;
+		border: 1px solid white;
+
+	}
+}
+
+.youtube {
+	margin-bottom: 2em;
+}
+
+.outside {
+	background-color: white;
+	@include outer-container;
+	opacity: 0.8;
+	font-family: 'Lato';
+	margin-top: -2em;
+	.concert-header{
+		position: relative;
+		text-align: center;
+		padding-top: 2em;
+		color: $true-blue;
+		font-family: 'Lato';
+		font-size: 1.2em;
+		button {
+			background-color: $base-red;
+			border: 1px solid white;
+			border-radius: 3px;
+			position: absolute;
+			right: 3.5em;
+			top: 5em;
+			a {
+				color: white;
+				padding: 12px;
+			}			
+		}
+	}
+
+	.setlist-container {
+		@include span-columns(3);
+		border: 1px solid $dark-green;
+		background-color: yellow;
+		color: black;
+		font-family: 'Just Another Hand';
+		position: absolute;
+		top: 12em;
+		right: 1em;
+		h3 {
+			font-size: 2em;
+			text-align: center;
+		}
+		ol.set-songs {
+		 margin-top: -1em;
+		 font-size: 1.5em;
+
+		 li.set-song{
+
+		 	margin-bottom: .5em;
+		 	border-bottom: 1px solid green;
+		 }
+		}
+	}
 }
