@@ -45,6 +45,12 @@ class User < ActiveRecord::Base
 
   end
 
+  #being used in the users/index.html.erb
+  def following?(user_id)
+    relationships.exists?(followed_id: user_id)
+  end
+
+
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)
   end

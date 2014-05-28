@@ -3,19 +3,12 @@
 
       <h4><%= link_to user.name, user_path(user.id) %></h4>
 
-        <%# if @following.include?(user.id) %>
-
-        <% render partial: "follow_form", locals: { user: user } %>
-
-        <%# else %>
-
-
-          </div>
-
-        <%# end %>
+        <div class="following following_<%= current_user.following?(user) %>" data-user-id="<%= user.id %>">
+          <a href="#" class="follow">Follow</a>
+          <a href="#" class="unfollow">Unfollow</a>
+        </div>
 
       <br />
-
 
     </div>
     <hr>

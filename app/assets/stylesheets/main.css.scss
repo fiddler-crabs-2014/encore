@@ -52,7 +52,7 @@ nav {
 			margin-left: 8em;
 		}
 		li.invite-friends {
-			display: none; 
+			display: none;
 		}
 	}
 }
@@ -72,7 +72,7 @@ nav {
 	 	margin-top: 4em;
 		color: white;
 		font-family: 'Lato';
-		
+
 	  h1 {
 	  	font-size: 2.5em;
 	  }
@@ -188,5 +188,19 @@ nav {
 	margin-bottom: 4.5%;
 	&:hover, &:active{
 		color: $base-red;
+	}
+}
+
+.following {
+	.unfollow { color: red; }
+
+	&.following_true {
+		.unfollow { display: inline; }
+	  .follow { display: none; }
+	}
+
+	&.following_false {
+		.unfollow { display: none; }
+		.follow { display: inline }
 	}
 }

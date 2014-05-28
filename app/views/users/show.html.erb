@@ -36,7 +36,7 @@
 
 
 <h3>Followers</h3>
-  <% if @followers != nil %>
+  <% unless @followers.nil? %>
     <% @followers.each do |person| %>
       <%= link_to person.name, user_path(person.id) %>
       <br />
@@ -44,7 +44,7 @@
   <% end %>
 
 <h3>Following</h3>
-  <% if @users_following != nil %>
+  <% unless @users_following.nil? %>
     <% @users_following.each do |person| %>
       <%= link_to person.name, user_path(person.id) %>
       <br />

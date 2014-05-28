@@ -23,7 +23,11 @@ Rails.application.routes.draw do
 
   resources :attended_concerts, only: [:create]
 
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create] do
+    collection do
+      post '/unfollow', to: "relationships#unfollow"
+    end
+  end
 
   resources :concert_photos, only: [:create, :destroy]
 
