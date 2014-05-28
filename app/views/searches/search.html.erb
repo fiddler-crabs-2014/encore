@@ -1,44 +1,28 @@
-<center><h1>Concerts for <%= @band.name %></h1></center>
-<hr>
-<div class="page-nav">
+<div id="search-page">
+  <h1>Concerts for <%= @band.name %></h1>
 
-  <span class="pull-left">
+  <div class="upper-left-nav">
     <% unless params[:page].to_i == 1 %>
-    <%= link_to 'Previous', search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
-    <% end %>
-  </span>
-  <span class="pull-right">
-    <%= link_to 'Next', search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
-  </span>
-
-</div>
-<br>
-
-<center>
-  <div class="concert-listings">
-    <% @results.each do |concert, songs| %>
-      <%= render partial: "concert_listing", locals: { band: @band, concert: concert, songs: songs } %>
+    <%= link_to icon('arrow-circle-left'), search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
     <% end %>
   </div>
-</center>
+  <div class="upper-nav">
+    <%= link_to icon('arrow-circle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+    <br>
+  </div>
 
-<div class="page-nav">
+    <div class="concert-listings">
+      <% @results.each do |concert, songs| %>
+        <%= render partial: "concert_listing", locals: { band: @band, concert: concert, songs: songs } %>
+      <% end %>
+    </div>
 
-  <span class="pull-left">
-    <% unless params[:page].to_i == 1 %>
-      <%= link_to 'Previous', search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
-    <% end %>
-  </span>
-  <span class="pull-right">
-    <%= link_to 'Next', search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
-  </span>
-
+    <div class="lower-left-nav">
+      <% unless params[:page].to_i == 1 %>
+        <%= link_to icon('arrow-circle-left'), search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
+      <% end %>
+    </div>
+    <div class="lower-nav">
+      <%= link_to icon('arrow-circle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+    </div>
 </div>
-
-
-<script type="text/javascript">
-  var band = "<%= @band.name %>";
-  <% if @results %>
-    var concerts = <%= @results.to_json.html_safe %>;
-  <% end %>
-</script>
