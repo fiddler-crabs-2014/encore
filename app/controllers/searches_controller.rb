@@ -54,7 +54,6 @@ class SearchesController < ApplicationController
     else
 
       save_concert(params)
-
       search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
       search2 = "#{@band.name}, #{@venue.name}, #{@date}"
       search3 = "#{@band.name}, #{@venue.state}, #{@date}"
@@ -78,8 +77,7 @@ class SearchesController < ApplicationController
           @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
         end
       end
-    end
-
+    end  
   end
 
   private
@@ -104,6 +102,10 @@ class SearchesController < ApplicationController
         @date = @concert.date.strftime('%B %e %Y')
       end
       
+      @playlist = CreatePlaylist.new("#{@band.name} live at #{@venue.name}, #{@venue.city}, #{@venue.state}, #{@concert.date.strftime('%B %e, %Y')}")
+      @playlist_id = @playlist.make_playlist.playlist_id
+      @concert.update(yt_playlist: @playlist_id)
+
       if @songs.is_a? Array
         @songs.each_with_index do |song_name, i|
           next if song_name.nil?
@@ -115,5 +117,6 @@ class SearchesController < ApplicationController
         song = Song.find_or_create_by(title: @songs, artist_id: @band.id)
         ConcertSong.find_or_create_by(concert_id: @concert.id, song_id: song.id, order: 1)
       end
+
     end
 end

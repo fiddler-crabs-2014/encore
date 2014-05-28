@@ -26,6 +26,7 @@ $(document).ready(function() {
                        song_id: songId,
                        concert_id: concertId,
                        artist_id: artistId,
+                       playlist_id: playlistId,
                        authenticity_token: authenticity})
 
       .done(function(data) {
