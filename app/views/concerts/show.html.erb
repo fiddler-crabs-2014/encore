@@ -48,7 +48,7 @@
     <% @concert_songs.each do |concert_song| %>
       <h3><%= concert_song.song.title %></h3>
       <% concert_song.videos.each do |video| %>
-        <% if video.correct == false %> 
+        <% if video.correct == false %>
           <div class="video-container flagged">
             <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
             <span>Video Flagged</span><a href="#" class="report-video" data-video-id=<%= video.id %>>Unflag</a>
@@ -75,8 +75,15 @@
 
   <div class="concert-photos">
     <% unless @concert.concert_photos.empty? %>
-      <% @concert.concert_photos.each do |photo| %>
-        <%= image_tag photo.image  %>
+      <% @concert_photos.each do |photo| %>
+        <div class="concert-img">
+          <p>
+            <%=link_to(photo.image.url) do %>
+              <%= image_tag photo.image.small, rel: "zoom" %>
+            <% end %>
+          </p>
+          <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
+        </div>
       <% end %>
     <% end %>
 

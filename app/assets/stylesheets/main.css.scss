@@ -52,7 +52,7 @@ nav {
 			margin-left: 8em;
 		}
 		li.invite-friends {
-			display: none; 
+			display: none;
 		}
 	}
 }
@@ -72,7 +72,7 @@ nav {
 	 	margin-top: 4em;
 		color: white;
 		font-family: 'Lato';
-		
+
 	  h1 {
 	  	font-size: 2.5em;
 	  }
@@ -189,4 +189,13 @@ nav {
 	&:hover, &:active{
 		color: $base-red;
 	}
+}
+
+.concert-photos {
+	margin: 0 0 10px 20px;
+}
+
+.concert-photos > .concert-img {
+	display: inline-block;
+	margin: 10px 10px 30px 10px;
 }
