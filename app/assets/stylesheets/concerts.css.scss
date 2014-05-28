@@ -10,7 +10,7 @@
 		color: $base-red;
 		padding-top: 1em;
 		padding-bottom: -1em;
-		@include shift(3.5);
+		@include shift(4);
 	}
 	.concert-listing {
 		position: relative;
@@ -33,26 +33,26 @@
 	}
 
 	i {
-		margin-left: 1em;
 		font-size: 3em;
 		color: $base-red;
 	}
 	.upper-nav{
+
 		position: absolute;
-		right: 12em;
+		right: 13em;
 	}
 	.upper-left-nav{
 		position: absolute;
-		left: 12em;
+		left: 13em;
 	}
 	.lower-nav{
 		position: absolute;
-		right: 12em;
+		right: 13em;
 		bottom: 7em;
 	}
 	.lower-left-nav{
 		position: absolute;
-		left: 12em;
+		left: 13em;
 		bottom: 7em;
 	}
 }

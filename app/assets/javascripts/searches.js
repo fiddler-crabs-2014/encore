@@ -2,6 +2,7 @@ var songsAndIds = {};
 var setListCheckOff = function(button, icon){
   $(button).css('background-color', 'green');
   $(button).val('Added');
+  $(button).removeClass('add-song').addClass('removesong')
   $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
 }
 $(document).ready(function() {
@@ -49,6 +50,8 @@ $(document).ready(function() {
 
       });
   });
+
+  
 
   $("#save_concert").on("click", function(e){
     e.preventDefault();
