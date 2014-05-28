@@ -91,15 +91,29 @@ class SearchesController < ApplicationController
     def save_concert(params)
       @songs = params[:songs]
       @concert_info = params[:concert].split(', ')
-      @venue = Venue.find_or_create_by(name: @concert_info[2] || "n/a", city: @concert_info[3] || "n/a", state: @concert_info[4] || "n/a")
-      @concert = Concert.find_or_create_by(date: @concert_info[0], venue_id: @venue.id)
-      @concert_artist = ConcertArtist.find_or_create_by(concert_id: @concert.id, artist_id: @band.id)
-      @date = @concert.date.strftime('%B %e %Y')
-      @tour = @concert_info[1]
-      @songs.each_with_index do |song_name, i|
-        next if song_name.nil?
-        song = Song.find_or_create_by(title: song_name, artist_id: @band.id)
-        ConcertSong.find_or_create_by(concert_id: @concert.id, song_id: song.id, order: i)
+      if @concert_info.size > 4
+        @venue = Venue.find_or_create_by(name: @concert_info[2] || "n/a", city: @concert_info[3] || "n/a", state: @concert_info[4] || "n/a")
+        @concert = Concert.find_or_create_by(date: @concert_info[0], venue_id: @venue.id)
+        @concert_artist = ConcertArtist.find_or_create_by(concert_id: @concert.id, artist_id: @band.id)
+        @date = @concert.date.strftime('%B %e %Y')
+        @tour = @concert_info[1]
+      else
+        @venue = Venue.find_or_create_by(name: @concert_info[1] || "n/a", city: @concert_info[2] || "n/a", state: @concert_info[3] || "n/a")
+        @concert = Concert.find_or_create_by(date: @concert_info[0], venue_id: @venue.id)
+        @concert_artist = ConcertArtist.find_or_create_by(concert_id: @concert.id, artist_id: @band.id)
+        @date = @concert.date.strftime('%B %e %Y')
+      end
+      
+      if @songs.is_a? Array
+        @songs.each_with_index do |song_name, i|
+          next if song_name.nil?
+          song = Song.find_or_create_by(title: song_name, artist_id: @band.id)
+          ConcertSong.find_or_create_by(concert_id: @concert.id, song_id: song.id, order: i)
+        end
+      elsif @songs.is_a? String
+        @songs = [@songs]
+        song = Song.find_or_create_by(title: @songs, artist_id: @band.id)
+        ConcertSong.find_or_create_by(concert_id: @concert.id, song_id: song.id, order: 1)
       end
     end
 end
