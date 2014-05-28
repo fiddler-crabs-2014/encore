@@ -4,7 +4,7 @@ feature "Search for concerts" do
   before do
     visit root_path
 
-    expect(page).to have_content("Relive your favorite concerts")
+    expect(page).to have_content("Re-live your favorite concerts")
   end
 
   scenario "with a correct band name" do

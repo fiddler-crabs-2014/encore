@@ -46,11 +46,21 @@
 </div>
 
     <% @concert_songs.each do |concert_song| %>
-
       <h3><%= concert_song.song.title %></h3>
       <% concert_song.videos.each do |video| %>
-          <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+        <% if video.correct == false %> 
+          <div class="video-container flagged">
+            <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+            <span>Video Flagged</span><a href="#" class="report-video" data-video-id=<%= video.id %>>Unflag</a>
+          </div>
+        <% else %>
+          <div class="video-container">
+            <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+            <a href="#" class="report-video" data-video-id=<%= video.id %>>Report Video</a>
+          </div>
+        <% end %>
       <% end %>
+    </div>
       <hr>
 
     <% end %>

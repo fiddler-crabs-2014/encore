@@ -4,6 +4,7 @@
   <title>Encore</title>
   <link href="//fonts.googleapis.com/css?family=Source+Sans Pro:200italic,200,300italic,300,400italic,400,600italic,600,700italic,700,900italic,900" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Lato:100italic,100,300italic,300,400italic,400,700italic,700,900italic,900" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet" type="text/css">
 
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -48,6 +49,9 @@
 
   <% if current_user %>
     <p><%= link_to "Invite Facebook Friends", "#", id: "invite_fb_friends" %></p>
+
+      <div id="fb-root"></div>
+
       <script src="http://connect.facebook.net/en_US/all.js"></script>
 
       <script>
@@ -56,10 +60,10 @@
           console.log('clicked');
           FB.init({
             appId: '705147516194106',
-            cookie:false,
-            status:true,
+            cookie: false,
+            status: true,
           });
-          FB.ui({method: 'apprequests', message:'<%= current_user.name %> would like you to try Encore and relive of the concerts you have been to!'})
+          FB.ui({method: 'apprequests', message:'<%= current_user.name %> would like to invite you to try Encore, and check out all of your favorite concert memories!'})
         });
       });
 
