@@ -4,9 +4,9 @@ describe ConcertsController do
   let(:artist) { create :artist }
   let(:concert) { create :concert }
   let(:venue) { create :venue }
-  let!(:video) { Video.create(identifier: "test", concert_song_id: 1) }
   let!(:song) { Song.create(title: "test_song", artist_id: artist.id) }
   let!(:concert_song) { ConcertSong.create(order: 0, concert_id: concert.id, song_id: song.id) }
+  let!(:video) { Video.create(identifier: "test", concert_song_id: concert_song.id) }
   before do
     concert.update(venue: venue)
     concert.save!
