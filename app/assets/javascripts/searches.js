@@ -1,5 +1,9 @@
 var songsAndIds = {};
-
+var setListCheckOff = function(button, icon){
+  $(button).css('background-color', 'green');
+  $(button).val('Added');
+  $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
+}
 $(document).ready(function() {
 
   $('.add-song').on("submit", function(e) {
@@ -33,15 +37,15 @@ $(document).ready(function() {
 
       .done(function(data) {
         var setListedSong = $('ol.set-songs').find('li:contains('+ songTitle+ ')');
-        var checked = '\\f05d'
         var icon = setListedSong.find('i');
         $this.find('input[name=commit]').attr('disabled', 'disabled');
         $('#flash').empty();
         $('#flash').append('<div class="alert alert-success">' + data + '</div>')
-        $(button).css('background-color', 'green');
-        $(button).val('Added');
-        $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
-        console.log(icon);
+        setListCheckOff(button, icon);
+        // $(button).css('background-color', 'green');
+        // $(button).val('Added');
+        // $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
+        // console.log(icon);
 
       });
   });
