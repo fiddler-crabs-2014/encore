@@ -18,4 +18,13 @@ module SearchesHelper
 		return "#{city}, #{state}"
 	end
 
+	def song_truncate(song)
+		if song.length > 25
+			displayed_song = song[0..25]
+		else 
+			displayed_song = song 
+		end
+		return displayed_song
+	end
+
 end

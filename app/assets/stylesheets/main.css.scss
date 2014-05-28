@@ -31,6 +31,7 @@ nav {
 		color: white;
 		position: static;
 		font-family: 'Lato';
+		margin-left: 1em;
 	}
 	h1 {
 		margin-bottom: 0;
@@ -40,11 +41,14 @@ nav {
 		li {
 			position: fixed;
 			margin-top: -1.5em;
-			left: 62%;
+			left: 67%;
 		}
 		li.sign-out-button {
 			position: relative;
 			margin-left: 8em;
+		}
+		li.invite-friends {
+			display: none; 
 		}
 	}
 }
@@ -121,7 +125,7 @@ nav {
  		}
  	h3 {
  		color: $base-red;
- 		@include shift(2);
+ 		@include shift(3);
  		font-family: 'Lato';
  	}
  	p {
@@ -134,16 +138,16 @@ nav {
  		@include shift(1);
  		height: 20em;
  			i {
- 				@include shift(3.5)
+ 				@include shift(4)
  			}
  		}
  	.home-center{
  		position: relative;
- 		@include span-columns(3.5);
+ 		@include span-columns(4);
  		height: 20em;
 
  			i {
- 				@include shift(3.5);
+ 				@include shift(4);
  			}
  		}
  	.home-right{
@@ -151,14 +155,14 @@ nav {
  		@include span-columns(3.5);
  		height: 20em;
  			i {
- 				@include shift(5);
+ 				@include shift(4.5);
  			}
  		}
 	}
 }
 
 #flash {
-	background-color: $true-blue;
+	background-color: $dark-green;
 	color: white;
 	text-align: center;
 	button.close{
