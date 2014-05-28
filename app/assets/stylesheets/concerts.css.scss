@@ -1,0 +1,51 @@
+#search-page {
+	@include outer-container;
+	margin-top: -2em;
+	opacity: 0.8;
+	background-color: white;
+	h1 {
+		color: $base-red;
+		padding-top: 1em;
+		padding-bottom: -1em;
+		@include shift(4);
+	}
+	.concert-listing {
+		position: relative;
+		li {
+			list-style-type: none;
+			a {
+				background-color: white;
+				color: $light-red;
+				height: 6em;
+				@include shift(2);
+				@include span-columns(8);
+				border: 1px solid $base-red;
+				text-decoration: none;
+				margin-bottom: 1em;
+			}
+		} 
+	}
+
+	i {
+		font-size: 3em;
+		color: $base-red;
+	}
+	.upper-nav{
+		position: absolute;
+		right: 4em;
+	}
+	.upper-left-nav{
+		position: absolute;
+		left: 4em;
+	}
+	.lower-nav{
+		position: absolute;
+		right: 4em;
+		bottom: 7em;
+	}
+	.lower-left-nav{
+		position: absolute;
+		left: 4em;
+		bottom: 7em;
+	}
+}
