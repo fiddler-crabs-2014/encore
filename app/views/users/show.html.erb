@@ -21,7 +21,8 @@
       a new header is made with that year -->
 <h3>Concerts Attended:</h3>
 <% @concerts.each do |concert| %>
-  <div class="well-lg">
+  <div class="concert-listing">
+
     <%= link_to(concert) do %>
       <!-- <img src="..." alt="..." class="img-rounded"> -->
       <% concert.artists.each do |artist| %>
