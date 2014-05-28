@@ -1,3 +1,5 @@
+/* styles for initial concert search results page */
+
 #search-page {
 	@include outer-container;
 	margin-top: -2em;
@@ -54,3 +56,11 @@
 	}
 }
 
+.video-container {
+  display: inline-block;
+}
+
+.flagged {
+  background: black;
+  opacity: 0.5;
+}

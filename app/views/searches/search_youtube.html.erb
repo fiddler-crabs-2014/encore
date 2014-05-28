@@ -1,60 +1,59 @@
-<div class="row">
-  <div class="col-lg-6">
-    <h2><%= @band.name %> at <%= @venue.name %>, in <%= @venue.city %>, <%= @venue.state %></h2>
-    <h2><%= @date %></h2>
+<div class="outside">
+  <div class="concert-header">
+    <h2><%= @band.name %><br><%= @venue.name %><br><%= @venue.city %>, <%= @venue.state %><br><%= @date %></h2>
     <button><%= link_to "Go To Concert", concert_path(@concert) %></a></button>
     <br>
   </div>
-</div>
-<div class="row">
-  <div class="video-list">
-    <% @titles_ids.each do |title, id| %>
 
-      <%= form_for :song, url: songs_path, method: :post, html: { class: 'add-song' } do |f| %>
-        <%= f.hidden_field :id, value: id %>
+  <div class="videos">
+    <div class="video-list">
+      <% @titles_ids.each do |title, id| %>
 
-        <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
+        <%= form_for :song, url: songs_path, method: :post, html: { class: 'add-song' } do |f| %>
+          <%= f.hidden_field :id, value: id %>
 
-        <div class="form-group">
-          <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
-          <label for="song">Song</label>
-          <!-- Check to see if the song array with the songs in the setlist
-                is empty. The songs array will be [""] if there is no setlist for this show. -->
-        <% if @songs.nil? %>
+          <div class="youtube" id="<%= id %>" style="width: 320px; height: 180px;"></div>
 
-          <%= f.text_field :song, value: title %>
+          <div class="video-form">
+              <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
+              <label for="song">Song:</label>
+              <!-- Check to see if the song array with the songs in the setlist
+                    is empty. The songs array will be [""] if there is no setlist for this show. -->
+            <% if @songs.nil? %>
 
-          <%= f.submit "Add Song" %>
-          <hr>
-          <!-- Otherwise, you can select the song based on the setlist. -->
-        <% else %>
-          <%= f.select :songs, @songs.collect { |song| song } %>
-          <%= f.submit "Add Song", id: "add-btn" %>
-          <a href="#" class="remove-video">Not Relevant?</a>
-        <% end %><!--End for the @songs selection loop -->
-      <% end %>
-        </div>
-    <% end %><!--End for the @titles_id.each loop -->
-  </div>
-  <div class="col-lg-2">
-    <div class="setlist">
-      <h2>Setlist</h2>
-      <ol class="set-songs">
-      <% @songs.each do |song| %>
-        <li class="set-song"><%= song %></li>
-      <% end %>
-      </ol>
+              <%= f.text_field :song, value: title %>
+
+              <%= f.submit "Add Song" %>
+              <hr>
+              <!-- Otherwise, you can select the song based on the setlist. -->
+            <% else %>
+              <%= f.select :songs, @songs.collect { |song| song } %>
+              <%= f.submit "Add Song", id: "add-song" %>
+              <a href="#" class="remove-video">Not Relevant?</a>
+            <% end %><!--End for the @songs selection loop -->
+          <% end %>
+          </div>
+      <% end %><!--End for the @titles_id.each loop -->
+    </div>
+    <div class="setlist-container">
+      <div class="setlist">
+        <h3>Setlist</h3>
+        <ol class="set-songs">
+        <% @songs.each do |song| %>
+          <li class="set-song"><%= song %></li>
+        <% end %>
+        </ol>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Songs that will be added to the concert -->
-<h2 style="float:right; width: 16%; right: 10px">Songs added to the concert</h2>
-<div id="added_songs" style="float:right; width: 16%; right: 10px">
-  <ul>
-  </ul>
+  <!-- Songs that will be added to the concert -->
+  <h2>Songs added to the concert</h2>
+  <div id="added_songs">
+    <ul>
+    </ul>
+  </div>
 </div>
-
 <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
 
 <script type="text/javascript">
