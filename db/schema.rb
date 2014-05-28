@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140528000500) do
   add_index "concert_photos", ["user_id"], name: "index_concert_photos_on_user_id", using: :btree
 
   create_table "concert_songs", force: true do |t|
-    t.integer  "order",      null: false
+    t.string   "video_identifier", null: false
     t.integer  "concert_id"
     t.integer  "song_id"
     t.datetime "created_at"

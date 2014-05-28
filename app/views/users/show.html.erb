@@ -35,14 +35,16 @@
 <% end %>
 
 
-<h3>Followers</h3><%= @followers.count %>
-  <% @followers.each do |person| %>
-    <%= link_to person.name, user_path(person.id) %>
-    <br />
+<h3>Followers</h3>
+  <% if @followers != nil %>
+    <% @followers.each do |person| %>
+      <%= link_to person.name, user_path(person.id) %>
+      <br />
+    <% end %>
   <% end %>
-
-<h3>Following</h3><%= @followed_people.count %>
-  <% @followed_people.each do |person| %>
-    <%= link_to person.name, user_path(person.id) %>
+<!--
+<h3>Following</h3>
+  <%# @followed_people.each do |person| %>
+    <%#= link_to person.name, user_path(person.id) %>
     <br />
-  <% end %>
+  <%# end %> -->
