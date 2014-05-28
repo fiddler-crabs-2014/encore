@@ -1,10 +1,10 @@
 class SongsController < ApplicationController
   def create
-    p artist = Artist.find(params[:artist_id])
-    p concert = Concert.find(params[:concert_id])
-    p song = Song.find_by(title: params[:song], artist_id: artist.id)
-    p concert_song = concert.concert_songs.find_by(song_id: song.id)
-    p add_video(params[:song_id], concert_song)
+    artist = Artist.find(params[:artist_id])
+    concert = Concert.find(params[:concert_id])
+    song = Song.find_by(title: params[:song], artist_id: artist.id)
+    concert_song = concert.concert_songs.find_by(song_id: song.id)
+    add_video(params[:song_id], concert_song)
     render text: "Song added!"
   end
 
