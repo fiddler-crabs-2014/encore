@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
     def index
-      puts "CURRENT USER?"
-      p current_user
       @following = current_user.following?(current_user.id).map { |user| user.id }
       @users = User.all
     end
