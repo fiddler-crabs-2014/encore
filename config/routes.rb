@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root to: "searches#index"
 
+  post 'flag_video', to: 'concerts#flag_video', as: 'flag_video'
+  post 'unflag_video', to: 'concerts#unflag_video', as: 'unflag_video'
   get 'search', to: 'searches#search', as: 'search'
   get 'search_youtube', to: 'searches#search_youtube', as: 'search_youtube'
   get 'search_setlist', to: 'searches#search_setlist', as: 'search_setlist'

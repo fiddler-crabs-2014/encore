@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h2>Video flagged for Concert <%= link_to @concert.id, concert_path(@concert) %></h2>
+    <h3>Song: <%= @video.concert_song.song.title %></h3>
+    <p>Go check it out</p>
+  </body>
+</html>
