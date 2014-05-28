@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // $(document).ready(function() {
 
 //   $('.new_relationship').submit(function(event) {
