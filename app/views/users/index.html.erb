@@ -1,27 +1,22 @@
 <% @users.each do |user| %>
-  <% if user.id == current_user.id %>
-  <% else %>
     <div class="link_class">
 
       <h4><%= link_to user.name, user_path(user.id) %></h4>
 
-        <% if @following.include?(user.id) %>
+        <%# if @following.include?(user.id) %>
+
+        <% render partial: "follow_form", locals: { user: user } %>
+
+        <%# else %>
 
 
-          <div class="unfollow">
-            <%= render partial: "unfollow", locals: { user_id: user.id } %>
           </div>
 
-        <% else %>
-
-          <div class="follow">
-            <%= render partial: "follow", locals: { user_id: user.id } %>
-          </div>
-
-        <% end %>
+        <%# end %>
 
       <br />
+
+
     </div>
     <hr>
-  <% end %>
 <% end %>

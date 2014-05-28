@@ -1,15 +1,19 @@
 <div id="search-page">
   <h1>Concerts for <%= @band.name %></h1>
+  <%= @max_pages %>
 
   <div class="upper-left-nav">
     <% unless params[:page].to_i == 1 %>
     <%= link_to icon('arrow-circle-left'), search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
     <% end %>
   </div>
-  <div class="upper-nav">
-    <%= link_to icon('arrow-circle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
-    <br>
-  </div>
+
+  <% if params[:page].to_i < @max_pages %>
+    <div class="upper-nav">
+      <%= link_to icon('arrow-circle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+      <br>
+    </div>
+  <% end %>
 
     <div class="concert-listings">
       <% @results.each do |concert, songs| %>
@@ -22,7 +26,10 @@
         <%= link_to icon('arrow-circle-left'), search_path(band: @band.name, page: params[:page].to_i - 1), class: 'load-more-concerts' %>
       <% end %>
     </div>
-    <div class="lower-nav">
-      <%= link_to icon('arrow-circle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
-    </div>
+
+    <% if params[:page].to_i < @max_pages %>
+      <div class="lower-nav">
+        <%= link_to icon('arrow-circle-right'), search_path(band: @band.name, page: params[:page].to_i + 1), class: 'load-more-concerts' %>
+      </div>
+    <% end %>
 </div>

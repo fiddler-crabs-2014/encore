@@ -8,9 +8,12 @@ class Setlistfm
                 URI.parse("http://api.setlist.fm/rest/0.1/artist/#{@mbid}/setlists.json")
                ).body)
     else
+      #THIS IS WHERE THE ERROR IS OCCURING!!!
+      #======================================================
       @setlists = JSON.parse(Net::HTTP.get_response(
                 URI.parse("http://api.setlist.fm/rest/0.1/artist/#{@mbid}/setlists.json?p=#{page}")
                ).body)
+      #======================================================
     end
   end
 

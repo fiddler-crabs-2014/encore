@@ -27,14 +27,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def follow!(followed)
-    relationships.create!(followed_id: followed.id)
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
   end
 
-  def following?(user_id)
-    relationships = Relationship.where(follower_id: user_id)
-    followed_people = relationships.map { |relationship| User.find(relationship.followed_id) }
-    return followed_people
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
   end
 
   def followers(user_id)
