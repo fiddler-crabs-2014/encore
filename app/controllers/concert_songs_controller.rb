@@ -10,9 +10,9 @@ class ConcertSongsController < ApplicationController
     concert_song = @concert.concert_songs.find_by(song_id: song.id)
     video = Video.find_or_initialize_by(identifier: identifier, concert_song_id: concert_song.id)
     if video.save
-      redirect_to :back
+      redirect_to "/concerts/#{@concert.id}"
     else
-      flash[:warning] = "Unsuccessful submission. Please try again."
+      flash.now[:warning] = "Unsuccessful submission. Please try again."
       render "concerts/show"
     end
   end
