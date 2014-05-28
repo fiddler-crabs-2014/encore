@@ -37,6 +37,7 @@ $(document).ready(function() {
       $.post('/flag_video', { video_id: videoId })
         .done(function(resp) {
           $this.closest('.video-container').addClass('flagged');
+          $this.closest('span').empty();
           $this.text("Unflag");
         })
     } else {
