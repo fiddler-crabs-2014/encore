@@ -2,20 +2,18 @@
 <h1><%= @concert.date.strftime('%B %e, %Y') %></h1>
 
 <div id="submit_video">
-  <%= form_tag("/concert_songs") do %>
+  <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
     <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
     <%= hidden_field_tag "concert_id", @concert.id %>
-   <p>
-     Song Name: <br />
-     <%= select_tag("song_name", options_for_select(@song_names)) %>
-   </p>
-   <p>
-     YouTube Video Link:<br />
-     <%= text_field_tag "video_link" %>
-   </p>
-   <p>
-     <%= submit_tag 'Submit' %>
-   </p>
+    <p>
+      Song Name: <br />
+      <%= select_tag("song_name", options_for_select(@song_names)) %>
+    </p>
+    <p>
+      <%= f.label :video_link, "YouTube Link" %>
+      <%= text_field_tag :video_link %>
+    </p>
+    <%= f.submit "Submit Video Link" %>
   <% end %>
 </div>
 
