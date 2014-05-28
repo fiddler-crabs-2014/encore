@@ -1,9 +1,18 @@
 language: ruby
 rvm:
-  - "2.0.0"
-
-# uncomment this line if your project needs to run something other than `rake`:
+- 2.0.0
 script: bundle exec rspec spec
-
 before_script:
-  - psql -c 'create database encore_test;' -U postgres
+- psql -c 'create database encore_test;' -U postgres
+env:
+  global:
+  - secure: bEzGPTUbxMAEyk1nVKodC5WjVOtdcRXRzqsmKQua4ZklEc3Ri/FrjJJe/VB8ESxBbB7FMPW1fXihqFtWvoqVy5WiUaMKWaPMsnlbbIHR+5Ydecd7Uz1laBVDH5f+xuHcJtArwcU0m1n75yqGPrbudadCTDo/ZMqsqAV8WI3ZQQk=
+  - secure: eW0kY2WytGSI/l7U4zWGtKOJQie19zXe4PeHuD1eEZi245YxijhynlxOCyyW4RUmYj+bF588pD6mXFcZJJOj1c5CX8qcn96KiFrmvtqjqLkL1EM6kvmyKWBnFb/AhjP8hdlRgYm43cJq7oIa9zRk+YtYNYBkszG5ET/U+9zjqD4=
+  - secure: hbtlb5MNz2b8GF0GTdHhabJS6fvjXeFr7PKJ9djyhqnP52gM7YydiRvRnDQAHMi/KNjWgmdPdX43/OyGC0FUHNwzOKmumdpdp6CL2ISB6M0RrnKE2XqAYzCLBvQ2xbxiPyirbngcKlBIEKEOHkDEDirXHDKK/IwhOJaOE7bjuB4=
+  - secure: fc+bjt244jrxki5p7XYTRU7X3L5mFUu5OmTTULeXHZGV0KLOWpVO8hVJu/JcwyFChKauQ9L11e8Mpt3rfGhABRnSHkzbi5vnyONHo1+f/Xz/vuO1h9vRlczAPcp8Sd+J92VN3EI80LXEaDZ1oD+ItuzmWasncRtmz2k3VI1VzYY=
+  - secure: STNuo0Q/hTj4DkUr/qDH2PRo2YYNegiRNAtMNW2qYGsxl7pnbx8vxZ9k1vFouhH0F9xpZlOVhLN/wdVNlnWjSIYNY+ZJOhDq3zp6idYb1wa2OzDJ7e8hC7ggUoQsWe1wd8VHTbpjgvblqrce59yZn2gn/NFGSw/ftKK4398xkMs=
+  - secure: J1c5ruoRTm0Fn2bFnW3gR7zQZ0rT3FqZo7CcCXejRqCnzdHPqB1GD8eT5uqtT+5Ndj6CI2M7/Peg72BAoAxagEJYaAUW0N1uIpHbD523ireJFVIMauZJnFMrmGG11lUg9J7v3RTe7K0adTEXWDgeizlhI6EkDwCJAT9saF+hSqk=
+  - secure: HKBhELF9PPrIO8x7fk4MNOgB7VSp6k0sy3uLqms8b5cFd3M/BNN+gW0EvstekyFfgtri13ESmzWugOIwsEcJv2TEsTrxkHac2hedVb6eU/9N2jnxjtyx3WbkNpQ6t1CXNWlfedU/+YMdRj230Afrh64Njc0v6NaJIbSxC/WPjFg=
+  - secure: P1to6vCZ0HEcXxSTPJlTWloU7yAIFYvWN43wgO3THdkWDBU/ODT4ghsG8fHFvIY7XPtFbndbsFODaMmLC3qLIM6Mw8tr8H8EUKlw+k8IxzD4i3pU5aydHk9GvH39K5F0cPKNYxwM1Odgu1Qspue0//DoAysOue7kxiOsMUpUmZI=
+  - secure: g4ahRxj2qSgkoHl4tE8iWlekTX/yHt6zu/Da7tinpfuAkKL6++rYm6+4cIJDn5vQdBBFVZlJt3dOmU64kobLM4a3Z7HC0g604BoLGXJ1Vx8ws8d8JV5C0OGnu63Gase5rOuKm6r00Kxz+lR4leZPXmAeZEWj5U7ggx32sRKgiU4=
+  - secure: RHv3d09iqVjzqMjpsw2aWWzzgEX/O6kWCNClwLlJWLRweK0HxcRZ+P8HRLWBLZGTHzBCgycjuxHzXRKSQRwQuwMFqFA37Ixkq5L/ZIyrKHJ9OCK01lX7LxCPELLFCwNuflS6End241ly5ayJVb+ic4xJrrwcT8ihfiTS4dFkeSA=
