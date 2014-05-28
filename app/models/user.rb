@@ -37,10 +37,10 @@ class User < ActiveRecord::Base
   end
 
   #being used in the user_controller.rb
-  def following?(other_user)
+  def following(user_id)
 
     relationships = Relationship.where(follower_id: user_id)
-    followed_users = relationships.map { |relationship|  User.find(relationship.follower_id) }
+    followed_users = relationships.map { |relationship|  User.find(relationship.followed_id) }
     return followed_users
 
   end

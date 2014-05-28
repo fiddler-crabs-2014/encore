@@ -43,10 +43,10 @@
     <% end %>
   <% end %>
 
-<!-- <h3>Following</h3>
-  <%# if @followed_users != nil %>
-    <%# @followed_users.each do |person| %>
-      <%#= link_to person.name, user_path(person.id) %>
+<h3>Following</h3>
+  <% if @users_following != nil %>
+    <% @users_following.each do |person| %>
+      <%= link_to person.name, user_path(person.id) %>
       <br />
-    <%# end %>
-  <%# end %> -->
+    <% end %>
+  <% end %>

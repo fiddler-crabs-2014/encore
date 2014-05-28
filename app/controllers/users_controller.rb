@@ -10,10 +10,7 @@ class UsersController < ApplicationController
 
       @followers = @user.followers(params[:id]).each { |person| person}
 
-      binding.pry
-      # @followed_users = @user.following?(params[:id]).each { |person| person }
-
-      # @followed_people = current_user.following?(params[:id]).each { |person| person}
+      @users_following = @user.following(params[:id]).each { |person| person }
 
     end
 
