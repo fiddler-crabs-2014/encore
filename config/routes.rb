@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :venues, only: [:new, :create]
   resources :artists, only: [:new, :create]
   resources :songs, only: [:new, :create]
+  resources :concert_songs, only: [:create]
 
   post 'create_concert', to: 'concerts#create', as: 'create_concert'
 
