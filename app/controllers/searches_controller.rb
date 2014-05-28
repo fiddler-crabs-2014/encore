@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
 
     if mb_result
       @results = Setlistfm.new(mb_result, params[:page]).search
-      save_band(mb_result) if @band.id.nil?
+      save_band(@band, mb_result) if @band.id.nil?
     else
       flash[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
@@ -48,9 +48,9 @@ class SearchesController < ApplicationController
   end
 
   private
-    def save_band(result)
-      @band.mbid = result
-      @band.save!
+    def save_band(band, result)
+      band.mbid = result
+      band.save!
     end
 
     def save_concert(params)
