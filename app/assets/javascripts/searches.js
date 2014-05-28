@@ -1,8 +1,16 @@
 var songsAndIds = {};
 var setListCheckOff = function(button, icon){
   $(button).css('background-color', 'green');
-  $(button).val('Added');
+  $(button).val('Add Song');
+  $(button).removeClass('add-song').addClass('remove-song')
   $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
+}
+
+var removeListCheckOff = function(button, icon){
+  $(button).css('background-color', 'red');
+  $(button).val('Added');
+  $(button).removeClass('remove-song').addClass('add-song')
+  $(icon).removeClass('fa-check-circle-o').addClass('fa-circle-o');
 }
 $(document).ready(function() {
 
@@ -49,6 +57,8 @@ $(document).ready(function() {
 
       });
   });
+
+  
 
   $("#save_concert").on("click", function(e){
     e.preventDefault();
