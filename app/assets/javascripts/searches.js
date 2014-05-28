@@ -1,4 +1,5 @@
 var songsAndIds = {};
+
 $(document).ready(function() {
 
   $('.add-song').on("submit", function(e) {
@@ -9,7 +10,8 @@ $(document).ready(function() {
     var youtubeTitle = $this.find('#yt-title').text();
     var songId = $this.find('#song_id').val();
     var songTitle = $this.find('select').val();
-
+    var button = $this.find('input#add-song');
+    console.log(button);
     songsAndIds[songId] = songTitle;
 
     var songEl = ""
@@ -21,6 +23,7 @@ $(document).ready(function() {
     songEl += "</p>"
 
     $('#added_songs').append(songEl);
+    
 
     $.post('/songs', { song: songTitle,
                        song_id: songId,
@@ -29,9 +32,17 @@ $(document).ready(function() {
                        authenticity_token: authenticity})
 
       .done(function(data) {
+        var setListedSong = $('ol.set-songs').find('li:contains('+ songTitle+ ')');
+        var checked = '\\f05d'
+        var icon = setListedSong.find('i');
         $this.find('input[name=commit]').attr('disabled', 'disabled');
         $('#flash').empty();
-        $('#flash').append('<div class="alert alert-success">' + data + '</div>');
+        $('#flash').append('<div class="alert alert-success">' + data + '</div>')
+        $(button).css('background-color', 'green');
+        $(button).val('Added');
+        $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
+        console.log(icon);
+
       });
   });
 

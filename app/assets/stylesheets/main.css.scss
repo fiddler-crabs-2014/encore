@@ -31,6 +31,7 @@ nav {
 		color: white;
 		position: static;
 		font-family: 'Lato';
+		margin-left: 1em;
 	}
 	h1 {
 		margin-bottom: 0;
@@ -45,6 +46,9 @@ nav {
 		li.sign-out-button {
 			position: relative;
 			margin-left: 8em;
+		}
+		li.invite-friends {
+			display: none; 
 		}
 	}
 }

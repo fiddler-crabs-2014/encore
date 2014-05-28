@@ -1,3 +1,6 @@
+
+/* Styles for Youtube Search Results Page (specific concert) */
+
  .video-list{
   @include span-columns(8);
   @include shift(1);
@@ -25,6 +28,10 @@
 	}
 }
 
+.alert alert-success {
+	background-color: $dark-green;
+}
+
 .youtube {
 	margin-bottom: 2em;
 }
@@ -48,7 +55,7 @@
 			border-radius: 3px;
 			position: absolute;
 			right: 3.5em;
-			top: 5em;
+			top: 3.5em;
 			a {
 				color: white;
 				padding: 12px;
@@ -72,9 +79,11 @@
 		ol.set-songs {
 		 margin-top: -1em;
 		 font-size: 1.5em;
-
 		 li.set-song{
-
+		 	i {
+		 		position: absolute;
+				right: 1em;
+		 	}
 		 	margin-bottom: .5em;
 		 	border-bottom: 1px solid green;
 		 }

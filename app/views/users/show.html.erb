@@ -1,5 +1,22 @@
 <h1><%= @user.name %></h1>
 <hr>
+<button class="invite-friends"><%= link_to "Invite Facebook Friends", "#", id: "invite_fb_friends" %></button>
+  <div id="fb-root"></div>
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
+  <script>
+  $(function() {
+    $("#invite_fb_friends").click(function() {
+      console.log('clicked');
+      FB.init({
+        appId: '705147516194106',
+        cookie: false,
+        status: true,
+      });
+      FB.ui({method: 'apprequests', message:'<%= current_user.name %> would like to invite you to try Encore, and check out all of your favorite concert memories!'})
+    });
+  });
+  </script>
+</div>
 <!-- Add functionality in so when the year changes
       a new header is made with that year -->
 <h3>Concerts Attended:</h3>
