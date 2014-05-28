@@ -41,7 +41,7 @@ nav {
 		li {
 			position: fixed;
 			margin-top: -1.5em;
-			left: 62%;
+			left: 67%;
 		}
 		li.sign-out-button {
 			position: relative;
@@ -125,7 +125,7 @@ nav {
  		}
  	h3 {
  		color: $base-red;
- 		@include shift(2);
+ 		@include shift(3);
  		font-family: 'Lato';
  	}
  	p {
@@ -138,16 +138,16 @@ nav {
  		@include shift(1);
  		height: 20em;
  			i {
- 				@include shift(3.5)
+ 				@include shift(4)
  			}
  		}
  	.home-center{
  		position: relative;
- 		@include span-columns(3.5);
+ 		@include span-columns(4);
  		height: 20em;
 
  			i {
- 				@include shift(3.5);
+ 				@include shift(4);
  			}
  		}
  	.home-right{
@@ -155,7 +155,7 @@ nav {
  		@include span-columns(3.5);
  		height: 20em;
  			i {
- 				@include shift(5);
+ 				@include shift(4.5);
  			}
  		}
 	}
