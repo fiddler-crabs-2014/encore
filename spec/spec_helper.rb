@@ -7,6 +7,7 @@ SimpleCov.start do
   add_filter '/lib/'
   add_filter '/vendor/'
   add_filter '/services/'
+  add_filter '/uploaders/'
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'

@@ -52,9 +52,9 @@ describe SearchesController do
 
   describe "GET #search_youtube" do
     query = { "band"=>"Muse", "concert"=>"April 19 2014, The 2nd Law, Empire Polo Club, Indio, California",
-                              "songs"=>"Knights of Cydonia,Interlude,Hysteria,Bliss,Animals,Stockholm Syndrome,
-                              The 2nd Law: Unsustainable,Madness,Starlight,Time Is Running Out,The 2nd Law: Isolated System,
-                              Uprising,Survival" }
+                    "songs"=>["Knights of Cydonia", "Interlude", "Hysteria", "Bliss", "Animals", "Stockholm Syndrome",
+                    "The 2nd Law: Unsustainable", "Madness", "Starlight", "Time Is Running Out", "The 2nd Law: Isolated System",
+                    "Uprising", "Survival"] }
     let!(:artist) { Artist.create(name: "Muse") }
 
     context "with valid query" do
@@ -65,7 +65,9 @@ describe SearchesController do
 
       it "assigns requested songs to @songs" do
         get :search_youtube, query
-        songs = ["Knights of Cydonia,Interlude,Hysteria,Bliss,Animals,Stockholm Syndrome,\n                              The 2nd Law: Unsustainable,Madness,Starlight,Time Is Running Out,The 2nd Law: Isolated System,\n                              Uprising,Survival"]
+        songs = ["Knights of Cydonia", "Interlude", "Hysteria", "Bliss", "Animals", "Stockholm Syndrome",
+                    "The 2nd Law: Unsustainable", "Madness", "Starlight", "Time Is Running Out", "The 2nd Law: Isolated System",
+                    "Uprising", "Survival"]
         assigns(:songs).should eq(songs)
       end
 
@@ -117,6 +119,14 @@ describe SearchesController do
           }.to change { ConcertArtist.count }.by(1)
       end
 
+      # Still not sure how to test prvate method
+      let(:band) { Artist.new(name: "Test") }
+      xit "saves a new band's mbid" do
+        expect {
+        controller = SearchesController.new
+        controller.instance_eval{ save_band(@band, "test") }
+        }.to change { Artist.count }.by(1)
+      end
     end
 
     context "when a venue already exists" do
