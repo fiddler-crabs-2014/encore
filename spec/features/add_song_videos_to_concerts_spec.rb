@@ -4,7 +4,7 @@ feature "Add video of song to concert", js: true do
   before do
     visit root_path
 
-    expect(page).to have_content("Relive your favorite concerts")
+    expect(page).to have_content("Re-live your favorite concerts")
 
     fill_in "band", with: "Muse"
     click_button "Search"

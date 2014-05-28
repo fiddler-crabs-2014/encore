@@ -3,13 +3,13 @@ require 'spec_helper'
 describe SongsController do
 
   describe "GET #create" do
-    let(:artist) { Artist.create(name: "Muse") }
+    let!(:artist) { Artist.create(name: "Muse") }
     let!(:venue) { Venue.create(name: "Empire Polo Club", city: "Indio", state: "California") }
     let!(:concert) { Concert.create(date: "April 19 2014", venue_id: 1) }
     let!(:song1) { Song.create(title: "Knights of Cydonia", artist_id: 1) }
     let!(:song2) { Song.create(title: "Knights of Cydonia", artist_id: 2) }
-    let!(:concert_song1) { ConcertSong.create(concert_id: 1, song_id: 1, order: 0) }
-    let!(:concert_song2) { ConcertSong.create(concert_id: 2, song_id: 4, order: 1) }
+    let!(:concert_song1) { ConcertSong.create(concert_id: concert.id, song_id: song1.id, order: 0) }
+    let!(:concert_song2) { ConcertSong.create(concert_id: concert.id, song_id: song2.id, order: 1) }
 
     context "with valid params" do
       it "returns http success" do
