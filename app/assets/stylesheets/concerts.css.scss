@@ -5,10 +5,10 @@
 	margin-top: -2em;
 	padding-bottom: 4em;
 	h1 {
-		color: $darker-gray;
+		color: $dark-gray;
 		padding-top: 1em;
 		padding-bottom: -1em;
-		@include shift(3);
+		text-align: center;
 	}
 	.concert-listing {
 		position: relative;
@@ -38,7 +38,7 @@
 	}
 
 	i {
-		font-size: 3em;
+		font-size: 5em;
 		color: $base-red;
 	}
 	.upper-nav{
@@ -77,7 +77,6 @@
 	opacity: 0.8;
 	margin-top: -2em;
 	h1 {
-		padding-top: 2em;
 		text-align: center;
 	}
 	#submit-video{
@@ -99,12 +98,95 @@
 		}
 	}
 	.concert-show-setlist {
-		border: 1px solid $dark-gray;
+		text-align: center;
 		background-image: url("lightpaperfibers.png");
 		color: #020303;
 		font-family: 'Just Another Hand';
+		border: 1px solid $dark-gray;
 		position: absolute;
-		top: 12em;
-		right: 1em;
+		margin-left: 1em;
+		top: 18em;
+		right: 2em;
+		width: 14em;
+		h3 {
+			font-size: 2em;
+			text-align: center;
+			color: $darker-gray;
+		}
+		ol {
+		 margin-top: -1em;
+		 font-size: 1.5em;
+		 li {
+		 	margin-bottom: .5em;
+		 	margin-left: -2.1em;
+		 	border-bottom: 1px solid $darker-gray;
+		 }
+		}
 	}
 }
+
+#player{
+	position: relative;
+	@include shift(2);
+}
+
+input#add_attendee_btn{
+	position: absolute;
+	top: 15em;
+	margin-bottom: 1em;
+	right: 2em;
+	color: white;
+	background-color: $base-red;
+}
+
+.video-section {
+	margin: 10px 10px 10px 15px;
+}
+
+.video-box {
+	margin: 10px 10px 10px 0px;
+	padding: 5px 10px;
+	min-width: 359px;
+	min-height: 316px;
+	border: 2px solid;
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap ltr
+}
+
+.video-box > h3 {
+	align-self: flex-start;
+	top: 5px;
+	height: 20px;
+}
+
+.video-container {
+	top: 20px;
+	padding: 10px 5px 5px 10px;
+}
+
+.video-container > a {
+	top: 0;
+}
+
+.concert-photos {
+	
+}
+
+.concert-photos > .concert-img {
+	display: inline-block;	
+}
+
+.new_concert_photo {
+	width: 2em;
+	color: $base-red;
+	input{
+		background-color: $dark-gray;
+		color: white;
+	}
+	input[type="file"]{
+		background-color: $dark-gray;
+		color: white;
+	}
+}
+
