@@ -1,17 +1,11 @@
 var songsAndIds = {};
 var setListCheckOff = function(button, icon){
   $(button).css('background-color', 'green');
-  $(button).val('Add Song');
+  $(button).val('Added');
   $(button).removeClass('add-song').addClass('remove-song')
   $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
 }
 
-var removeListCheckOff = function(button, icon){
-  $(button).css('background-color', 'red');
-  $(button).val('Added');
-  $(button).removeClass('remove-song').addClass('add-song')
-  $(icon).removeClass('fa-check-circle-o').addClass('fa-circle-o');
-}
 $(document).ready(function() {
 
   $('.add-song').on("submit", function(e) {
@@ -26,21 +20,14 @@ $(document).ready(function() {
     console.log(button);
     songsAndIds[songId] = songTitle;
 
-    var songEl = ""
     var authenticity = $this.find('input[name=authenticity_token]').val();
-
-    songEl += "<p>"
-    songEl += songTitle + " - "
-    songEl += youtubeTitle
-    songEl += "</p>"
-
-    $('#added_songs').append(songEl);
     
 
     $.post('/songs', { song: songTitle,
                        song_id: songId,
                        concert_id: concertId,
                        artist_id: artistId,
+                       playlist_id: playlistId,
                        authenticity_token: authenticity})
 
       .done(function(data) {
@@ -50,11 +37,6 @@ $(document).ready(function() {
         $('#flash').empty();
         $('#flash').append('<div class="alert alert-success">' + data + '</div>')
         setListCheckOff(button, icon);
-        // $(button).css('background-color', 'green');
-        // $(button).val('Added');
-        // $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
-        // console.log(icon);
-
       });
   });
 

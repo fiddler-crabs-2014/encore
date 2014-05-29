@@ -21,7 +21,8 @@
       a new header is made with that year -->
 <h3>Concerts Attended:</h3>
 <% @concerts.each do |concert| %>
-  <div class="well-lg">
+  <div class="concert-listing">
+
     <%= link_to(concert) do %>
       <!-- <img src="..." alt="..." class="img-rounded"> -->
       <% concert.artists.each do |artist| %>
@@ -35,14 +36,18 @@
 <% end %>
 
 
-<h3>Followers</h3><%= @followers.count %>
-  <% @followers.each do |person| %>
-    <%= link_to person.name, user_path(person.id) %>
-    <br />
+<h3>Followers</h3>
+  <% unless @followers.nil? %>
+    <% @followers.each do |person| %>
+      <%= link_to person.name, user_path(person.id) %>
+      <br />
+    <% end %>
   <% end %>
 
-<h3>Following</h3><%= @followed_people.count %>
-  <% @followed_people.each do |person| %>
-    <%= link_to person.name, user_path(person.id) %>
-    <br />
+<h3>Following</h3>
+  <% unless @users_following.nil? %>
+    <% @users_following.each do |person| %>
+      <%= link_to person.name, user_path(person.id) %>
+      <br />
+    <% end %>
   <% end %>
