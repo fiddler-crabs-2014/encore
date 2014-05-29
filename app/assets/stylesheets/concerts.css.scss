@@ -25,16 +25,16 @@
 				h3 {
 					color: white;
 					font-size: 2.5em;
-					
+
 				}
 				h4 {
 					margin-top: -2em;
 					font-size: 2em;
 					color: white;
 					font-weight: 500;
-				}		
+				}
 			}
-		} 
+		}
 	}
 
 	i {
@@ -98,7 +98,7 @@
 		}
 	input[type=submit]{
 		background-color: $base-red;
-		color: white; 
+		color: white;
 		border: 1px solid white;
 		}
 	}
@@ -134,11 +134,12 @@
 #player{
 	position: relative;
 	@include shift(1.5);
+	display: block;
 }
 
 input#add_attendee_btn{
 	position: absolute;
-	@include shift(5.5);
+	@include shift(6.5);
 	@include span-columns(3);
 	top: 7em;
 	margin-bottom: 1em;
@@ -146,8 +147,9 @@ input#add_attendee_btn{
 	background-color: $base-red;
 }
 
-.video-section {
-	margin: 10px 10px 10px 15px;
+.videos {
+	display: inline-block;
+	margin: 10px 300px 10px 15px;
 }
 
 .video-box {
@@ -177,11 +179,12 @@ input#add_attendee_btn{
 }
 
 .concert-photos {
-	
+	margin: 0 0 10px 20px;
 }
 
 .concert-photos > .concert-img {
-	display: inline-block;	
+	display: inline-block;
+	margin: 10px 10px 30px 10px;
 }
 
 .new_concert_photo {
