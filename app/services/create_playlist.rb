@@ -17,8 +17,8 @@ class CreatePlaylist
 
     def configure_client
       @client = YouTubeIt::Client.new(
-                :username => ENV['YOUTUBE_USERNAME'],
-                :password =>  ENV['YOUTUBE_PASSWORD'],
-                :dev_key => ENV['YOUTUBE_DEVELOPER_KEY'])
+        :username => ENV['YOUTUBE_USERNAME'],
+        :password => ENV['YOUTUBE_PASSWORD'],
+        :dev_key => ENV['YOUTUBE_DEVELOPER_KEY'])
     end
 end

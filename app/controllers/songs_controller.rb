@@ -4,7 +4,7 @@ class SongsController < ApplicationController
     concert = Concert.find(params[:concert_id])
     song = Song.find_by(title: params[:song], artist_id: artist.id)
     concert_song = concert.concert_songs.find_by(song_id: song.id)
-    
+
     add_video(params[:song_id], concert_song)
     CreatePlaylist.new.add_video(concert.yt_playlist, params[:song_id])
     # playlist.add_videos(@concert.concert_songs)
