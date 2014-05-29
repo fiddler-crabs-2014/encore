@@ -3,56 +3,61 @@
 #search-page {
 	@include outer-container;
 	margin-top: -2em;
-	opacity: 0.8;
-	background-color: white;
 	padding-bottom: 4em;
 	h1 {
-		color: $base-red;
+		color: $dark-gray;
 		padding-top: 1em;
 		padding-bottom: -1em;
-		@include shift(4);
+		text-align: center;
 	}
 	.concert-listing {
 		position: relative;
 		li {
 			list-style-type: none;
-
 			a {
-				background-color: $true-blue;
-				color: white;
-				height: 7em;
+				text-align: center;
 				@include shift(3);
 				@include span-columns(6);
-				padding-left: 8em;
 				border: 1px solid white;
 				text-decoration: none;
 				margin-bottom: 1.5em;
+				background-color: $base-red;
+				h3 {
+					color: white;
+					font-size: 2.5em;
 
+				}
+				h4 {
+					margin-top: -2em;
+					font-size: 2em;
+					color: white;
+					font-weight: 500;
+				}
 			}
-		} 
+		}
 	}
 
 	i {
-		font-size: 3em;
+		font-size: 5em;
 		color: $base-red;
 	}
 	.upper-nav{
 
 		position: absolute;
-		right: 13em;
+		right: 12em;
 	}
 	.upper-left-nav{
 		position: absolute;
-		left: 13em;
+		left: 12em;
 	}
 	.lower-nav{
 		position: absolute;
-		right: 13em;
+		right: 12em;
 		bottom: 7em;
 	}
 	.lower-left-nav{
 		position: absolute;
-		left: 13em;
+		left: 12em;
 		bottom: 7em;
 	}
 }
@@ -65,3 +70,189 @@
   background: black;
   opacity: 0.5;
 }
+
+/* styles for concert show page */
+
+.concert-show-container{
+	opacity: 0.8;
+	margin-top: -2em;
+	#head-left {
+		margin-top: 1em;
+		@include shift(1.3);
+		@include span-columns(8);
+		h1{
+			font-size: 3.6em;
+			span{
+			 color: $base-gray;
+			 font-size: 0.8em;
+			}
+		}
+		h2{
+			margin-top: -2em;
+		}
+	}
+	#submit-video{
+		position: relative;
+		color: $base-red;
+		select#song_name{
+			background-color: $dark-gray;
+			color: white;
+		}
+	input#video_link{
+
+		background-color: $dark-gray;
+		color: white;
+		}
+	input[type=submit]{
+		background-color: $base-red;
+		color: white;
+		border: 1px solid white;
+		}
+	}
+	.concert-show-setlist {
+		text-align: center;
+		background-image: url("lightpaperfibers.png");
+		color: #020303;
+		font-family: 'Just Another Hand';
+		font-size: 1.2em;
+		border: 1px solid $dark-gray;
+		position: absolute;
+		margin-left: 1em;
+		top: 12.2em;;
+		right: 2em;
+		width: 14.5em;
+		h3 {
+			font-size: 2em;
+			text-align: center;
+			color: $darker-gray;
+		}
+		h2 {
+			font-size: 2em;
+		}
+		ol {
+		 margin-top: -1em;
+		 font-size: 1.5em;
+		 li {
+		 	color: $light-red;
+		 	margin-bottom: .5em;
+		 	margin-left: -1.8em;
+		 	border-bottom: 1px solid $darker-gray;
+		 	a{
+		 		font-size: 0.8em;
+		 	}
+		 }
+		}
+	}
+}
+
+#player{
+	position: relative;
+	@include shift(1.5);
+	display: block;
+}
+
+input#add_attendee_btn{
+	position: absolute;
+	top: 6em;
+	margin-bottom: 1em;
+	color: white;
+	background-color: $base-red;
+	height: 3em;
+	right: 2.7em;
+	width: 16.750em;
+}
+
+.videos {
+	display: inline-block;
+	margin: 10px 300px 10px 15px;
+}
+
+.video-box {
+	margin: 10px 10px 10px 0px;
+	padding: 5px 10px;
+	min-width: 359px;
+	min-height: 316px;
+	border: 2px solid;
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap ltr
+}
+
+.video-box > h3 {
+	align-self: flex-start;
+	top: 5px;
+	height: 20px;
+}
+
+.video-container {
+	top: 20px;
+	padding: 10px 5px 5px 10px;
+}
+
+.video-container > a {
+	top: 0;
+}
+
+.concert-photos {
+	margin: 0 0 10px 20px;
+}
+
+.concert-photos > .concert-img {
+	display: inline-block;
+	margin: 10px 10px 30px 10px;
+}
+
+.new_concert_photo {
+	color: #d75b5b;
+	display: none;
+	color: $base-red;
+	input{
+		background-color: $dark-gray;
+		color: white;
+	}
+	input[type="file"]{
+		background-color: $dark-gray;
+		color: white;
+	}
+}
+
+#buttons {
+	top: 10em;
+	right: 11.5em;
+	@include span-columns(5);
+	position: absolute;
+	margin-top: -1em;
+	button{
+		background-color: $dark-gray;
+		color: white;
+		@include shift(8.9);
+		@include span-columns(7.5);
+	}
+	button.added{
+		color: white;
+		background-color: $dark-green; 
+		margin-top: -4em;
+	}
+	button.videos{
+		margin-top: 1em;
+	}	
+	button.photos{
+
+	}
+}
+
+.new_concert_song{
+	margin-bottom: 2em;
+	text-align: center;
+	color: $darker-gray;
+	font-family: 'Lato';
+	input{
+		background-color: $dark-gray;
+		color: white;
+		@include span-columns(8);
+		@include shift(2);
+		margin-bottom: 1em;
+
+	}
+}
+

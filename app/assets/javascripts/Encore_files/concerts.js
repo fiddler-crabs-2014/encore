@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
   var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
@@ -8,7 +9,7 @@ $(document).ready(function() {
     }
   });
 
-  $('#create_attended_concert').submit(function(event) {
+  $('#add_attendee_btn').click(function(event) {
     event.preventDefault();
 
     var form = $(this).closest("form");
@@ -22,7 +23,6 @@ $(document).ready(function() {
       .done(function(data) {
         console.log(data);
         $('#flash').append('<div class="alert alert-success">' + data + '</div>');
-        $('#add_attendee_btn').replaceWith("<div id='buttons' style='margin-right: 2.12766%'><button class='added'><h4>I attended this concert</h4></button></div>");
       });
   });
 

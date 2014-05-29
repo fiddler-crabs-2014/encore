@@ -26,7 +26,8 @@ describe User do
     u1 = User.create(provider: "a", uid: "b", name: "test_name", oauth_token: "c", oauth_expires_at: "1999-9-9", email: "q@gmail.com")
     u2 = User.create(provider: "a", uid: "b", name: "test_name", oauth_token: "c", oauth_expires_at: "1999-9-9", email: "qq@gmail.com")
     u1.follow!(u2)
-    u1.following?(u1.id).length.should eq(1)
+    u1.followed_users
+    u1.following?(u2.id).should eq(true)
   end
 
   it "returns an array of people following the user" do
