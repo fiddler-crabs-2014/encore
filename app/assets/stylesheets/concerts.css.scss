@@ -62,9 +62,6 @@
 	}
 }
 
-.video-container {
-  display: inline-block;
-}
 
 .flagged {
   background: black;
@@ -148,7 +145,6 @@ input#add_attendee_btn{
 }
 
 .videos {
-	display: inline-block;
 	margin: 10px 300px 10px 15px;
 }
 
@@ -157,16 +153,25 @@ input#add_attendee_btn{
 	padding: 5px 10px;
 	min-width: 359px;
 	min-height: 316px;
-	border: 2px solid;
-	display: inline-flex;
-	flex-direction: column;
-	flex-wrap: wrap ltr
+	// border: 2px solid;
+	float: left;
+	background-color: $base-red;
+	color: white;
+
+	&:nth-child(even) {
+		background-color: $base-red*0.85;
+	}
+	// display: inline-flex;
+	// flex-direction: column;
+	// flex-wrap: wrap ltr
 }
 
 .video-box > h3 {
-	align-self: flex-start;
+	// align-self: flex-start;
 	top: 5px;
 	height: 20px;
+	color: white;
+	font-size: 1.5em;
 }
 
 .video-container {
