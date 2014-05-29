@@ -13,12 +13,12 @@ class CreatePlaylist
     @client.add_video_to_playlist(playlist_id, video)
   end
 
-  private 
+  private
 
     def configure_client
       @client = YouTubeIt::Client.new(
-                :username => ENV['YOUTUBE_USERNAME'],
-                :password =>  ENV['YOUTUBE_PASSWORD'],
+                :username => 'raderj89',
+                :password =>  'jaipur7786',
                 :dev_key => ENV['YOUTUBE_DEVELOPER_KEY'])
     end
 end
