@@ -3,8 +3,6 @@ class UsersController < ApplicationController
     def index
       # @following = current_user.following?(current_user).map { |user| user.id }
       @users = User.all
-
-      @results = GoogleCustomSearchApi.search("Eric Prydz", { "searchType" => "image" })
     end
 
     def show

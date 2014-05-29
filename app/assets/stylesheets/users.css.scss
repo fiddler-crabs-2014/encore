@@ -1,0 +1,40 @@
+.user_name {
+  @include shift(1);
+
+  margin-right: 0;
+  font-size: 300%;
+
+}
+
+.invite-friends {
+  @include shift(8);
+}
+
+#concerts_header {
+  @include shift(1);
+}
+
+
+#header1,
+.date {
+  @include shift(2);
+  @include span-columns(2);
+  margin-right: 12%;
+  margin-bottom: 1.5%;
+}
+
+#header2,
+.artist {
+  @include shift(6);
+  @include span-columns(3);
+  margin-left:0;
+  margin-bottom: 1.5%;
+}
+
+#header3,
+.venue {
+  @include shift(6);
+  @include span-columns(2);
+  margin-left:0;
+  margin-bottom: 1.5%;
+}

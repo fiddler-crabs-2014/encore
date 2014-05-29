@@ -18,7 +18,7 @@ gem 'neat'
 gem 'font-awesome-sass'
 gem 'fog'
 gem 'omniauth'
-gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-facebook', '~> 1.4.0'
 gem 'fb_graph'
 
 
