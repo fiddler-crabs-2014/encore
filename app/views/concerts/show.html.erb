@@ -1,7 +1,6 @@
 <div class="concert-show-container">
 
   <h1><%= @concert.artists.first.name %><br>at <%= @venue.name %><br><%= @concert.date.strftime('%B %e, %Y') %></h1>
-
       <script>
         // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
@@ -47,7 +46,9 @@
           player.stopVideo();
         }
       </script>
+
   <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
+
 
   <div id="setlist" class="concert-show-setlist">
     <h2>Setlist</h2>

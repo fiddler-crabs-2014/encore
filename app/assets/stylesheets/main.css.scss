@@ -243,8 +243,8 @@ nav {
 /* styles for concert page */
 
 .videos {
-	margin: 10px 10px 10px 15px;
-	width: 84%;
+	display: inline-block;
+	margin: 10px 300px 10px 15px;
 }
 
 .video-box {
@@ -280,6 +280,6 @@ nav {
 	top: 300px;
 }
 
-.highlight {
-	background-color: "yellow";
+#player {
+	display: block;
 }
