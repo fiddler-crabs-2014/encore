@@ -3,10 +3,10 @@ Encore
 
 Created by:
 -------------------
-- Jared Rader (Team Lead)
-- Timmy Haung
-- Howard "Buck" O'Leary
-- Brendan Scarano (Product Manager)
+- [Jared Rader (Team Lead)]("https://github.com/raderj89")
+- [Timmy Haung]("https://github.com/tihuan")
+- [Howard "Buck" O'Leary]("https://github.com/buck3000")
+- [Brendan Scarano (Product Manager)]("https://github.com/Onaracs")
 
 Heroku: 
 http://encore-staging.herokuapp.com/
@@ -26,3 +26,14 @@ git workflow
     2. git commit -m "commit message"
     3. git push origin branch_name
 5. go back to github and send a new pull request from your branch
+
+css workflow
+============
+1. base styles are in main.css.scss
+2. remember: grid-settings are in corresponding _grid-settings.css.scss file
+3. use EMs instead of pixels when possible (unless dealing with text...)
+4. keep color variables, fonts and page styles in seperate pages
+5. prepend styles for a new page with a one line css comment (e.g. /* styles for user page */)
+6. before making a pull request set the visual-grid variable to false in your branch.
+7. before pushing to production sit with someone and remove css comments
+
