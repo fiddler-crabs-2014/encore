@@ -1,4 +1,4 @@
-<div class="outer"> 
+<div class="outer">
 
   <h1 class="user_name"><%= @user.name %></h1>
 
@@ -29,22 +29,51 @@
   <h2 id="concerts_header">Concerts Attended:</h2>
 
 
-  <h3 id="header1">Date</h3>
+<!--   <h3 id="header1">Date</h3>
   <h3 id="header2">Artist</h3>
-  <h3 id="header3">Venue</h3>
+  <h3 id="header3">Venue</h3> -->
+
+  <h2 class="year"><%= @year %></h2>
 
   <% @concerts.each do |concert| %>
-      <%#= link_to(concert) do %>
-        <!-- <img src="..." alt="..." class="img-rounded"> -->
-      <div class="date"><%= concert.date.strftime('%Y %B %e')  %></div>
+    <% if concert.date.strftime('%Y') != @year %>
+      <% @year = concert.date.strftime('%Y') %>
+      <h2 class="year"><%= @year %></h2>
+    <% end %>
 
-        <% concert.artists.each do |artist| %>
-          <div class="artist"><%= artist.name %></div>
-        <% end %><!-- @concerts.artists.each -->
+    <div class="concert_container">
+
+      <%= link_to(concert) do %>
+
+      <div class="date_container">
+        <div class="actual_date">
+          <%= concert.date.strftime('%b') %><br>
+          <%= concert.date.strftime('%e') %>
+        </div>
+      </div>
+
+      <% concert.artists.each do |artist| %>
+        <div class="artist"><%= artist.name %></div>
+      <% end %><!-- @concerts.artists.each -->
 
         <div class="venue"><%= concert.venue.name  %></div>
-      <%# end %><!-- link -->
+      <% end %><!-- link -->
     </div>
   <% end %> <!-- @concerts.each -->
 
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
