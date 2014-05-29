@@ -84,7 +84,7 @@ nav {
 			margin-left: 6em;
 		}
 		li.invite-friends {
-			display: none; 
+			display: none;
 		}
 	}
 }
@@ -103,7 +103,6 @@ nav {
 	center {
 	 	margin-top: 4em;
 		color: white;
-		
 	  h1 {
 	  	font-size: 2.5em;
 	  	color: white;
@@ -158,7 +157,7 @@ nav {
  	h3 {
  		color: $base-red;
  		@include shift(3);
- 		
+
  	}
  	p {
  		width: 90%;
@@ -216,4 +215,68 @@ nav {
 	&:hover, &:active{
 		color: $base-red;
 	}
+}
+.following {
+	.unfollow { color: red; }
+
+	&.following_true {
+		.unfollow { display: inline; }
+	  .follow { display: none; }
+	}
+
+	&.following_false {
+		.unfollow { display: none; }
+		.follow { display: inline }
+	}
+}
+
+.concert-photos {
+	margin: 0 0 10px 20px;
+}
+
+.concert-photos > .concert-img {
+	display: inline-block;
+	margin: 10px 10px 30px 10px;
+}
+
+/* styles for concert page */
+
+.video-section {
+	margin: 10px 10px 10px 15px;
+	// margin: 15px 5px 5px 5px;
+}
+
+.video-box {
+	margin: 10px 10px 10px 0px;
+	padding: 5px 10px;
+	// margin: 5px;
+	// padding: 0 5px;
+	min-width: 359px;
+	min-height: 316px;
+	border: 2px solid;
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap ltr
+}
+
+.video-box > h3 {
+	align-self: flex-start;
+	top: 5px;
+	height: 20px;
+}
+
+.video-container {
+	// padding: 0;
+	top: 20px;
+	padding: 10px 5px 5px 10px;
+}
+
+.video-container > a {
+	top: 0;
+}
+
+#setlist {
+	position: fixed;
+	width: 300px;
+	right: 5px;
 }

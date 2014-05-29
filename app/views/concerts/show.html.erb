@@ -122,11 +122,20 @@
       </div>
     </div>
 
-    <div class="concert-photos">
-      <% unless @concert.concert_photos.empty? %>
-        <% @concert.concert_photos.each do |photo| %>
-          <%= image_tag photo.image  %>
-        <% end %>
+
+  <div class="concert-photos">
+    <% unless @concert.concert_photos.empty? %>
+      <% @concert_photos.each do |photo| %>
+        <div class="concert-img">
+          <p>
+            <%=link_to(photo.image.url) do %>
+              <%= image_tag photo.image.small, rel: "zoom" %>
+            <% end %>
+          </p>
+          <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
+        </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+
 </div>
