@@ -13,7 +13,7 @@ class CreatePlaylist
     @client.add_video_to_playlist(playlist_id, video)
   end
 
-  private 
+  private
 
     def configure_client
       @client = YouTubeIt::Client.new(
