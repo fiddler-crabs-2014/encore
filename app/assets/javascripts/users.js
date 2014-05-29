@@ -1,5 +1,39 @@
 $(document).ready(function() {
+  $('.follow').click(function(event) {
+    event.preventDefault();
 
+    var following_element = $(this).closest('.following');
+    var user_id = following_element.data('user-id');
+
+    $.ajax({
+      type: "POST",
+      url: "/relationships",
+      data: {  followed_id: user_id }
+    }).done(function(data) {
+      following_element.removeClass('following_false').addClass('following_true');
+    }).fail(function() {
+      alert('Following failed!!!!!!');
+    });
+  });
+
+  $('.unfollow').click(function(event) {
+    event.preventDefault();
+
+    var following_element = $(this).closest('.following');
+    var user_id = following_element.data('user-id');
+
+    $.ajax({
+      type: "POST",
+      url: "/relationships/unfollow",
+      data: {  followed_id: user_id }
+    }).done(function(data) {
+      following_element.removeClass('following_true').addClass('following_false');
+    }).fail(function() {
+      alert('Unfollow has failed you!!');
+    });
+  });
+
+});
   // $('.new_relationship').submit(function(event) {
   //   event.preventDefault();
 
@@ -19,5 +53,5 @@ $(document).ready(function() {
   // });
 
   //should be delete_relationship
-});
+
 

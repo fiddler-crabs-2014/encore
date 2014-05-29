@@ -84,7 +84,7 @@ nav {
 			margin-left: 6em;
 		}
 		li.invite-friends {
-			display: none; 
+			display: none;
 		}
 	}
 }
@@ -103,7 +103,6 @@ nav {
 	center {
 	 	margin-top: 4em;
 		color: white;
-		
 	  h1 {
 	  	font-size: 2.5em;
 	  	color: white;
@@ -215,5 +214,19 @@ nav {
 	margin-bottom: 4.5%;
 	&:hover, &:active{
 		color: $base-red;
+	}
+}
+
+.following {
+	.unfollow { color: red; }
+
+	&.following_true {
+		.unfollow { display: inline; }
+	  .follow { display: none; }
+	}
+
+	&.following_false {
+		.unfollow { display: none; }
+		.follow { display: inline }
 	}
 }
