@@ -1,87 +1,6 @@
 <div class="concert-show-container">
 
-  <h1><%= @concert.artists.first.name %> live at <%= @venue.name %><br><%= @concert.date.strftime('%B %e, %Y') %></h1>
-
-  <div id="submit-video">
-    <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
-      <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
-      <%= hidden_field_tag "concert_id", @concert.id %>
-      <p>
-        Song Name: <br />
-        <%= select_tag("song_name", options_for_select(@song_names)) %>
-      </p>
-      <p>
-        <%= f.label :video_link, "YouTube Link" %>
-        <%= text_field_tag :video_link %>
-      </p>
-      <%= f.submit "Submit Video Link" %>
-    <% end %>
-  </div>
-
-  <div>
-    <% if signed_in? %>
-      <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
-
-        <h4>I attended this concert</h4>
-
-      <% else %>
-
-        <%= form_tag('/attended_concerts', id: "create_attended_concert") do %>
-          <%= hidden_field_tag "user", session[:user_id] %>
-          <%= hidden_field_tag "concert", @concert.id %>
-          <%= submit_tag 'Add To My Concert History', id: "add_attendee_btn" %>
-        <% end %>
-
-      <% end %>
-
-      <%= form_for @concert_photo do |f| %>
-        <%= hidden_field_tag :concert_id, @concert.id %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.label :image %>
-        <%= f.file_field :image %>
-        <%= f.submit "Add Photo" %>
-      <% end %>
-
-
-    <% end %>
-  </div>
-
-      <% @concert_songs.each do |concert_song| %>
-        <h3><%= concert_song.song.title %></h3>
-        <% concert_song.videos.each do |video| %>
-          <% if video.correct == false %> 
-            <div class="video-container flagged">
-              <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
-              <span>Video Flagged</span><a href="#" class="report-video" data-video-id=<%= video.id %>>Unflag</a>
-            </div>
-          <% else %>
-            <div class="video-container">
-              <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
-              <a href="#" class="report-video" data-video-id=<%= video.id %>>Report Video</a>
-            </div>
-          <% end %>
-        <% end %>
-        <hr>
-
-      <% end %>
-      <div class="concert-show-setlist">
-        <h3>Setlist</h3>
-        <ol>
-        <% @song_names.each do |song_name| %>
-          <li><%= song_name %></li>
-        <% end %>
-        </ol>
-      </div>
-
-    <div class="concert-photos">
-      <% unless @concert.concert_photos.empty? %>
-        <% @concert.concert_photos.each do |photo| %>
-          <%= image_tag photo.image  %>
-        <% end %>
-      <% end %>
-    </div>
-</div>
-    <div id="player"></div>
+  <h1><%= @concert.artists.first.name %><br>at <%= @venue.name %><br><%= @concert.date.strftime('%B %e, %Y') %></h1>
 
       <script>
         // 2. This code loads the IFrame Player API code asynchronously.
@@ -128,6 +47,86 @@
           player.stopVideo();
         }
       </script>
-
   <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
+
+  <div class="concert-show-setlist">
+    <h3>Setlist</h3>
+    <ol>
+    <% @song_names.each do |song_name| %>
+      <li><%= song_name %></li>
+    <% end %>
+    </ol>
+  </div>
+
+  <div class="concert-signed-in">
+    <% if signed_in? %>
+      <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
+
+        <h4>I attended this concert</h4>
+
+      <% else %>
+
+        <%= form_tag('/attended_concerts', id: "create_attended_concert") do %>
+          <%= hidden_field_tag "user", session[:user_id] %>
+          <%= hidden_field_tag "concert", @concert.id %>
+          <%= submit_tag 'Add To My Concert History', id: "add_attendee_btn" %>
+        <% end %>
+
+      <% end %>
+
+      <%= form_for @concert_photo do |f| %>
+        <%= hidden_field_tag :concert_id, @concert.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+        <%= f.submit "Add Photo" %>
+      <% end %>
+
+
+    <% end %>
+  </div>
+    <div class="videos">
+      <div id="player"></div>
+      <% @concert_songs.each do |concert_song| %>
+        <h3><%= concert_song.song.title %></h3>
+        <% concert_song.videos.each do |video| %>
+          <% if video.correct == false %> 
+            <div class="video-container flagged">
+              <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+              <span>Video Flagged</span><a href="#" class="report-video" data-video-id=<%= video.id %>>Unflag</a>
+            </div>
+          <% else %>
+            <div class="video-container">
+              <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+              <a href="#" class="report-video" data-video-id=<%= video.id %>>Report Video</a>
+            </div>
+          <% end %>
+        <% end %>
+        <hr>
+      <% end %>
+
+      <div id="submit-video">
+        <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
+          <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
+          <%= hidden_field_tag "concert_id", @concert.id %>
+          <p>
+            Song Name: <br />
+            <%= select_tag("song_name", options_for_select(@song_names)) %>
+          </p>
+          <p>
+            <%= f.label :video_link, "YouTube Link" %>
+            <%= text_field_tag :video_link %>
+          </p>
+          <%= f.submit "Submit Video Link" %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="concert-photos">
+      <% unless @concert.concert_photos.empty? %>
+        <% @concert.concert_photos.each do |photo| %>
+          <%= image_tag photo.image  %>
+        <% end %>
+      <% end %>
+    </div>
 </div>
