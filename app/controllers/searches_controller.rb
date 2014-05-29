@@ -8,17 +8,16 @@ class SearchesController < ApplicationController
     @band = Artist.find_or_initialize_by(name: band_query)
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
 
-    returned_setlists = JSON.parse(Net::HTTP.get_response(
-                URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mb_result}/setlists.json")
-               ).body)
-    setlists_returned = returned_setlists["setlists"]["@total"]
-    @max_pages = (setlists_returned.to_i / 20) + 1
-
     if mb_result
+      returned_setlists = JSON.parse(Net::HTTP.get_response(
+                  URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mb_result}/setlists.json")
+                 ).body)
+      setlists_returned = returned_setlists["setlists"]["@total"]
+      @max_pages = (setlists_returned.to_i / 20) + 1
       @results = Setlistfm.new(mb_result, params[:page]).search
       save_band(@band, mb_result) if @band.id.nil?
     else
-      flash[:warning] = "Sorry - we couldn't find an artist with that name."
+      flash.now[:warning] = "Sorry - we couldn't find an artist with that name."
       render :index
     end
   end
@@ -83,7 +82,7 @@ class SearchesController < ApplicationController
           @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
         end
       end
-    end  
+    end
   end
 
   private
@@ -107,7 +106,7 @@ class SearchesController < ApplicationController
         @concert_artist = ConcertArtist.find_or_create_by(concert_id: @concert.id, artist_id: @band.id)
         @date = @concert.date.strftime('%B %e %Y')
       end
-      
+
       @playlist = CreatePlaylist.new("#{@band.name} live at #{@venue.name}, #{@venue.city}, #{@venue.state}, #{@concert.date.strftime('%B %e, %Y')}")
       @playlist_id = @playlist.make_playlist.playlist_id
       @concert.update(yt_playlist: @playlist_id)
