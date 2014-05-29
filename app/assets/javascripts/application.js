@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require smoothzoom.min
-//= require smoothzoom
-//= require easing
 var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
 
 $.ajaxSetup( {
