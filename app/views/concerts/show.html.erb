@@ -85,10 +85,9 @@
         <%= f.file_field :image %>
         <%= f.submit "Add Photo" %>
       <% end %>
-
-
     <% end %>
   </div>
+    
     <div class="videos">
       <div id="player"></div>
       <div class="video-box">
@@ -111,6 +110,7 @@
         <% end %>
       </div>
 
+
       <div id="submit-video">
         <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
           <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
@@ -128,7 +128,7 @@
       </div>
     </div>
 
-
+  
   <div class="concert-photos">
     <% unless @concert.concert_photos.empty? %>
       <% @concert_photos.each do |photo| %>

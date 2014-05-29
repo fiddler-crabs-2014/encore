@@ -230,18 +230,3 @@ nav {
 		.follow { display: inline }
 	}
 }
-
-#buttons {
-	top: 10em;
-	left: 26em;
-	@include span-columns(4);
-	position: absolute;
-	button{
-		background-color: $dark-gray;
-		color: $light-red;
-		@include span-columns(4);
-	}
-}
-
-
-
