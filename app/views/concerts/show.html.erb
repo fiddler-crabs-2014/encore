@@ -30,7 +30,6 @@
         <%= hidden_field_tag "concert", @concert.id %>
         <%= submit_tag 'Add To My Concert History', id: "add_attendee_btn" %>
       <% end %>
-
     <% end %>
 
     <%= form_for @concert_photo do |f| %>
@@ -40,12 +39,21 @@
       <%= f.file_field :image %>
       <%= f.submit "Add Photo" %>
     <% end %>
-
-
   <% end %>
 </div>
 
-    <% @concert_songs.each do |concert_song| %>
+<div id="setlist">
+  <h2>Setlist</h2>
+  <ol>
+  <% @song_names.each_with_index do |song_name, i| %>
+    <li><%= link_to song_name, "#song#{i}" %></li>
+  <% end %>
+  </ol>
+</div>
+
+<div class="video-section">
+  <% @concert_songs.each_with_index do |concert_song, i| %>
+    <div class="video-box" id="song<%= i %>">
       <h3><%= concert_song.song.title %></h3>
       <% concert_song.videos.each do |video| %>
         <% if video.correct == false %>
@@ -61,32 +69,22 @@
         <% end %>
       <% end %>
     </div>
-      <hr>
+  <% end %>
+</div>
 
+<div class="concert-photos">
+  <% unless @concert.concert_photos.empty? %>
+    <% @concert_photos.each do |photo| %>
+      <div class="concert-img">
+        <p>
+          <%=link_to(photo.image.url) do %>
+            <%= image_tag photo.image.small, rel: "zoom" %>
+          <% end %>
+        </p>
+        <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
+      </div>
     <% end %>
-
-    <h2>Setlist</h2>
-    <ol>
-    <% @song_names.each do |song_name| %>
-      <li><%= song_name %></li>
-    <% end %>
-    </ol>
-  </div>
-
-  <div class="concert-photos">
-    <% unless @concert.concert_photos.empty? %>
-      <% @concert_photos.each do |photo| %>
-        <div class="concert-img">
-          <p>
-            <%=link_to(photo.image.url) do %>
-              <%= image_tag photo.image.small, rel: "zoom" %>
-            <% end %>
-          </p>
-          <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
-        </div>
-      <% end %>
-    <% end %>
-
-  </div>
+  <% end %>
+</div>
 
 <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>

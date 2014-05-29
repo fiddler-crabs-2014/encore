@@ -191,6 +191,48 @@ nav {
 	}
 }
 
+/* styles for concert page */
+
+.video-section {
+	margin: 10px 10px 10px 15px;
+	// margin: 15px 5px 5px 5px;
+}
+
+.video-box {
+	margin: 10px 10px 10px 0px;
+	padding: 5px 10px;
+	// margin: 5px;
+	// padding: 0 5px;
+	min-width: 359px;
+	min-height: 316px;
+	border: 2px solid;
+	display: inline-flex;
+	flex-direction: column;
+	flex-wrap: wrap ltr
+}
+
+.video-box > h3 {
+	align-self: flex-start;
+	top: 5px;
+	height: 20px;
+}
+
+.video-container {
+	// padding: 0;
+	top: 20px;
+	padding: 10px 5px 5px 10px;
+}
+
+.video-container > a {
+	top: 0;
+}
+
+#setlist {
+	position: fixed;
+	width: 300px;
+	right: 5px;
+}
+
 .concert-photos {
 	margin: 0 0 10px 20px;
 }
