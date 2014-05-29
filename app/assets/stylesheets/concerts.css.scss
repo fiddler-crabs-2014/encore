@@ -76,8 +76,13 @@
 .concert-show-container{
 	opacity: 0.8;
 	margin-top: -2em;
-	h1 {
-		text-align: center;
+	#head-left {
+		margin-top: 1em;
+		@include shift(1.5);
+		@include span-columns(5);
+		h2{
+			margin-top: -2em;
+		}
 	}
 	#submit-video{
 		position: relative;
@@ -105,7 +110,7 @@
 		border: 1px solid $dark-gray;
 		position: absolute;
 		margin-left: 1em;
-		top: 18em;
+		top: 7em;
 		right: 2em;
 		width: 14em;
 		h3 {
@@ -117,6 +122,7 @@
 		 margin-top: -1em;
 		 font-size: 1.5em;
 		 li {
+		 	color: $light-red;
 		 	margin-bottom: .5em;
 		 	margin-left: -2.1em;
 		 	border-bottom: 1px solid $darker-gray;
@@ -127,14 +133,15 @@
 
 #player{
 	position: relative;
-	@include shift(2);
+	@include shift(1.5);
 }
 
 input#add_attendee_btn{
 	position: absolute;
-	top: 15em;
+	@include shift(5.5);
+	@include span-columns(3);
+	top: 7em;
 	margin-bottom: 1em;
-	right: 2em;
 	color: white;
 	background-color: $base-red;
 }
@@ -187,6 +194,21 @@ input#add_attendee_btn{
 	input[type="file"]{
 		background-color: $dark-gray;
 		color: white;
+	}
+}
+
+#buttons {
+	top: 10em;
+	left: 8.5em;
+	@include span-columns(5);
+	position: absolute;
+	margin-top: -1em;
+	button{
+		margin-top: .5em;
+		background-color: $dark-gray;
+		color: white;
+		@include shift(10);
+		@include span-columns(7);
 	}
 }
 
