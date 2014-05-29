@@ -122,6 +122,8 @@ nav {
  	color: $base-red;
  	font-size: 1.5em;
  	border-radius: 8px;
+  -webkit-border-radius: 8px; 
+  -moz-border-radius: 8px; 
  	border: 2px outset white;
  }
  input.search-button {
