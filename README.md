@@ -27,7 +27,7 @@ git workflow
     3. git push origin branch_name
 5. go back to github and send a new pull request from your branch
 
-css workflow
+css workflow / truncated style-guide
 ============
 1. base styles are in main.css.scss
 2. remember: grid-settings are in corresponding _grid-settings.css.scss file
