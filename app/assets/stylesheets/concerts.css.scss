@@ -153,12 +153,13 @@
 
 input#add_attendee_btn{
 	position: absolute;
-	right: 0.7em;
-	top: 7em;
-	@include span-columns(3);
+	top: 6em;
 	margin-bottom: 1em;
 	color: white;
 	background-color: $base-red;
+	height: 3em;
+	right: 2.7em;
+	width: 16.750em;
 }
 
 .videos {
@@ -222,14 +223,14 @@ input#add_attendee_btn{
 	position: absolute;
 	margin-top: -1em;
 	button{
-
 		background-color: $dark-gray;
 		color: white;
 		@include shift(8.9);
 		@include span-columns(7.5);
 	}
-	button.add{
-		background-color: $base-red;
+	button.added{
+		color: white;
+		background-color: $dark-green; 
 		margin-top: -4em;
 	}
 	button.videos{

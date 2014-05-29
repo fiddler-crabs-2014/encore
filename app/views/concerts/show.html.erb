@@ -1,6 +1,6 @@
 <div class="concert-show-container">
 
-  <div id="head-left"><h1><%= @concert.artists.first.name%><span> at <%= @venue.name %></span></h1><br><h2><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
+  <div id="head-left"><h1><%= @concert.artists.first.name%><br><span> at <%= @venue.name %></span></h1><br><h2><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
 
       <script>
         // 2. This code loads the IFrame Player API code asynchronously.
@@ -77,14 +77,14 @@
     <% if signed_in? %>
       <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
       <div id="buttons">
-        <button class="add"><h4>I attended this concert</h4></button>
+        <button class="added"><h4>I attended this concert</h4></button>
       </div>
       <% else %>
 
         <%= form_tag('/attended_concerts', id: "create_attended_concert") do %>
           <%= hidden_field_tag "user", session[:user_id] %>
           <%= hidden_field_tag "concert", @concert.id %>
-          <%= submit_tag 'Add To My Concert History', id: "add_attendee_btn" %>
+        <%= submit_tag 'Add To My Concert History', id: "add_attendee_btn" %>
         <% end %>
 
       <% end %>
