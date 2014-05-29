@@ -3,10 +3,10 @@ Encore
 
 Created by:
 -------------------
-- [Jared Rader (Team Lead)]("https://github.com/raderj89")
-- [Timmy Haung]("https://github.com/tihuan")
-- [Howard "Buck" O'Leary]("https://github.com/buck3000")
-- [Brendan Scarano (Product Manager)]("https://github.com/Onaracs")
+- [Jared Rader (Team Lead)](https://github.com/raderj89)
+- [Timmy Haung](https://github.com/tihuan)
+- [Howard "Buck" O'Leary](https://github.com/buck3000)
+- [Brendan Scarano (Product Manager)](https://github.com/Onaracs)
 
 Heroku: 
 http://encore-staging.herokuapp.com/
