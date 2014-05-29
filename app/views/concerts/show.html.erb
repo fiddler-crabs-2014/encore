@@ -1,6 +1,7 @@
 <div class="concert-show-container">
 
-  <h1><%= @concert.artists.first.name %><br>at <%= @venue.name %><br><%= @concert.date.strftime('%B %e, %Y') %></h1>
+  <div id="head-left"><h1><%= @concert.artists.first.name %></h1><br><h2>at <%= @venue.name %><br><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
+
       <script>
         // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
@@ -55,7 +56,10 @@
     <% end %>
     </ol>
   </div>
-
+  <div id="buttons">
+    <button>Videos</button>
+    <button>Photos</button>
+  </div>
   <div class="concert-signed-in">
     <% if signed_in? %>
       <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
