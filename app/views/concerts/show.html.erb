@@ -41,36 +41,37 @@
         <%= f.file_field :image %>
         <%= f.submit "Add Photo" %>
       <% end %>
-
-
     <% end %>
   </div>
 
-  <% @concert_songs.each do |concert_song| %>
-    <h3><%= concert_song.song.title %></h3>
-    <% concert_song.videos.each do |video| %>
-      <% if video.correct == false %>
-        <div class="video-container flagged">
-          <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
-          <span>Video Flagged</span><a href="#" class="report-video" data-video-id=<%= video.id %>>Unflag</a>
-        </div>
-      <% else %>
-        <div class="video-container">
-          <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
-          <a href="#" class="report-video" data-video-id=<%= video.id %>>Report Video</a>
-        </div>
-      <% end %>
-    <% end %>
-    <hr>
-  <% end %>
-
-  <div class="concert-show-setlist">
-    <h3>Setlist</h3>
+  <div id="setlist" class="concert-show-setlist">
+    <h2>Setlist</h2>
     <ol>
-    <% @song_names.each do |song_name| %>
-      <li><%= song_name %></li>
+    <% @song_names.each_with_index do |song_name, i| %>
+      <li><%= link_to song_name, "#song#{i}" %></li>
     <% end %>
     </ol>
+  </div>
+
+  <div class="video-section">
+    <% @concert_songs.each_with_index do |concert_song, i| %>
+      <div class="video-box" id="song<%= i %>">
+        <h3><%= concert_song.song.title %></h3>
+        <% concert_song.videos.each do |video| %>
+          <% if video.correct == false %>
+            <div class="video-container flagged">
+              <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+              <span>Video Flagged</span><a href="#" class="report-video" data-video-id=<%= video.id %>>Unflag</a>
+            </div>
+          <% else %>
+            <div class="video-container">
+              <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
+              <a href="#" class="report-video" data-video-id=<%= video.id %>>Report Video</a>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="concert-photos">
