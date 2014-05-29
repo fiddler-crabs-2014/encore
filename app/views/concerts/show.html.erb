@@ -61,18 +61,17 @@
             </div>
           <% end %>
         <% end %>
-      </div>
         <hr>
 
       <% end %>
-
-      <h2>Setlist</h2>
-      <ol>
-      <% @song_names.each do |song_name| %>
-        <li><%= song_name %></li>
-      <% end %>
-      </ol>
-    </div>
+      <div class="concert-show-setlist">
+        <h3>Setlist</h3>
+        <ol>
+        <% @song_names.each do |song_name| %>
+          <li><%= song_name %></li>
+        <% end %>
+        </ol>
+      </div>
 
     <div class="concert-photos">
       <% unless @concert.concert_photos.empty? %>
@@ -80,9 +79,8 @@
           <%= image_tag photo.image  %>
         <% end %>
       <% end %>
-
     </div>
-
+</div>
     <div id="player"></div>
 
       <script>

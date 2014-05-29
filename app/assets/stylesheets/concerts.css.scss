@@ -5,27 +5,34 @@
 	margin-top: -2em;
 	padding-bottom: 4em;
 	h1 {
-		color: $base-red;
+		color: $darker-gray;
 		padding-top: 1em;
 		padding-bottom: -1em;
-		@include shift(4);
+		@include shift(3);
 	}
 	.concert-listing {
 		position: relative;
 		li {
 			list-style-type: none;
-
 			a {
-				background-color: $dark-gray;
-				color: white;
-				height: 7em;
+				text-align: center;
 				@include shift(3);
 				@include span-columns(6);
-				padding-left: 8em;
 				border: 1px solid white;
 				text-decoration: none;
 				margin-bottom: 1.5em;
-
+				background-color: $base-red;
+				h3 {
+					color: white;
+					font-size: 2.5em;
+					
+				}
+				h4 {
+					margin-top: -2em;
+					font-size: 2em;
+					color: white;
+					font-weight: 500;
+				}		
 			}
 		} 
 	}
@@ -37,20 +44,20 @@
 	.upper-nav{
 
 		position: absolute;
-		right: 13em;
+		right: 12em;
 	}
 	.upper-left-nav{
 		position: absolute;
-		left: 13em;
+		left: 12em;
 	}
 	.lower-nav{
 		position: absolute;
-		right: 13em;
+		right: 12em;
 		bottom: 7em;
 	}
 	.lower-left-nav{
 		position: absolute;
-		left: 13em;
+		left: 12em;
 		bottom: 7em;
 	}
 }
@@ -81,7 +88,7 @@
 			color: white;
 		}
 	input#video_link{
-		border-radius: 8px;
+
 		background-color: $dark-gray;
 		color: white;
 		}
@@ -90,5 +97,14 @@
 		color: white; 
 		border: 1px solid white;
 		}
+	}
+	.concert-show-setlist {
+		border: 1px solid $dark-gray;
+		background-image: url("lightpaperfibers.png");
+		color: #020303;
+		font-family: 'Just Another Hand';
+		position: absolute;
+		top: 12em;
+		right: 1em;
 	}
 }

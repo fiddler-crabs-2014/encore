@@ -37,16 +37,17 @@
 }
 
 .outside {
-	background-color: white;
+
 	@include outer-container;
 	opacity: 0.8;
-	font-family: 'Lato';
 	margin-top: -2em;
 	.concert-header{
 		position: relative;
-		text-align: center;
 		padding-top: 2em;
-		color: $base-gray;
+		h2{
+			color: $darker-gray;
+			text-align: center;
+		}
 		font-size: 1.2em;
 		button {
 			background-color: $base-red;
@@ -64,9 +65,9 @@
 
 	.setlist-container {
 		@include span-columns(3);
-		border: 1px solid $dark-green;
-		background-color: yellow;
-		color: black;
+		border: 1px solid $darker-gray;
+		background-image: url('lightpaperfibers.png');
+		color: $darker-gray;
 		font-family: 'Just Another Hand';
 		position: absolute;
 		top: 12em;
@@ -74,6 +75,7 @@
 		h3 {
 			font-size: 2em;
 			text-align: center;
+			color: $darker-gray;
 		}
 		ol.set-songs {
 		 margin-top: -1em;
@@ -84,7 +86,7 @@
 				right: 1em;
 		 	}
 		 	margin-bottom: .5em;
-		 	border-bottom: 1px solid green;
+		 	border-bottom: 1px solid $darker-gray;
 		 }
 		}
 	}

@@ -40,7 +40,7 @@ p, li, ul, a {
 	font-size: 0.75em;
 }
 
-li:even{
+li:even {
 	color: $light-gray;
 }
 
@@ -93,7 +93,7 @@ nav {
 
 .jumbotron{
  height: 30em;
- background-image: asset-url('phanto-concert1.jpg');
+ background-image: asset-url('phanto-concert.jpg');
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
@@ -162,7 +162,6 @@ nav {
  	}
  	p {
  		width: 90%;
- 	
  	}
  	.home-left{
  		position: relative;
@@ -193,12 +192,13 @@ nav {
 }
 
 #flash {
-	background-color: green;
-	color: white;
+	background-color: $dark-gray;
+	color: $light-red;
 	text-align: center;
 	button.close{
 		border-radius: 10px;
-		background-color: $base-red;
+		background-color: $base-gray;
+		color: white;
 	}
 }
 
