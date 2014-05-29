@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     def show
       @user = User.find(params[:id])
       @concerts = @user.concerts.order('date DESC')
+      unless @concerts == []
+        @year = @concerts.first.date.strftime('%Y')
+      end
 
       @followers = @user.followers(params[:id]).each { |person| person}
 
