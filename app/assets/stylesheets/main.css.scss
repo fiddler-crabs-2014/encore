@@ -53,7 +53,7 @@ nav {
 	top: 0;
 	position: fixed;
 	z-index: 1;
-	height: 5em;
+	height: 4em;
 	@include span-columns(12);
 	background-color: $dark-gray;
 	opacity: 0.8;
@@ -67,7 +67,7 @@ nav {
 		margin-left: 1em;
 	}
 	h1 {
-		margin-top: 0em;
+		margin-top: -0.2em;
 		color: white;
 	}
 	ul {
@@ -207,7 +207,7 @@ nav {
 #sign_in {
 	padding: 5px;
 	@include shift(1);
-	width: 11em;
+	width: 12em;
 	position: fixed;
 	margin-top: -0.5em;
 	left: 62%;
