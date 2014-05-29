@@ -1,6 +1,6 @@
 <div class="concert-show-container">
 
-  <div id="head-left"><h1><%= @concert.artists.first.name %></h1><br><h2>at <%= @venue.name %><br><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
+  <div id="head-left"><h1><%= @concert.artists.first.name%><span> at <%= @venue.name %></span></h1><br><h2><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
 
       <script>
         // 2. This code loads the IFrame Player API code asynchronously.
@@ -55,17 +55,30 @@
       <li><%= link_to song_name, "#song#{i}" %></li>
     <% end %>
     </ol>
+    <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
+      <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
+      <%= hidden_field_tag "concert_id", @concert.id %>
+      <h4>
+        Song Name: <br />
+        <%= select_tag("song_name", options_for_select(@song_names)) %>
+      </h4>
+      <h4>
+        <%= f.label :video_link, "YouTube Link" %><br>
+        <%= text_field_tag :video_link %>
+      </h4>
+      <%= f.submit "Submit Video Link" %>
+    <% end %>
   </div>
   <div id="buttons">
-    <button>Videos</button>
-    <button>Photos</button>
+    <button class="videos">Videos</button>
+    <button class="photos">Photos</button>
   </div>
   <div class="concert-signed-in">
     <% if signed_in? %>
       <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
-
-        <h4>I attended this concert</h4>
-
+      <div id="buttons">
+        <button class="add"><h4>I attended this concert</h4></button>
+      </div>
       <% else %>
 
         <%= form_tag('/attended_concerts', id: "create_attended_concert") do %>
@@ -107,24 +120,7 @@
           </div>
         <% end %>
       </div>
-
-
-      <div id="submit-video">
-        <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
-          <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
-          <%= hidden_field_tag "concert_id", @concert.id %>
-          <p>
-            Song Name: <br />
-            <%= select_tag("song_name", options_for_select(@song_names)) %>
-          </p>
-          <p>
-            <%= f.label :video_link, "YouTube Link" %>
-            <%= text_field_tag :video_link %>
-          </p>
-          <%= f.submit "Submit Video Link" %>
-        <% end %>
-      </div>
-    </div>
+</div>
 
   <div class="concert-photos">
     <% unless @concert.concert_photos.empty? %>
@@ -141,4 +137,3 @@
     <% end %>
   </div>
   <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
-</div>
