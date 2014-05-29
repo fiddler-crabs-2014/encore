@@ -1,6 +1,11 @@
 $(function() {
-  $("#setlist a").on("click", function(){
+  $("#setlist a").on("click", function(e){
+    e.preventDefault();
     var songID = $(this).attr("href");
+    var songOffset = $(songID).offset().top;
+    $('body').animate({
+      scrollTop: songOffset - 75
+    });
     highlight(songID);
   })
 });
