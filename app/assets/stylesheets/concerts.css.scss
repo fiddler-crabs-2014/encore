@@ -146,8 +146,6 @@ input#add_attendee_btn{
 .video-box {
 	margin: 10px 10px 10px 0px;
 	padding: 5px 10px;
-	// margin: 5px;
-	// padding: 0 5px;
 	min-width: 359px;
 	min-height: 316px;
 	border: 2px solid;
@@ -163,7 +161,6 @@ input#add_attendee_btn{
 }
 
 .video-container {
-	// padding: 0;
 	top: 20px;
 	padding: 10px 5px 5px 10px;
 }
@@ -173,11 +170,23 @@ input#add_attendee_btn{
 }
 
 .concert-photos {
-	margin: 0 0 10px 20px;
+	
 }
 
 .concert-photos > .concert-img {
-	display: inline-block;
-	margin: 10px 10px 30px 10px;
+	display: inline-block;	
+}
+
+.new_concert_photo {
+	width: 2em;
+	color: $base-red;
+	input{
+		background-color: $dark-gray;
+		color: white;
+	}
+	input[type="file"]{
+		background-color: $dark-gray;
+		color: white;
+	}
 }
 
