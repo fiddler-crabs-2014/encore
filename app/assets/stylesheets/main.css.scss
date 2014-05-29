@@ -157,7 +157,7 @@ nav {
  	h3 {
  		color: $base-red;
  		@include shift(3);
- 		
+
  	}
  	p {
  		width: 90%;
@@ -229,4 +229,13 @@ nav {
 		.unfollow { display: none; }
 		.follow { display: inline }
 	}
+}
+
+.concert-photos {
+	margin: 0 0 10px 20px;
+}
+
+.concert-photos > .concert-img {
+	display: inline-block;
+	margin: 10px 10px 30px 10px;
 }
