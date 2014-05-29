@@ -340,7 +340,7 @@ DEPENDENCIES
   musicbrainz (= 0.7.6)
   neat
   omniauth
-  omniauth-facebook (~> 1.4.0)
+  omniauth-facebook (~> 1.4.1)
   pg
   pry-debugger
   pry-rails

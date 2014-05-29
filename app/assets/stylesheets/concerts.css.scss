@@ -78,8 +78,15 @@
 	margin-top: -2em;
 	#head-left {
 		margin-top: 1em;
-		@include shift(1.5);
-		@include span-columns(5);
+		@include shift(1.3);
+		@include span-columns(8);
+		h1{
+			font-size: 3.6em;
+			span{
+			 color: $base-gray;
+			 font-size: 0.8em;
+			}
+		}
 		h2{
 			margin-top: -2em;
 		}
@@ -107,16 +114,20 @@
 		background-image: url("lightpaperfibers.png");
 		color: #020303;
 		font-family: 'Just Another Hand';
+		font-size: 1.2em;
 		border: 1px solid $dark-gray;
 		position: absolute;
 		margin-left: 1em;
-		top: 7em;
+		top: 12.2em;;
 		right: 2em;
-		width: 14em;
+		width: 14.5em;
 		h3 {
 			font-size: 2em;
 			text-align: center;
 			color: $darker-gray;
+		}
+		h2 {
+			font-size: 2em;
 		}
 		ol {
 		 margin-top: -1em;
@@ -124,8 +135,11 @@
 		 li {
 		 	color: $light-red;
 		 	margin-bottom: .5em;
-		 	margin-left: -2.1em;
+		 	margin-left: -1.8em;
 		 	border-bottom: 1px solid $darker-gray;
+		 	a{
+		 		font-size: 0.8em;
+		 	}
 		 }
 		}
 	}
@@ -139,12 +153,13 @@
 
 input#add_attendee_btn{
 	position: absolute;
-	@include shift(6.5);
-	@include span-columns(3);
-	top: 7em;
+	top: 6em;
 	margin-bottom: 1em;
 	color: white;
 	background-color: $base-red;
+	height: 3em;
+	right: 2.7em;
+	width: 16.750em;
 }
 
 .videos {
@@ -188,7 +203,8 @@ input#add_attendee_btn{
 }
 
 .new_concert_photo {
-	width: 2em;
+	color: #d75b5b;
+	display: none;
 	color: $base-red;
 	input{
 		background-color: $dark-gray;
@@ -202,16 +218,40 @@ input#add_attendee_btn{
 
 #buttons {
 	top: 10em;
-	left: 8.5em;
+	right: 11.5em;
 	@include span-columns(5);
 	position: absolute;
 	margin-top: -1em;
 	button{
-		margin-top: .5em;
 		background-color: $dark-gray;
 		color: white;
-		@include shift(10);
-		@include span-columns(7);
+		@include shift(8.9);
+		@include span-columns(7.5);
+	}
+	button.added{
+		color: white;
+		background-color: $dark-green; 
+		margin-top: -4em;
+	}
+	button.videos{
+		margin-top: 1em;
+	}	
+	button.photos{
+
+	}
+}
+
+.new_concert_song{
+	margin-bottom: 2em;
+	text-align: center;
+	color: $darker-gray;
+	input{
+		background-color: $dark-gray;
+		color: white;
+		@include span-columns(8);
+		@include shift(2);
+		margin-bottom: 1em;
+
 	}
 }
 

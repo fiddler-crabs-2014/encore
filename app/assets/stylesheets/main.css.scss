@@ -17,6 +17,10 @@ body {
 	font-weight: 900;
 }
 
+.container {
+	margin-top: -1em;
+}
+
 h1 {
 	color: $base-red;
 	font-size: 3.5em;
@@ -76,7 +80,7 @@ nav {
 			font-size: 2em;
 			position: fixed;
 			margin-top: -2.5em;
-			left: 67%;
+			left: 72%;
 			color: white;
 		}
 		li.sign-out-button {
