@@ -9,13 +9,43 @@ html {
 }
 
 body {
+	background-image: asset-url('white_wall_hash.png');
 	margin: 0 0 0 0;
-	padding-top: 80px;
+	padding-top: 5em;
 	max-width: inherit;
+	font: 'Lato';
+	font-weight: 900;
 }
 
-ul, a {
+h1 {
+	color: $base-red;
+	font-size: 3.5em;
+}
+
+h2 {
+	color: $dark-gray;
+	font-size: 1.5em;
+}
+
+h3 {
+	color: $light-red;
+	font-size: 1em;
+}
+
+
+p, li, ul, a {
 	text-decoration: none;
+	list-style-type: none;
+	color: $base-gray;
+	font-size: 0.75em;
+}
+
+li:even {
+	color: $light-gray;
+}
+
+a:hover{
+	color: $light-red;
 }
 
 /* styles for application layout*/
@@ -25,31 +55,33 @@ nav {
 	z-index: 1;
 	height: 5em;
 	@include span-columns(12);
-	background-color: black;
+	background-color: $dark-gray;
 	opacity: 0.8;
 	a {
 		color: white;
 	}
 	a.headline {
-		font-size: 1em;
 		color: white;
 		position: static;
 		font-family: 'Lato';
 		margin-left: 1em;
 	}
 	h1 {
-		margin-bottom: 0;
+		margin-top: 0em;
+		color: white;
 	}
 	ul {
 		margin-bottom: 0;
 		li {
+			font-size: 2em;
 			position: fixed;
-			margin-top: -1.5em;
+			margin-top: -2.5em;
 			left: 67%;
+			color: white;
 		}
 		li.sign-out-button {
 			position: relative;
-			margin-left: 8em;
+			margin-left: 6em;
 		}
 		li.invite-friends {
 			display: none;
@@ -61,7 +93,7 @@ nav {
 
 .jumbotron{
  height: 30em;
- background-image: asset-url('phanto-concert1.jpg');
+ background-image: asset-url('phanto-concert.jpg');
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
@@ -71,22 +103,19 @@ nav {
 	center {
 	 	margin-top: 4em;
 		color: white;
-		font-family: 'Lato';
-
 	  h1 {
 	  	font-size: 2.5em;
+	  	color: white;
 	  }
 	  h2 {
 	  	font-size: 2em;
-	  }
-	  .fbs-status {
-
+	  	color: white;
 	  }
 	 }
  input#myinput.form-control{
  	@include span-columns(7);
  	@include shift(2.5);
- 	color: $true-blue;
+ 	color: $base-red;
  	font-size: 1.5em;
  	border-radius: 8px;
  	border: 2px outset white;
@@ -99,7 +128,6 @@ nav {
  	padding: 5px;
  	border-radius: 8px;
  	border: 2px solid white;
- 	font-family: 'Lato';
  	&:hover{
  		color: $light-red;
  		border: 2px solid $light-red;
@@ -119,22 +147,20 @@ nav {
 
  	h1 {
  		margin-top: 2em;
- 		color: black;
+ 		color: $base-gray;
  		margin-bottom: 1em;
 	  @include span-columns(6);
 	  @include shift(4);
 	  font-weight: 1000;
-	  font-family: 'Lato';
 	  font-size: 3em;
  		}
  	h3 {
  		color: $base-red;
  		@include shift(3);
- 		font-family: 'Lato';
+
  	}
  	p {
  		width: 90%;
- 		font-family: 'Lato';
  	}
  	.home-left{
  		position: relative;
@@ -149,7 +175,6 @@ nav {
  		position: relative;
  		@include span-columns(4);
  		height: 20em;
-
  			i {
  				@include shift(4);
  			}
@@ -166,12 +191,13 @@ nav {
 }
 
 #flash {
-	background-color: green;
-	color: white;
+	background-color: $dark-gray;
+	color: $light-red;
 	text-align: center;
 	button.close{
 		border-radius: 10px;
-		background-color: $base-red;
+		background-color: $base-gray;
+		color: white;
 	}
 }
 
@@ -188,6 +214,20 @@ nav {
 	margin-bottom: 4.5%;
 	&:hover, &:active{
 		color: $base-red;
+	}
+}
+
+.following {
+	.unfollow { color: red; }
+
+	&.following_true {
+		.unfollow { display: inline; }
+	  .follow { display: none; }
+	}
+
+	&.following_false {
+		.unfollow { display: none; }
+		.follow { display: inline }
 	}
 }
 

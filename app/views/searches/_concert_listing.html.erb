@@ -1,5 +1,5 @@
 <div class="concert-listing">
   <li><%= link_to(search_youtube_path(band: band.name, concert: concert, songs: songs), id: 'concert-title') do  %>
-    <h3><%= date(concert) %><br><%= venue(concert)%><br><%=location(concert)%></h3>
+    <h3><%= date(concert) %><h3><h4><br><%= venue(concert)%><br><%=location(concert)%></h4>
   <% end %></li>
 </div>

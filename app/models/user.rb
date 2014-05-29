@@ -27,18 +27,32 @@ class User < ActiveRecord::Base
     end
   end
 
-  def following?(other_user)
-    relationships.find_by(followed_id: other_user.id)
-  end
-
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
-  end
-
+  #being used in the user_controller.rb
   def followers(user_id)
+
     relationships = Relationship.where(followed_id: user_id)
     followers = relationships.map { |relationship| User.find(relationship.follower_id) }
     return followers
+
+  end
+
+  #being used in the user_controller.rb
+  def following(user_id)
+
+    relationships = Relationship.where(follower_id: user_id)
+    followed_users = relationships.map { |relationship|  User.find(relationship.followed_id) }
+    return followed_users
+
+  end
+
+  #being used in the users/index.html.erb
+  def following?(user_id)
+    relationships.exists?(followed_id: user_id)
+  end
+
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
   end
 
   def unfollow!(other_user)
