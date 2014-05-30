@@ -1,0 +1,116 @@
+/* styles for about page */
+
+#about_intro {
+  height: 30em;
+  width:100%;
+  margin-bottom: 4em;
+  h2 {
+    text-align: left;
+
+    @include shift(1);
+    @include span-columns(6);
+
+    margin-right: 0;
+  }
+}
+
+.about_title {
+  text-align: center;
+}
+
+#a_b img {
+  position: absolute;
+
+  margin-top: -5em;
+  margin-left: 5em;
+
+  width: 42%;
+  height: 42%;
+}
+
+#about_story {
+  height: 15em;
+  width:100%;
+  margin-bottom: 4em;
+}
+
+#about_story h2 {
+  text-align: center;
+  margin: 0 5em;
+
+}
+
+
+/* TEAM */
+
+#about_team {
+  height: 30em;
+  .team_member {
+    text-align: center;
+    width: 22.5%;
+    height: 100%;
+
+    display: inline-block;
+    margin: 0 0 2em 0;
+  }
+
+  .first_member {
+    margin-left: 4em;
+  }
+
+  .favorite_concert h2 {
+    margin: 0;
+  }
+
+  #brendan img {
+    width: 50%;
+    height: 50%;
+  }
+
+  #jared img {
+    width: 50%;
+    height: 50%;
+  }
+
+
+  #buck img {
+    padding-left: 1em;
+    width: 70%;
+    height: 70%;
+    margin-bottom: 1em;
+  }
+
+  #buck {
+      margin-bottom: 1em;
+
+  }
+
+  #timmy {
+      margin-bottom: 1em;
+  }
+
+  #timmy img {
+    width: 50%;
+    height: 50%;
+
+
+  }
+
+  a {
+    color: black;
+  }
+  i {
+    margin: 0 .25em;
+    font-size: 3.5em;
+  }
+
+  a:hover {
+    color: $base-red;
+  }
+}
+
+.favorite_concert {
+  h2 {
+    size: 70%;
+  }
+}
