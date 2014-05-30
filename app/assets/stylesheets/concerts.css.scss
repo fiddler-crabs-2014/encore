@@ -82,7 +82,10 @@
 		}
 	}
 	#submit-video{
-		position: relative;
+		height: 250px;
+		width: 250px;
+		position: absolute;
+		right: -1em;
 		color: $base-red;
 		select#song_name{
 			background-color: $dark-gray;
@@ -117,11 +120,11 @@
 		}
 		ol {
 		 margin-top: -1em;
-		 font-size: 1.5em;
+		 font-size: 2.1em;
 		 li {
 		 	color: $light-red;
 		 	margin-bottom: .5em;
-		 	margin-left: -2.1em;
+		 	margin-left: -1.6em;
 		 	border-bottom: 1px solid $darker-gray;
 		 }
 		}
@@ -184,7 +187,7 @@ input#add_attendee_btn{
 }
 
 .song_label {
-	float: left;
+	padding-left: 10px;
 	white-space:nowrap;
 }
 
@@ -223,5 +226,11 @@ input#add_attendee_btn{
 		@include shift(10);
 		@include span-columns(7);
 	}
+}
+
+.date {
+	padding-top: 3px;
+	color: black;
+	white-space:nowrap;
 }
 

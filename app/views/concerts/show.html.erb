@@ -1,6 +1,6 @@
 <div class="concert-show-container">
 
-  <div id="head-left"><h1><%= @concert.artists.first.name %></h1><br><h2>at <%= @venue.name %><br><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
+<div id="head-left"><h1><%= @concert.artists.first.name %></h1><br><h2>at <%= @venue.name %><br></h2><br><h2 class="date"><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
 
       <script>
         // 2. This code loads the IFrame Player API code asynchronously.
@@ -114,11 +114,11 @@
           <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
           <%= hidden_field_tag "concert_id", @concert.id %>
           <p>
-            Song Name: <br />
+            <%= label_tag("song_name") %>
             <%= select_tag("song_name", options_for_select(@song_names)) %>
           </p>
           <p>
-            <%= f.label :video_link, "YouTube Link" %>
+            <%= f.label :video_link, "YouTube Link" %><br>
             <%= text_field_tag :video_link %>
           </p>
           <%= f.submit "Submit Video Link" %>
