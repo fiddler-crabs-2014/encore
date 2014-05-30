@@ -48,8 +48,21 @@
 		padding-top: 2em;
 		h2{
 			font-family: 'Yanone Kaffeesatz', sans-serif;
-			color: $darker-gray;
+			color: $dark-red;
+			font-size: 3.4em;
 			text-align: center;
+		}
+		h3{
+			color: $dark-gray;
+			font-size: 2em;
+			text-align: center;
+			margin-top: -1em;
+		}
+		h4{
+			color: $light-gray;
+			font-size: 1.3em; 
+			text-align: center;
+			margin-top: -1em;
 		}
 		font-size: 1.2em;
 		button {

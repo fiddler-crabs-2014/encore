@@ -1,6 +1,6 @@
 <div class="outside">
   <div class="concert-header">
-    <h2><%= @band.name %><br><span><%= @venue.name %><br><%= @venue.city %>, <%= @venue.state %><br><%= @date %></span></h2>
+    <h2><%= @band.name %></h2><h3><%= @date %></h3><h4><%= @venue.name %><br><%= @venue.city %>, <%= @venue.state %></h4>
     <button><%= link_to "Go To Concert", concert_path(@concert) %></a></button>
     <br>
   </div>
