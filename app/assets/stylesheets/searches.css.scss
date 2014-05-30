@@ -56,7 +56,7 @@
 			color: $dark-gray;
 			font-size: 2em;
 			text-align: center;
-			margin-top: -1em;
+			margin-top: -1.2em;
 		}
 		h4{
 			color: $light-gray;
@@ -66,14 +66,17 @@
 		}
 		font-size: 1.2em;
 		button {
-			background-color: $base-red;
+			background-color: #d75b5b;
 			border: 1px solid white;
 			position: absolute;
-			right: 8%;
-			top: 3.5em;
+			right: 1%;
+			top: 1.7em;
+			padding: 15px;
+			width: 23.40426%;
+			font-size: 1.5em;
 			a {
 				color: white;
-				padding: 12px;
+				padding: 20px;
 			}			
 		}
 	}
