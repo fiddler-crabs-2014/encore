@@ -18,7 +18,7 @@ class SearchesController < ApplicationController
       save_band(@band, mb_result) if @band.id.nil?
     else
       flash.now[:warning] = "Sorry - we couldn't find an artist with that name."
-      render :index
+      redirect_to root_path
     end
   end
 
