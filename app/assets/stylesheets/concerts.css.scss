@@ -11,6 +11,7 @@
 		padding-top: 1em;
 		padding-bottom: -1em;
 		text-align: center;
+		font-size: 4.5em;
 	}
 	.concert-listings {
 		margin: 0 auto;
@@ -27,23 +28,23 @@
 			a {
 				float: left;
 				text-align: center;
-				color: $dark-gray;
+				color: #7a7a7a;
 				padding: 10px;
 				border: 1px solid white;
 				text-decoration: none;
 				margin-bottom: 1.5em;
 				background: inherit;
-				margin-left: 10px;
+				margin-left: 12px;
 
 				h3 {
 					margin-top: 0;
 					background-color: $dark-red;
 					color: white;
-					font-size: 2.5em;
+					font-size: 3.5em;
 				}
 				h4 {
-					margin-top: -2em;
-					font-size: 2em;
+					margin-top: -1.5em;
+					font-size: 2.5em;
 					font-weight: 500;
 				}
 			}
@@ -91,15 +92,19 @@
 		@include shift(1.3);
 		@include span-columns(8);
 		h1{
-			font-size: 3.6em;
+			font-size: 4.6em;
 			font-family: 'Yanone Kaffeesatz', sans-serif;;
-			span{
-			 color: $base-gray;
-			 font-size: 0.8em;
-			}
+			margin-bottom: 0.2em;
 		}
 		h2{
-			margin-top: -2em;
+			margin-top: -0.6em;
+			color: $dark-gray;
+			font-size: 2.4em;
+		}
+		h2.date{
+			margin-top: -1em;
+			font-size: 2em;
+			color: $darker-gray;
 		}
 	}
 	#submit-video{
@@ -161,8 +166,9 @@
 
 #player{
 	position: relative;
-	@include shift(1.5);
+	@include shift(4);
 	display: block;
+	clear: both;
 }
 
 input#add_attendee_btn{
@@ -252,8 +258,12 @@ input#add_attendee_btn{
 	button{
 		background-color: $dark-gray;
 		color: white;
-		@include shift(8.9);
-		@include span-columns(7.5);
+		margin-left: 86.74468%;
+		float: left;
+		display: block;
+		margin-right: 2.12766%;
+		width: 16.750em;
+		margin-top: 0.5em;
 	}
 	button.added{
 		color: white;
@@ -275,6 +285,7 @@ input#add_attendee_btn{
 }
 
 .new_concert_song{
+	display: none;
 	margin-bottom: 2em;
 	text-align: center;
 	color: $darker-gray;
