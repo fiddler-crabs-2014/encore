@@ -3,7 +3,7 @@ var setListCheckOff = function(button, icon){
   $(button).css('background-color', 'green');
   $(button).val('Added');
   $(button).removeClass('add-song').addClass('remove-song')
-  $(icon).removeClass('fa-circle-o').addClass('fa-check-circle-o');
+  $(icon).removeClass('fa-square-o').addClass('fa-check-square-o');
 }
 
 $(document).ready(function() {

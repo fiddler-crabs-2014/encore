@@ -2,35 +2,48 @@
 
 #search-page {
 	@include outer-container;
+	width: 60%;
 	margin-top: -2em;
 	padding-bottom: 4em;
 	h1 {
-		color: $dark-gray;
+		font-family: 'Yanone Kaffeesatz', sans-serif;
+		color: $dark-red;
 		padding-top: 1em;
 		padding-bottom: -1em;
 		text-align: center;
 	}
-	.concert-listing {
+	.concert-listings {
+		margin: 0 auto;
 		position: relative;
+
 		li {
 			list-style-type: none;
+			margin-right: 10px;
+			background-color: white;
+			margin-top: 0;
+			/*&:nth-child(even){
+				background-color: $light-gray*0.9;
+			}*/
 			a {
+				float: left;
 				text-align: center;
-				@include shift(3);
-				@include span-columns(6);
+				color: $dark-gray;
+				padding: 10px;
 				border: 1px solid white;
 				text-decoration: none;
 				margin-bottom: 1.5em;
-				background-color: $base-red;
+				background: inherit;
+				margin-left: 10px;
+
 				h3 {
+					margin-top: 0;
+					background-color: $dark-red;
 					color: white;
 					font-size: 2.5em;
-
 				}
 				h4 {
 					margin-top: -2em;
 					font-size: 2em;
-					color: white;
 					font-weight: 500;
 				}
 			}
@@ -82,6 +95,7 @@
 		@include span-columns(8);
 		h1{
 			font-size: 3.6em;
+			font-family: 'Yanone Kaffeesatz', sans-serif;;
 			span{
 			 color: $base-gray;
 			 font-size: 0.8em;
