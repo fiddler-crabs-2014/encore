@@ -30,7 +30,7 @@
 
         // 4. The API will call this function when the video player is ready.
         function onPlayerReady(event) {
-          event.target.stopVideo();
+          event.target.playVideo();
         }
 
         // 5. The API calls this function when the player's state changes.
@@ -85,7 +85,7 @@
   </div>
 
     <div class="videos">
-
+      <div id="player"></div>
       <div class="video-box">
         <% @concert_songs.each do |concert_song| %>
           <h3><%= concert_song.song.title %></h3>
@@ -138,10 +138,6 @@
         </div>
       <% end %>
     <% end %>
-  </div>
-
-  <div class="video_container">
-    <div id="player"></div>
   </div>
 
 </div>
