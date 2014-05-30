@@ -119,12 +119,13 @@ body.searches.index {
 		color: white;
 	  h1 {
 	  	font-family: 'Yanone Kaffeesatz', sans-serif;
-	  	font-size: 4em;
+	  	font-size: 7em;
 	  	color: $light-red;
 	  }
 	  h2 {
-	  	font-size: 2em;
+	  	font-size: 4em;
 	  	color: white;
+	  	margin-top: -0.5em;
 	  }
 	 }
  input#myinput.form-control{
@@ -132,7 +133,7 @@ body.searches.index {
  	@include shift(3);
  	color: $base-red;
  	font-size: 1.5em;
-
+ 	margin-top: -0.7em;
  	border: 2px outset white;
  }
  input.search-button {

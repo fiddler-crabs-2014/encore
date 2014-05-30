@@ -55,19 +55,6 @@
       <li><%= link_to song_name, "#song#{i}" %></li>
     <% end %>
     </ol>
-    <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
-      <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
-      <%= hidden_field_tag "concert_id", @concert.id %>
-      <h4>
-        Song Name: <br />
-        <%= select_tag("song_name", options_for_select(@song_names)) %>
-      </h4>
-      <h4>
-        <%= f.label :video_link, "YouTube Link" %><br>
-        <%= text_field_tag :video_link %>
-      </h4>
-      <%= f.submit "Submit Video Link" %>
-    <% end %>
   </div>
   <div id="buttons">
     <button>Browse Videos</button>
@@ -100,7 +87,6 @@
   </div>
 
     <div class="videos">
-      <div id="player"></div>
         <% @concert_songs.each_with_index do |concert_song, i| %>
           <div class="video-box" id="song<%= i %>">
             <h3 class="song_label"><%= "#{(i+1)}. " + concert_song.song.title %></h3>
@@ -121,6 +107,21 @@
         <% end %>
       </div>
 </div>
+<div id="player"></div>
+
+<%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
+  <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
+  <%= hidden_field_tag "concert_id", @concert.id %>
+  <h4>
+    Song Name: <br />
+    <%= select_tag("song_name", options_for_select(@song_names)) %>
+  </h4>
+  <h4>
+    <%= f.label :video_link, "YouTube Link" %><br>
+    <%= text_field_tag :video_link %>
+  </h4>
+  <%= f.submit "Submit Video Link" %>
+<% end %>
 
 <div class="concert-photos">
   <% unless @concert.concert_photos.empty? %>
