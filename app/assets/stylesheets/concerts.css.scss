@@ -2,35 +2,48 @@
 
 #search-page {
 	@include outer-container;
+	width: 60%;
 	margin-top: -2em;
 	padding-bottom: 4em;
 	h1 {
-		color: $dark-gray;
+		font-family: 'Yanone Kaffeesatz', sans-serif;
+		color: $dark-red;
 		padding-top: 1em;
 		padding-bottom: -1em;
 		text-align: center;
 	}
-	.concert-listing {
+	.concert-listings {
+		margin: 0 auto;
 		position: relative;
+
 		li {
 			list-style-type: none;
+			margin-right: 10px;
+			background-color: white;
+			margin-top: 0;
+			/*&:nth-child(even){
+				background-color: $light-gray*0.9;
+			}*/
 			a {
+				float: left;
 				text-align: center;
-				@include shift(3);
-				@include span-columns(6);
+				color: $dark-gray;
+				padding: 10px;
 				border: 1px solid white;
 				text-decoration: none;
 				margin-bottom: 1.5em;
-				background-color: $base-red;
+				background: inherit;
+				margin-left: 10px;
+
 				h3 {
+					margin-top: 0;
+					background-color: $dark-red;
 					color: white;
 					font-size: 2.5em;
-
 				}
 				h4 {
 					margin-top: -2em;
 					font-size: 2em;
-					color: white;
 					font-weight: 500;
 				}
 			}
@@ -75,8 +88,16 @@
 	margin-top: -2em;
 	#head-left {
 		margin-top: 1em;
-		@include shift(1.5);
-		@include span-columns(5);
+		@include shift(1.3);
+		@include span-columns(8);
+		h1{
+			font-size: 3.6em;
+			font-family: 'Yanone Kaffeesatz', sans-serif;;
+			span{
+			 color: $base-gray;
+			 font-size: 0.8em;
+			}
+		}
 		h2{
 			margin-top: -2em;
 		}
@@ -107,16 +128,20 @@
 		background-image: url("lightpaperfibers.png");
 		color: #020303;
 		font-family: 'Just Another Hand';
+		font-size: 1.2em;
 		border: 1px solid $dark-gray;
 		position: absolute;
 		margin-left: 1em;
-		top: 7em;
+		top: 12.2em;;
 		right: 2em;
-		width: 14em;
+		width: 14.5em;
 		h3 {
 			font-size: 2em;
 			text-align: center;
 			color: $darker-gray;
+		}
+		h2 {
+			font-size: 2em;
 		}
 		ol {
 		 margin-top: -1em;
@@ -124,8 +149,11 @@
 		 li {
 		 	color: $light-red;
 		 	margin-bottom: .5em;
-		 	margin-left: -1.6em;
+		 	margin-left: -1.8em;
 		 	border-bottom: 1px solid $darker-gray;
+		 	a{
+		 		font-size: 0.8em;
+		 	}
 		 }
 		}
 	}
@@ -139,12 +167,13 @@
 
 input#add_attendee_btn{
 	position: absolute;
-	@include shift(6.5);
-	@include span-columns(3);
-	top: 7em;
+	top: 6em;
 	margin-bottom: 1em;
 	color: white;
 	background-color: $base-red;
+	height: 3em;
+	right: 2.7em;
+	width: 16.750em;
 }
 
 .videos {
@@ -201,7 +230,8 @@ input#add_attendee_btn{
 }
 
 .new_concert_photo {
-	width: 2em;
+	color: #d75b5b;
+	display: none;
 	color: $base-red;
 	input{
 		background-color: $dark-gray;
@@ -215,16 +245,26 @@ input#add_attendee_btn{
 
 #buttons {
 	top: 10em;
-	left: 8.5em;
+	right: 11.5em;
 	@include span-columns(5);
 	position: absolute;
 	margin-top: -1em;
 	button{
-		margin-top: .5em;
 		background-color: $dark-gray;
 		color: white;
-		@include shift(10);
-		@include span-columns(7);
+		@include shift(8.9);
+		@include span-columns(7.5);
+	}
+	button.added{
+		color: white;
+		background-color: $light-gray;
+		margin-top: -4em;
+	}
+	button.videos{
+		margin-top: 1em;
+	}
+	button.photos{
+
 	}
 }
 
@@ -232,5 +272,20 @@ input#add_attendee_btn{
 	padding-top: 3px;
 	color: black;
 	white-space:nowrap;
+}
+
+.new_concert_song{
+	margin-bottom: 2em;
+	text-align: center;
+	color: $darker-gray;
+	font-family: 'Lato';
+	input{
+		background-color: $dark-gray;
+		color: white;
+		@include span-columns(8);
+		@include shift(2);
+		margin-bottom: 1em;
+
+	}
 }
 

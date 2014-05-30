@@ -55,6 +55,19 @@
       <li><%= link_to song_name, "#song#{i}" %></li>
     <% end %>
     </ol>
+    <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
+      <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
+      <%= hidden_field_tag "concert_id", @concert.id %>
+      <h4>
+        Song Name: <br />
+        <%= select_tag("song_name", options_for_select(@song_names)) %>
+      </h4>
+      <h4>
+        <%= f.label :video_link, "YouTube Link" %><br>
+        <%= text_field_tag :video_link %>
+      </h4>
+      <%= f.submit "Submit Video Link" %>
+    <% end %>
   </div>
   <div id="buttons">
     <button>Browse Videos</button>
@@ -63,15 +76,15 @@
   <div class="concert-signed-in">
     <% if signed_in? %>
       <% if (current_user.concerts.map { |concert| concert.id }).include?(@concert.id) %>
-
-        <h4>I attended this concert</h4>
-
+      <div id="buttons">
+        <button class="added"><h4>I attended this concert</h4></button>
+      </div>
       <% else %>
 
         <%= form_tag('/attended_concerts', id: "create_attended_concert") do %>
           <%= hidden_field_tag "user", session[:user_id] %>
           <%= hidden_field_tag "concert", @concert.id %>
-          <%= submit_tag 'Add To My Concert History', id: "add_attendee_btn" %>
+        <%= submit_tag 'Add To My Concert History', id: "add_attendee_btn" %>
         <% end %>
 
       <% end %>
@@ -107,38 +120,20 @@
           </div>
         <% end %>
       </div>
-
-
-      <div id="submit-video">
-        <%= form_for ConcertSong.new, url: "/concert_songs", method: :post do |f| %>
-          <%= hidden_field_tag "artist_name", @concert.artists.first.name %>
-          <%= hidden_field_tag "concert_id", @concert.id %>
-          <p>
-            <%= label_tag("song_name") %>
-            <%= select_tag("song_name", options_for_select(@song_names)) %>
-          </p>
-          <p>
-            <%= f.label :video_link, "YouTube Link" %><br>
-            <%= text_field_tag :video_link %>
-          </p>
-          <%= f.submit "Submit Video Link" %>
-        <% end %>
-      </div>
-    </div>
-
-  <div class="concert-photos">
-    <% unless @concert.concert_photos.empty? %>
-      <% @concert_photos.each do |photo| %>
-        <div class="concert-img">
-          <p>
-            <%=link_to(photo.image.url) do %>
-              <%= image_tag photo.image.small, rel: "zoom" %>
-            <% end %>
-          </p>
-          <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
 </div>
+
+<div class="concert-photos">
+  <% unless @concert.concert_photos.empty? %>
+    <% @concert_photos.each do |photo| %>
+      <div class="concert-img">
+        <p>
+          <%=link_to(photo.image.url) do %>
+            <%= image_tag photo.image.small, rel: "zoom" %>
+          <% end %>
+        </p>
+        <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>

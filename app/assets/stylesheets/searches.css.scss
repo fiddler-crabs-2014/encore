@@ -10,13 +10,13 @@
 }
 
 .video-form {
-	@include span-columns(4);
+	@include span-columns(4.5);
 	position: relative;
 	margin-left: 24em;
 	margin-top: -14em;
 	select#song_songs{
 		margin-bottom: 1em;
-		background-color: $base-gray;
+		background-color: $darker-gray;
 		color: white;
 	}
 	#add-song{
@@ -25,6 +25,9 @@
 		padding: 5px;
 		border: 1px solid white;
 
+	}
+	p {
+		color: $darker-gray;
 	}
 }
 
@@ -44,16 +47,29 @@
 		position: relative;
 		padding-top: 2em;
 		h2{
-			color: $darker-gray;
+			font-family: 'Yanone Kaffeesatz', sans-serif;
+			color: $dark-red;
+			font-size: 3.4em;
 			text-align: center;
+		}
+		h3{
+			color: $dark-gray;
+			font-size: 2em;
+			text-align: center;
+			margin-top: -1em;
+		}
+		h4{
+			color: $light-gray;
+			font-size: 1.3em; 
+			text-align: center;
+			margin-top: -1em;
 		}
 		font-size: 1.2em;
 		button {
 			background-color: $base-red;
 			border: 1px solid white;
-			border-radius: 3px;
 			position: absolute;
-			right: 3.5em;
+			right: 8%;
 			top: 3.5em;
 			a {
 				color: white;
@@ -74,12 +90,13 @@
 		h3 {
 			font-size: 2em;
 			text-align: center;
-			color: $darker-gray;
+			color: $base-gray;
 		}
 		ol.set-songs {
 		 margin-top: -1em;
 		 font-size: 1.5em;
 		 li.set-song{
+		 	color: black;
 		 	i {
 		 		position: absolute;
 				right: 1em;

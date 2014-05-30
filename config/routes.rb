@@ -31,4 +31,7 @@ Rails.application.routes.draw do
 
   resources :concert_photos, only: [:create, :destroy]
 
+  resources :pages, only: [:index]
+  get 'about', to: 'pages#index', as: 'about'
+
 end
