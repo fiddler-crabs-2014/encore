@@ -2,35 +2,49 @@
 
 #search-page {
 	@include outer-container;
+	width: 60%;
 	margin-top: -2em;
 	padding-bottom: 4em;
 	h1 {
-		color: $dark-gray;
+		font-family: 'Yanone Kaffeesatz', sans-serif;
+		color: $dark-red;
 		padding-top: 1em;
 		padding-bottom: -1em;
 		text-align: center;
+		font-size: 4.5em;
 	}
-	.concert-listing {
+	.concert-listings {
+		margin: 0 auto;
 		position: relative;
+
 		li {
 			list-style-type: none;
+			margin-right: 10px;
+			background-color: white;
+			margin-top: 0;
+			/*&:nth-child(even){
+				background-color: $light-gray*0.9;
+			}*/
 			a {
+				float: left;
 				text-align: center;
-				@include shift(3);
-				@include span-columns(6);
+				color: #7a7a7a;
+				padding: 10px;
 				border: 1px solid white;
 				text-decoration: none;
 				margin-bottom: 1.5em;
-				background-color: $base-red;
-				h3 {
-					color: white;
-					font-size: 2.5em;
+				background: inherit;
+				margin-left: 12px;
 
+				h3 {
+					margin-top: 0;
+					background-color: $dark-red;
+					color: white;
+					font-size: 3.5em;
 				}
 				h4 {
-					margin-top: -2em;
-					font-size: 2em;
-					color: white;
+					margin-top: -1.5em;
+					font-size: 2.5em;
 					font-weight: 500;
 				}
 			}
@@ -62,9 +76,6 @@
 	}
 }
 
-.video-container {
-  display: inline-block;
-}
 
 .flagged {
   background: black;
@@ -81,18 +92,26 @@
 		@include shift(1.3);
 		@include span-columns(8);
 		h1{
-			font-size: 3.6em;
-			span{
-			 color: $base-gray;
-			 font-size: 0.8em;
-			}
+			font-size: 4.6em;
+			font-family: 'Yanone Kaffeesatz', sans-serif;;
+			margin-bottom: 0.2em;
 		}
 		h2{
-			margin-top: -2em;
+			margin-top: -0.6em;
+			color: $dark-gray;
+			font-size: 2.4em;
+		}
+		h2.date{
+			margin-top: -1em;
+			font-size: 2em;
+			color: $darker-gray;
 		}
 	}
 	#submit-video{
-		position: relative;
+		height: 250px;
+		width: 250px;
+		position: absolute;
+		right: -1em;
 		color: $base-red;
 		select#song_name{
 			background-color: $dark-gray;
@@ -131,7 +150,7 @@
 		}
 		ol {
 		 margin-top: -1em;
-		 font-size: 1.5em;
+		 font-size: 1.6em;
 		 li {
 		 	color: $light-red;
 		 	margin-bottom: .5em;
@@ -147,8 +166,9 @@
 
 #player{
 	position: relative;
-	@include shift(1.5);
+	@include shift(4);
 	display: block;
+	clear: both;
 }
 
 input#add_attendee_btn{
@@ -163,7 +183,6 @@ input#add_attendee_btn{
 }
 
 .videos {
-	display: inline-block;
 	margin: 10px 300px 10px 15px;
 }
 
@@ -172,16 +191,25 @@ input#add_attendee_btn{
 	padding: 5px 10px;
 	min-width: 359px;
 	min-height: 316px;
-	border: 2px solid;
-	display: inline-flex;
-	flex-direction: column;
-	flex-wrap: wrap ltr
+	// border: 2px solid;
+	float: left;
+	background-color: $base-red*0.85;
+	color: white;
+
+	&:nth-child(even) {
+		background-color: $base-red;
+	}
+	// display: inline-flex;
+	// flex-direction: column;
+	// flex-wrap: wrap ltr
 }
 
 .video-box > h3 {
-	align-self: flex-start;
+	// align-self: flex-start;
 	top: 5px;
 	height: 20px;
+	color: white;
+	font-size: 1.2em;
 }
 
 .video-container {
@@ -191,6 +219,11 @@ input#add_attendee_btn{
 
 .video-container > a {
 	top: 0;
+}
+
+.song_label {
+	padding-left: 10px;
+	white-space:nowrap;
 }
 
 .concert-photos {
@@ -225,23 +258,34 @@ input#add_attendee_btn{
 	button{
 		background-color: $dark-gray;
 		color: white;
-		@include shift(8.9);
-		@include span-columns(7.5);
+		margin-left: 86.74468%;
+		float: left;
+		display: block;
+		margin-right: 2.12766%;
+		width: 16.750em;
+		margin-top: 0.5em;
 	}
 	button.added{
 		color: white;
-		background-color: $dark-green; 
+		background-color: $light-gray;
 		margin-top: -4em;
 	}
 	button.videos{
 		margin-top: 1em;
-	}	
+	}
 	button.photos{
 
 	}
 }
 
+.date {
+	padding-top: 3px;
+	color: black;
+	white-space:nowrap;
+}
+
 .new_concert_song{
+	display: none;
 	margin-bottom: 2em;
 	text-align: center;
 	color: $darker-gray;
