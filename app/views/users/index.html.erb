@@ -1,4 +1,7 @@
 <% @users.each do |user| %>
+    <% if user.id == current_user.id %>
+    <% end %>
+
     <div class="link_class">
 
       <h4><%= link_to user.name, user_path(user.id) %></h4>
@@ -7,9 +10,6 @@
           <a href="#" class="follow">Follow</a>
           <a href="#" class="unfollow">Unfollow</a>
         </div>
-
       <br />
-
     </div>
-    <hr>
 <% end %>

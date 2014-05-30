@@ -25,16 +25,16 @@
 				h3 {
 					color: white;
 					font-size: 2.5em;
-					
+
 				}
 				h4 {
 					margin-top: -2em;
 					font-size: 2em;
 					color: white;
 					font-weight: 500;
-				}		
+				}
 			}
-		} 
+		}
 	}
 
 	i {
@@ -93,7 +93,7 @@
 		}
 	input[type=submit]{
 		background-color: $base-red;
-		color: white; 
+		color: white;
 		border: 1px solid white;
 		}
 	}
@@ -170,11 +170,11 @@ input#add_attendee_btn{
 }
 
 .concert-photos {
-	
+
 }
 
 .concert-photos > .concert-img {
-	display: inline-block;	
+	display: inline-block;
 }
 
 .new_concert_photo {
@@ -188,5 +188,9 @@ input#add_attendee_btn{
 		background-color: $dark-gray;
 		color: white;
 	}
+}
+
+.player_wrapper {
+	border: 1px solid $rocky-red;
 }
 

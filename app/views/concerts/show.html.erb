@@ -30,7 +30,7 @@
 
         // 4. The API will call this function when the video player is ready.
         function onPlayerReady(event) {
-          event.target.playVideo();
+          event.target.stopVideo();
         }
 
         // 5. The API calls this function when the player's state changes.
@@ -83,14 +83,14 @@
       <% end %>
     <% end %>
   </div>
-    
+
     <div class="videos">
-      <div id="player"></div>
+
       <div class="video-box">
         <% @concert_songs.each do |concert_song| %>
           <h3><%= concert_song.song.title %></h3>
           <% concert_song.videos.each do |video| %>
-            <% if video.correct == false %> 
+            <% if video.correct == false %>
               <div class="video-container flagged">
                 <div class="youtube" id="<%= video.identifier %>" style="width: 320px; height: 180px;"></div>
                 <span>Video Flagged</span><a href="#" class="report-video" data-video-id=<%= video.id %>>Unflag</a>
@@ -124,7 +124,7 @@
       </div>
     </div>
 
-  
+
   <div class="concert-photos">
     <% unless @concert.concert_photos.empty? %>
       <% @concert_photos.each do |photo| %>
@@ -138,6 +138,10 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+
+  <div class="video_container">
+    <div id="player"></div>
   </div>
 
 </div>

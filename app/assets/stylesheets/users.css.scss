@@ -1,3 +1,5 @@
+/* user show page styles */
+
 .user_name {
   @include shift(1);
   @include span-columns(5);
@@ -67,14 +69,19 @@
   margin-top: -2.4em;
   margin-left: 4.75em;
 
-  font-size: 3.5em;
+  font-size: 318%;
 }
 
 .venue {
   margin-left: 8.3em;
-  font-size: 2.0em;
+  font-size: 182%;
 }
 
 a:hover {
   color: #d75b5b;
 }
+
+/* users index page */
+
+
+
