@@ -1,6 +1,6 @@
 <div class="outside">
   <div class="concert-header">
-    <h2><%= @band.name %><br><%= @venue.name %><br><%= @venue.city %>, <%= @venue.state %><br><%= @date %></h2>
+    <h2><%= @band.name %><br><span><%= @venue.name %><br><%= @venue.city %>, <%= @venue.state %><br><%= @date %></span></h2>
     <button><%= link_to "Go To Concert", concert_path(@concert) %></a></button>
     <br>
   </div>
@@ -16,19 +16,19 @@
 
           <div class="video-form">
               <p><i>Youtube Title:</i> <b id='yt-title'><%= title %></b></p>
-              <label for="song">Song:</label>
+              <label for="song">Choose song title for this video:</label>
               <!-- Check to see if the song array with the songs in the setlist
                     is empty. The songs array will be [""] if there is no setlist for this show. -->
             <% if @songs.nil? %>
 
               <%= f.text_field :song, value: title %>
 
-              <%= f.submit "Add Song" %>
+              <%= f.submit "Add Video To Concert" %>
               <hr>
               <!-- Otherwise, you can select the song based on the setlist. -->
             <% else %>
               <%= f.select :songs, @songs.collect { |song| song } %>
-              <%= f.submit "Add Song", id: "add-song" %>
+              <%= f.submit "Add Video To Concert", id: "add-song" %>
               <a href="#" class="remove-video">Not Relevant?</a>
             <% end %><!--End for the @songs selection loop -->
           <% end %>

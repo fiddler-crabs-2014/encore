@@ -1,7 +1,7 @@
 var songsAndIds = {};
 var setListCheckOff = function(button, icon){
-  $(button).css('background-color', 'green');
-  $(button).val('Added');
+  $(button).css('background-color', '#B1B1B1');
+  $(button).val('Added to Concert');
   $(button).removeClass('add-song').addClass('remove-song')
   $(icon).removeClass('fa-square-o').addClass('fa-check-square-o');
 }
