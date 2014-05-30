@@ -122,18 +122,18 @@
       </div>
 </div>
 
-  <div class="concert-photos">
-    <% unless @concert.concert_photos.empty? %>
-      <% @concert_photos.each do |photo| %>
-        <div class="concert-img">
-          <p>
-            <%=link_to(photo.image.url) do %>
-              <%= image_tag photo.image.small, rel: "zoom" %>
-            <% end %>
-          </p>
-          <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
-        </div>
-      <% end %>
+<div class="concert-photos">
+  <% unless @concert.concert_photos.empty? %>
+    <% @concert_photos.each do |photo| %>
+      <div class="concert-img">
+        <p>
+          <%=link_to(photo.image.url) do %>
+            <%= image_tag photo.image.small, rel: "zoom" %>
+          <% end %>
+        </p>
+        <p>Uploaded by: <%= link_to photo.user.name, "/users/#{photo.user.id}" %></p>
+      </div>
     <% end %>
-  </div>
-  <script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
+  <% end %>
+</div>
+<script type="text/javascript" src="https://labnol.googlecode.com/files/youtube.js"></script>
