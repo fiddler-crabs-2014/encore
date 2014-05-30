@@ -155,11 +155,11 @@ input#add_attendee_btn{
 	min-height: 316px;
 	// border: 2px solid;
 	float: left;
-	background-color: $base-red;
+	background-color: $base-red*0.85;
 	color: white;
 
 	&:nth-child(even) {
-		background-color: $base-red*0.85;
+		background-color: $base-red;
 	}
 	// display: inline-flex;
 	// flex-direction: column;
@@ -171,7 +171,7 @@ input#add_attendee_btn{
 	top: 5px;
 	height: 20px;
 	color: white;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 .video-container {
@@ -181,6 +181,11 @@ input#add_attendee_btn{
 
 .video-container > a {
 	top: 0;
+}
+
+.song_label {
+	float: left;
+	white-space:nowrap;
 }
 
 .concert-photos {

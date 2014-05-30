@@ -57,8 +57,8 @@
     </ol>
   </div>
   <div id="buttons">
-    <button>Videos</button>
-    <button>Photos</button>
+    <button>Browse Videos</button>
+    <button>Browse Photos</button>
   </div>
   <div class="concert-signed-in">
     <% if signed_in? %>
@@ -90,7 +90,7 @@
       <div id="player"></div>
         <% @concert_songs.each_with_index do |concert_song, i| %>
           <div class="video-box" id="song<%= i %>">
-            <h3><%= concert_song.song.title %></h3>
+            <h3 class="song_label"><%= "#{(i+1)}. " + concert_song.song.title %></h3>
             <% concert_song.videos.each do |video| %>
               <% if video.correct == false %>
                 <div class="video-container flagged">
