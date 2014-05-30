@@ -1,6 +1,6 @@
 <div class="concert-show-container">
 
-  <div id="head-left"><h1><%= @concert.artists.first.name%><br><span> at <%= @venue.name %></span></h1><br><h2><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
+<div id="head-left"><h1><%= @concert.artists.first.name %></h1><br><h2>at <%= @venue.name %><br></h2><br><h2 class="date"><%= @concert.date.strftime('%B %e, %Y') %></h2></div>
 
       <script>
         // 2. This code loads the IFrame Player API code asynchronously.
@@ -70,8 +70,8 @@
     <% end %>
   </div>
   <div id="buttons">
-    <button class="videos">Videos</button>
-    <button class="photos">Photos</button>
+    <button>Browse Videos</button>
+    <button>Browse Photos</button>
   </div>
   <div class="concert-signed-in">
     <% if signed_in? %>
@@ -103,7 +103,7 @@
       <div id="player"></div>
         <% @concert_songs.each_with_index do |concert_song, i| %>
           <div class="video-box" id="song<%= i %>">
-            <h3><%= concert_song.song.title %></h3>
+            <h3 class="song_label"><%= "#{(i+1)}. " + concert_song.song.title %></h3>
             <% concert_song.videos.each do |video| %>
               <% if video.correct == false %>
                 <div class="video-container flagged">

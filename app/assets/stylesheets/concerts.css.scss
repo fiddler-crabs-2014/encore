@@ -75,9 +75,6 @@
 	}
 }
 
-.video-container {
-  display: inline-block;
-}
 
 .flagged {
   background: black;
@@ -106,7 +103,10 @@
 		}
 	}
 	#submit-video{
-		position: relative;
+		height: 250px;
+		width: 250px;
+		position: absolute;
+		right: -1em;
 		color: $base-red;
 		select#song_name{
 			background-color: $dark-gray;
@@ -145,7 +145,7 @@
 		}
 		ol {
 		 margin-top: -1em;
-		 font-size: 1.5em;
+		 font-size: 1.6em;
 		 li {
 		 	color: $light-red;
 		 	margin-bottom: .5em;
@@ -177,7 +177,6 @@ input#add_attendee_btn{
 }
 
 .videos {
-	display: inline-block;
 	margin: 10px 300px 10px 15px;
 }
 
@@ -186,16 +185,25 @@ input#add_attendee_btn{
 	padding: 5px 10px;
 	min-width: 359px;
 	min-height: 316px;
-	border: 2px solid;
-	display: inline-flex;
-	flex-direction: column;
-	flex-wrap: wrap ltr
+	// border: 2px solid;
+	float: left;
+	background-color: $base-red*0.85;
+	color: white;
+
+	&:nth-child(even) {
+		background-color: $base-red;
+	}
+	// display: inline-flex;
+	// flex-direction: column;
+	// flex-wrap: wrap ltr
 }
 
 .video-box > h3 {
-	align-self: flex-start;
+	// align-self: flex-start;
 	top: 5px;
 	height: 20px;
+	color: white;
+	font-size: 1.2em;
 }
 
 .video-container {
@@ -205,6 +213,15 @@ input#add_attendee_btn{
 
 .video-container > a {
 	top: 0;
+}
+
+.song_label {
+	padding-left: 10px;
+	white-space:nowrap;
+}
+
+.concert-photos {
+	margin: 0 0 10px 20px;
 }
 
 .concert-photos > .concert-img {
@@ -240,15 +257,21 @@ input#add_attendee_btn{
 	}
 	button.added{
 		color: white;
-		background-color: $light-gray; 
+		background-color: $light-gray;
 		margin-top: -4em;
 	}
 	button.videos{
 		margin-top: 1em;
-	}	
+	}
 	button.photos{
 
 	}
+}
+
+.date {
+	padding-top: 3px;
+	color: black;
+	white-space:nowrap;
 }
 
 .new_concert_song{
@@ -265,3 +288,4 @@ input#add_attendee_btn{
 
 	}
 }
+
