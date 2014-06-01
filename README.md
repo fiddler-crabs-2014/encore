@@ -9,6 +9,7 @@ Created by:
 - [Brendan Scarano (Product Manager)](https://github.com/Onaracs)
 
 Heroku: 
+Outward-facing url: Bit.ly/EncoreBeta
 http://encore-staging.herokuapp.com/
 
 Trello: 
