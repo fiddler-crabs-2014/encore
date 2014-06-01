@@ -7,7 +7,6 @@ class SearchesController < ApplicationController
     band_query = params[:band]
     @band = Artist.find_or_initialize_by(name: band_query)
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
-    binding.pry
     if mb_result
       returned_setlists = JSON.parse(Net::HTTP.get_response(
                   URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mb_result}/setlists.json")
