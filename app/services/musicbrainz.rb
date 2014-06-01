@@ -19,6 +19,7 @@ class Musicbrainz
     else
       return mb_results[0][:mbid]
     end
+    return nil
   end
 
 end
