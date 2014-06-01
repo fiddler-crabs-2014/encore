@@ -8,7 +8,7 @@ Created by:
 - [Howard "Buck" O'Leary](https://github.com/buck3000)
 - [Brendan Scarano (Product Manager)](https://github.com/Onaracs)
 
-Heroku: 
+Heroku:     
 Outward-facing url: http://bit.ly/EncoreBeta    
 http://encore-staging.herokuapp.com/
 
