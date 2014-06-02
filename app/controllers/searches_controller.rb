@@ -52,8 +52,6 @@ class SearchesController < ApplicationController
       if @concert
         redirect_to @concert
       else
-
-        @concert = @venue.concerts.create(date: search_date)
         save_concert(params)
         search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
         search2 = "#{@band.name}, #{@venue.name}, #{@date}"
@@ -107,7 +105,6 @@ class SearchesController < ApplicationController
         end
       end
     end
-    binding.pry
   end
 
   private
