@@ -31,15 +31,15 @@ class SearchesController < ApplicationController
 
     #If the venue doesn't exist, there has never been a show there
     #therefore go right to making the concert
-    venue = Venue.find_by(name: search_params[2])
+    @venue = Venue.find_or_create_by(name: search_params[2])
 
-    unless venue.nil?
+    if @venue != nil
 
       #if the venue does exist, search for a concert that took place at that venue
       #on this specific date
-      @concerts = Concert.where(venue_id: venue.id, date: search_date)
+      @concerts = Concert.where(venue_id: @venue.id, date: search_date)
 
-      matched_concert_ids = @concerts.map{ |concert| concert.id }
+      matched_concert_ids = @concerts.map { |concert| concert.id }
 
       #to account for festivals go through every possible artist that played
       #that venue on that specific day
@@ -50,9 +50,34 @@ class SearchesController < ApplicationController
       end
 
       if @concert
-
         redirect_to @concert
+      else
 
+        @concert = @venue.concerts.create(date: search_date)
+        save_concert(params)
+        search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
+        search2 = "#{@band.name}, #{@venue.name}, #{@date}"
+        search3 = "#{@band.name}, #{@venue.state}, #{@date}"
+        # A couple more search options
+        # search4 = "#{@band.name}, #{@tour}, #{@date}"
+        # search5 = "#{@band.name}, #{@tour}, #{@venue.name}"
+
+        @titles_ids = {}
+
+        results = []
+
+        results << Youtube.search(search1)
+        results << Youtube.search(search2)
+        results << Youtube.search(search3)
+
+        results.flatten!.uniq!
+
+        results.each do |result|
+          if result =~ /\(\w*\)\z/
+            title = result.gsub(/ \(\w*\)\z/, '')
+            @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
+          end
+        end
       end
 
     else
@@ -82,6 +107,7 @@ class SearchesController < ApplicationController
         end
       end
     end
+    binding.pry
   end
 
   private
