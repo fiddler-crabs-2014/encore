@@ -250,3 +250,16 @@ body.searches.index {
 		.follow { display: inline }
 	}
 }
+
+#suggestion {
+	position: relative;
+	bottom: -5.3em;
+	background-color: white;
+	font-size: 1em;
+	opacity: 0.75;
+}
+
+#suggestion > a {
+	color: #FF6438;
+	font-size: 1em;
+}

@@ -7,7 +7,6 @@ class SearchesController < ApplicationController
     band_query = params[:band]
     @band = Artist.find_or_initialize_by(name: band_query)
     mb_result = @band.mbid || Musicbrainz.search(@band.name)
-
     if mb_result
       returned_setlists = JSON.parse(Net::HTTP.get_response(
                   URI.parse("http://api.setlist.fm/rest/0.1/artist/#{mb_result}/setlists.json")
@@ -18,7 +17,7 @@ class SearchesController < ApplicationController
       save_band(@band, mb_result) if @band.id.nil?
     else
       flash.now[:warning] = "Sorry - we couldn't find an artist with that name."
-      render :index
+      redirect_to root_path
     end
   end
 
@@ -32,15 +31,15 @@ class SearchesController < ApplicationController
 
     #If the venue doesn't exist, there has never been a show there
     #therefore go right to making the concert
-    venue = Venue.find_by(name: search_params[2])
+    @venue = Venue.find_or_create_by(name: search_params[2])
 
-    unless venue.nil?
+    if @venue != nil
 
       #if the venue does exist, search for a concert that took place at that venue
       #on this specific date
-      @concerts = Concert.where(venue_id: venue.id, date: search_date)
+      @concerts = Concert.where(venue_id: @venue.id, date: search_date)
 
-      matched_concert_ids = @concerts.map{ |concert| concert.id }
+      matched_concert_ids = @concerts.map { |concert| concert.id }
 
       #to account for festivals go through every possible artist that played
       #that venue on that specific day
@@ -51,9 +50,32 @@ class SearchesController < ApplicationController
       end
 
       if @concert
-
         redirect_to @concert
+      else
+        save_concert(params)
+        search1 = "#{@band.name}, #{@venue.name}, #{@venue.state}, #{@date}"
+        search2 = "#{@band.name}, #{@venue.name}, #{@date}"
+        search3 = "#{@band.name}, #{@venue.state}, #{@date}"
+        # A couple more search options
+        # search4 = "#{@band.name}, #{@tour}, #{@date}"
+        # search5 = "#{@band.name}, #{@tour}, #{@venue.name}"
 
+        @titles_ids = {}
+
+        results = []
+
+        results << Youtube.search(search1)
+        results << Youtube.search(search2)
+        results << Youtube.search(search3)
+
+        results.flatten!.uniq!
+
+        results.each do |result|
+          if result =~ /\(\w*\)\z/
+            title = result.gsub(/ \(\w*\)\z/, '')
+            @titles_ids[title] = result[/\(\w*\)\z/].gsub(/\(*\)*/, '')
+          end
+        end
       end
 
     else
