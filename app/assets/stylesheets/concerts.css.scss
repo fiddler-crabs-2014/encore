@@ -177,7 +177,7 @@ input#add_attendee_btn{
 	margin-bottom: 1em;
 	color: white;
 	background-color: $base-red;
-	height: 3em;
+	height: 2.5em;
 	right: 2.7em;
 	width: 16.750em;
 }
@@ -251,7 +251,7 @@ input#add_attendee_btn{
 
 #buttons {
 	top: 10em;
-	right: 11.5em;
+	right: 13.4em;
 	@include span-columns(5);
 	position: absolute;
 	margin-top: -1em;
@@ -261,14 +261,21 @@ input#add_attendee_btn{
 		margin-left: 86.74468%;
 		float: left;
 		display: block;
-		margin-right: 2.12766%;
 		width: 16.750em;
 		margin-top: 0.5em;
+
+	
 	}
 	button.added{
 		color: white;
 		background-color: $light-gray;
 		margin-top: -4em;
+		right: 2.7em;
+
+	}
+	button.active{
+		background-color: $dark-red;
+		color: $light-gray;
 	}
 	button.videos{
 		margin-top: 1em;
