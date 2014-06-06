@@ -251,15 +251,15 @@ input#add_attendee_btn{
 
 #buttons {
 	top: 10em;
-	right: 13.4em;
 	@include span-columns(5);
 	position: absolute;
-	margin-top: -1em;
+	margin-left: 1em;
+	top: 12.2em;
+	right: 2em;
+
 	button{
 		background-color: $dark-gray;
 		color: white;
-		margin-left: 86.74468%;
-		float: left;
 		display: block;
 		width: 16.750em;
 		margin-top: 0.5em;
